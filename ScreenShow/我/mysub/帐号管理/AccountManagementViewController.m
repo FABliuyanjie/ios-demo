@@ -67,11 +67,12 @@
     
     //设置手机号码和邮箱地址
     self.headImage.image = user.photo;
-    
+    self.headImage.layer.cornerRadius = 60;
+    self.headImage.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.headImage.layer.borderWidth = 3.f;
     self.userNameLb.text = user.nickName;
     [self.phoneNumberBtn setTitle:[NSString stringWithFormat:@"手机号码:%@",user.manPhone] forState:UIControlStateNormal];
-    [self.emailBtn setTitle:[NSString stringWithFormat:@"邮箱:%@",user.manEmail] forState:UIControlStateNormal];
-}
+    [self.emailBtn setTitle:[NSString stringWithFormat:@"邮箱:%@",user.manEmail?user.manEmail:@"           "] forState:UIControlStateNormal];}
 
 
 #pragma mark - 修改头像
