@@ -42,7 +42,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     ScreenLandView *landView=(ScreenLandView *)self.view;
     landView.table.delegate=self;
     landView.table.dataSource=self;
@@ -92,7 +91,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    
      ScreenLandView *landView=(ScreenLandView *)self.view;
     [landView insertSubview:btnKeyboardDown belowSubview:landView.textField];
     btnKeyboardDown.hidden=YES;

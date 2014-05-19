@@ -96,11 +96,11 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.2];
    
-        UIEdgeInsets currentInsets = collectionView.contentInset;
-        currentInsets.top = 0;
+    UIEdgeInsets currentInsets = collectionView.contentInset;
+    currentInsets.top = 0;
     currentInsets.bottom = 0;
-       collectionView.contentInset = currentInsets;
-        [UIView commitAnimations];
+    collectionView.contentInset = currentInsets;
+    [UIView commitAnimations];
     [loadingLabel removeFromSuperview];
 }
 -(void)startnetwork:(NSString *)prstr isloadmore:(BOOL)isloadmore

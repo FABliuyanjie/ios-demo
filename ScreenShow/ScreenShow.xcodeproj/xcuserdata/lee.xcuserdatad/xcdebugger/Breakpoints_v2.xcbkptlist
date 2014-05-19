@@ -70,16 +70,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "utils/EGOTableViewPullRefresh/Classes/PullPsCollectionView.m"
-            timestampString = "421917193.279587"
+            filePath = "root&#x9875;&#x9762;/&#x6700;&#x8fd1;&#x8bbf;&#x95ee;/NewVisiteViewController.m"
+            timestampString = "422172578.311702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "-scrollViewDidEndDragging:willDecelerate:"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-startnetwork:withPage:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
