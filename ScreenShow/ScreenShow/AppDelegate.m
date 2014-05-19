@@ -52,13 +52,11 @@
     
     //友盟
     [UMSocialData setAppKey:@"5373474456240b1cbc020bde"];
-    [UMSocialWechatHandler setWXAppId:@"wxd9a39c7122aa6516" url:@"http://www.umeng.com/social"];
+    [UMSocialWechatHandler setWXAppId:@"wxd95aad11f865fcd6" url:@"http://www.umeng.com/social"];
 //    [UMSocialQQHandler setQQWithAppId:@"801076124" appKey:@"6ddc7dc46845644ae30fe189a2a296dd" url:@"http://www.umeng.com/social"];
     
     [UMSocialQQHandler setQQWithAppId:@"100424468" appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://www.umeng.com/social"];
 
-    
-    
     
     //创建root
     MenuViewController *menuVC=[MenuViewController shareMenu];
