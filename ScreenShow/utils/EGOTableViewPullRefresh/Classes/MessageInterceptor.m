@@ -1,0 +1,23 @@
+//
+//  MessageInterceptor.m
+//  TableViewPull
+//
+//  From http://stackoverflow.com/questions/3498158/intercept-obj-c-delegate-messages-within-a-subclass
+
+#import "MessageInterceptor.h"
+
+@implementation MessageInterceptor
+
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if ([self.middleMan respondsToSelector:aSelector]) { return self.middleMan; }
+    if ([self.receiver respondsToSelector:aSelector]) { return self.receiver; }
+    return [super forwardingTargetForSelector:aSelector];
+}
+
+- (BOOL)respondsToSelector:(SEL)aSelector {
+    if ([self.middleMan respondsToSelector:aSelector]) { return YES; }
+    if ([self.receiver respondsToSelector:aSelector]) { return YES; }
+    return [super respondsToSelector:aSelector];
+}
+
+@end

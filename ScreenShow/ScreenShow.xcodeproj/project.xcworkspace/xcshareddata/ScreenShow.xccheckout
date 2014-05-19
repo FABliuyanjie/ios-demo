@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>12C6A49C-398D-421F-9448-9B01B7599B9C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ScreenShow</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DD610360-3E73-48D1-98BA-C1E22A163BCC</key>
+		<string>svn://100.100.40.214/client/IOS%E8%A7%86%E9%A2%91%E7%A7%80</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ScreenShow/ScreenShow.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DD610360-3E73-48D1-98BA-C1E22A163BCC</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>DD610360-3E73-48D1-98BA-C1E22A163BCC</key>
+		<string>svn://100.100.40.214/client</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>svn://100.100.40.214/client/IOS%E8%A7%86%E9%A2%91%E7%A7%80/ScreenShow/ScreenShow.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DD610360-3E73-48D1-98BA-C1E22A163BCC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DD610360-3E73-48D1-98BA-C1E22A163BCC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>IOS视频秀</string>
+		</dict>
+	</array>
+</dict>
+</plist>

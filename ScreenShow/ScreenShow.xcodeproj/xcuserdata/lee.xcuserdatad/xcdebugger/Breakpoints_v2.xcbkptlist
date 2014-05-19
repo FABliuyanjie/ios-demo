@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "root&#x9875;&#x9762;/&#x76f4;&#x64ad;&#x5217;&#x8868;/&#x76f4;&#x64ad;/&#x89c6;&#x9891;/children/&#x6a2a;&#x5c4f;/children/&#x624b;&#x52a8;&#x8f93;&#x5165;&#x793c;&#x7269;&#x6570;&#x91cf;/WritenumViewController.m"
+            timestampString = "421901566.268864"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "root&#x9875;&#x9762;/&#x76f4;&#x64ad;&#x5217;&#x8868;/&#x76f4;&#x64ad;/&#x89c6;&#x9891;/children/&#x6a2a;&#x5c4f;/children/&#x9001;&#x5927;&#x793c;/BigPresentViewController.m"
+            timestampString = "421913980.209567"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "root&#x9875;&#x9762;/&#x76f4;&#x64ad;&#x5217;&#x8868;/&#x76f4;&#x64ad;/&#x89c6;&#x9891;/children/&#x6a2a;&#x5c4f;/children/&#x9001;&#x5927;&#x793c;/BigPresentViewController.m"
+            timestampString = "421913726.714881"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "root&#x9875;&#x9762;/&#x76f4;&#x64ad;&#x5217;&#x8868;/&#x76f4;&#x64ad;/&#x804a;&#x5929;/children/&#x7c89;&#x4e1d;&#x5e2e;/FansViewController.m"
+            timestampString = "421914204.733584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-reloadDataSuccess:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "utils/EGOTableViewPullRefresh/Classes/PullPsCollectionView.m"
+            timestampString = "421917193.279587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-scrollViewDidEndDragging:willDecelerate:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

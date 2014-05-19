@@ -1,0 +1,88 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+    //宏
+    #import "Macros.h"
+    #import "CONST.h"
+    #import "TOOL.h"
+    #import "FuncMarcos.h"
+    #import "PortMacros.h"//接口文件
+
+    //视图器基类
+    #import "BaseViewController.h"
+
+
+    //网络请求
+    #import "AFAppDotNetAPIClient.h"
+
+    //提示
+    #import "TSMessage.h"
+    #import "MBProgressHUD.h"
+    #import "MBProgressHUD+Add.h"
+#import "iToast.h"
+    //基本模型
+    #import "User.h"
+    //UIView +
+    #import "UIView+Common.h"
+
+    //ShareSDK
+
+    #import <AGCommon/CoreDefinition.h>
+
+
+    //NSString的类目
+//    #import "NSStringAddition.h"
+    #import "NSStringAdditions.h"
+    //UIColor的类目
+    #import "UIColorAdditions.h"
+    #import "MYBaseDefine.h"
+    #import "UMSocialData.h"//友盟
+    #import "UMSocial.h"
+
+#endif
+
+
+#define SCREEN_FRAME_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define SCREEN_FRAME_WIDTH [UIScreen mainScreen].bounds.size.width
+#define STATUSBAR_HEIGHT (IsIOS7?20:0)
+#define STATUSBAR_HEIGHT_IOS7 20
+#define addressport @"http://100.100.40.214/"
+
+
+//MARK:shareSDK
+#define BUNDLE_NAME @"Resource"
+
+#define IMAGE_NAME @"sharesdk_img"
+#define IMAGE_EXT @"jpg"
+#define CONTENT NSLocalizedString(@"TEXT_SHARE_CONTENT", @"ShareSDK不仅集成简单、支持如QQ好友、微信、新浪微博、腾讯微博等所有社交平台，而且还有强大的统计分析管理后台，实时了解用户、信息流、回流率、传播效应等数据，详情见官网http://sharesdk.cn @ShareSDK")
+#define SHARE_URL @"http://www.sharesdk.cn"
+
+
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+
+#define isIOS7              ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+
+#define SCREEN_WIDTH					320
+#define SCREEN_HEIGHT           CGRectGetHeight([[UIScreen mainScreen] bounds])
+
+#define isIphone5Screen     (CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(320, 568)))
+
+#define isIphone4Screen     (CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(320, 480)))
+
+#define HEIGHT_HAVE_TABBAR   (SCREEN_HEIGHT - 64 - 49)
+#define HEIGHT_NO_TABBAR    (SCREEN_HEIGHT - 64)
+
+#define AppleID             @"820808756"

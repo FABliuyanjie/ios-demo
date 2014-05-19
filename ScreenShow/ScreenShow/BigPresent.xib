@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5051" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="AeO-20-Mr5" customClass="BigPresent">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="92"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meigui.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="zWs-cS-dS5">
+                    <rect key="frame" x="18" y="10" width="44" height="49"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="GPa-Py-O4C"/>
+                        <constraint firstAttribute="height" constant="49" id="p2Z-bc-NGS"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大玫瑰" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38I-uf-NAW">
+                    <rect key="frame" x="15" y="60" width="51" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="51" id="9dj-SX-PVf"/>
+                        <constraint firstAttribute="height" constant="15" id="kUI-71-683"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2RMB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUV-nN-qgU">
+                    <rect key="frame" x="17" y="76" width="46" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="Iqp-yC-ciM"/>
+                        <constraint firstAttribute="width" constant="46" id="Yvd-DJ-QX3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.83137261867523193" green="0.4745098352432251" blue="0.34509804844856262" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="lUV-nN-qgU" firstAttribute="top" secondItem="38I-uf-NAW" secondAttribute="bottom" constant="1" id="APl-ex-8yc"/>
+                <constraint firstAttribute="centerX" secondItem="zWs-cS-dS5" secondAttribute="centerX" id="XhO-Xn-Z6M"/>
+                <constraint firstItem="38I-uf-NAW" firstAttribute="top" secondItem="zWs-cS-dS5" secondAttribute="bottom" constant="1" id="nsb-kl-FdF"/>
+                <constraint firstItem="zWs-cS-dS5" firstAttribute="top" secondItem="AeO-20-Mr5" secondAttribute="top" constant="10" id="q2d-lH-Xp4"/>
+                <constraint firstAttribute="centerX" secondItem="38I-uf-NAW" secondAttribute="centerX" id="x9d-7x-vcD"/>
+                <constraint firstAttribute="centerX" secondItem="lUV-nN-qgU" secondAttribute="centerX" id="xNd-DC-zJg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imgview" destination="zWs-cS-dS5" id="Sf6-C3-HSA"/>
+                <outlet property="labelname" destination="38I-uf-NAW" id="hzo-7G-UIh"/>
+                <outlet property="labelprice" destination="lUV-nN-qgU" id="gLg-4b-cS3"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="meigui.jpeg" width="288" height="360"/>
+    </resources>
+</document>
