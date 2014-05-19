@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet ImageCropperView *cropperView;
 @property (nonatomic,strong) UIImage *originImage;
 
-
+//
 - (IBAction)verifyImage:(UIButton *)sender;
 
 @end
