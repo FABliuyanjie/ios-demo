@@ -30,6 +30,8 @@
 //发送验证码
 +(BOOL)sendVerifyCodeToPhone:(NSString*)phoneNum;
 +(BOOL)sendVerifyCodeToEmail:(NSString*)email;
++(NSDictionary *)changePhoneNumber:(NSString *)newPhoneNum withVerifyCode:(NSString *)verifyCode;
++(BOOL)sendVerifyCodeToPhoneForChangePhoneNum:(NSString*)phoneNum;
 
 //修改用户头像
 +(void)uploadUserPhoto:(NSString*)userInfo photo:(UIImage*)image complete:(void(^)(bool success))block;

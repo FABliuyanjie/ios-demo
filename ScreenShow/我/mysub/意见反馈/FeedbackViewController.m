@@ -35,7 +35,7 @@
     self.title = @"感谢您的宝贵意见";
     
     self.textView = [[TComposeView alloc] init];
-    self.textView.frame = CGRectMake(5, 15, SCREEN_WIDTH - 10, 370 / 2);
+    self.textView.frame = CGRectMake(5, 15, SCREEN_WIDTH - 10, 160);
     self.textView.backgroundColor = [UIColor clearColor];
     
 //     self.textView.contentView.layer.cornerRadius = 4;
@@ -51,8 +51,15 @@
     self.commitBtn.backgroundColor = [UIColor colorWithRed:154 / 255.0f green:60 / 255.0f blue:80 / 255.0f alpha:1];
     [self.commitBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     self.commitBtn.titleLabel.font = [UIFont systemFontOfSize:20.0f];
-    self.commitBtn.frame = CGRectMake(10, CGRectGetMaxY(self.textView.frame) + 30, SCREEN_WIDTH - 20, 45);
+    self.commitBtn.frame = CGRectMake(10, CGRectGetMaxY(self.textView.frame) + 20, SCREEN_WIDTH - 20, 45);
     
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];
+    [self.view addGestureRecognizer:tap];
+}
+
+-(void)tapClick
+{
+    [self.textView resignFirstResponder];
 }
 
 -(IBAction)commit:(id)sender

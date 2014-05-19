@@ -77,6 +77,33 @@
     return NO;
 }
 
++(BOOL)sendVerifyCodeToPhoneForChangePhoneNum:(NSString*)phoneNum
+{
+    //TODO:获取手机验证码
+    //    NSString *urlStr = [NSString stringWithFormat:@"%@?id=%d&user_email=%@",PORT_PHONEVERIFY,[User shareUser].manID,phoneNum];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?phone=%@&type=cpapi",PORT_PHONEVERIFY, phoneNum];
+    
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:received options:NSJSONReadingMutableContainers error:nil];
+    int status = [dict[@"status"]intValue];
+    if (status==1) {
+        return YES;
+    }
+    return NO;
+}
+
++(NSDictionary *)changePhoneNumber:(NSString *)newPhoneNum withVerifyCode:(NSString *)verifyCode
+{
+    NSString * urlStr = [NSString stringWithFormat:@"%@?token=%@&user_phone=%@&verify=%@", PORT_PHONECHANGE, [User shareUser].token, newPhoneNum, verifyCode];
+    NSURL * url = [NSURL URLWithString:urlStr];
+    NSURLRequest * request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
+    NSData * received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:received options:NSJSONReadingMutableContainers error:nil];
+    return dict;
+}
+
 +(BOOL)sendVerifyCodeToEmail:(NSString*)email
 {
 //TODO:修改邮箱地址

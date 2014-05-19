@@ -11,6 +11,8 @@
 @interface SubChangPNViewController : BaseViewController
 
 @property (nonatomic,copy) NSString *mPhoneNum;
+@property (nonatomic, copy) NSString * verifyCode;
+@property (nonatomic, weak) IBOutlet UITextField * verifyCodeTextField;
 
 @property (weak, nonatomic) IBOutlet UILabel *notification;
 
