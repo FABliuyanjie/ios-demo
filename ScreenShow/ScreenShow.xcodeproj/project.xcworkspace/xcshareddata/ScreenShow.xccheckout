@@ -5,41 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>12C6A49C-398D-421F-9448-9B01B7599B9C</string>
+	<string>6FEA235F-3C08-4967-95AC-BD86FBE9DE4B</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ScreenShow</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>DD610360-3E73-48D1-98BA-C1E22A163BCC</key>
-		<string>svn://100.100.40.214/client/IOS%E8%A7%86%E9%A2%91%E7%A7%80</string>
+		<key>02846FD0-E2AA-481D-9CEF-24D57CB9609C</key>
+		<string>https://github.com/jacklibonnie/ios-demo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ScreenShow/ScreenShow.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>DD610360-3E73-48D1-98BA-C1E22A163BCC</key>
+		<key>02846FD0-E2AA-481D-9CEF-24D57CB9609C</key>
 		<string>../../..</string>
 	</dict>
-	<key>IDESourceControlProjectRepositoryRootDictionary</key>
-	<dict>
-		<key>DD610360-3E73-48D1-98BA-C1E22A163BCC</key>
-		<string>svn://100.100.40.214/client</string>
-	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>svn://100.100.40.214/client/IOS%E8%A7%86%E9%A2%91%E7%A7%80/ScreenShow/ScreenShow.xcodeproj</string>
+	<string>https://github.com/jacklibonnie/ios-demo.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>DD610360-3E73-48D1-98BA-C1E22A163BCC</string>
+	<string>02846FD0-E2AA-481D-9CEF-24D57CB9609C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.subversion</string>
+			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DD610360-3E73-48D1-98BA-C1E22A163BCC</string>
+			<string>02846FD0-E2AA-481D-9CEF-24D57CB9609C</string>
 			<key>IDESourceControlWCCName</key>
-			<string>IOS视频秀</string>
+			<string>ios demo</string>
 		</dict>
 	</array>
 </dict>

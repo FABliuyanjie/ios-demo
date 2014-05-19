@@ -54,6 +54,8 @@
     [controlArray addObject:landView.btnPortait];
     [controlArray addObject:landView.btnKeyboard];
     [controlArray addObject:landView.btnInfo];
+    [controlArray addObject:landView.btnleft];
+    [controlArray addObject:landView.btnright];
     
     [landView.btnBg addTarget:self action:@selector(btnControlClicked:) forControlEvents:UIControlEventTouchDown];
     [landView.btnBack addTarget:self action:@selector(btnBackClicked:) forControlEvents:UIControlEventTouchDown];
