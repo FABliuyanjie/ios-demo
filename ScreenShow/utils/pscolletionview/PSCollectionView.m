@@ -227,6 +227,7 @@ indexToRectMap = _indexToRectMap;
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    self.orientation = [UIApplication sharedApplication].statusBarOrientation;
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if (self.orientation != orientation) {
         self.orientation = orientation;
