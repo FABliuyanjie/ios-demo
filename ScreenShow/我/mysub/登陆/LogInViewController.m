@@ -10,6 +10,7 @@
 #import "SubLogInViewController.h"
 #import "User.h"
 #import "APService.h"
+#import "UMSocial.h"
 @interface LogInViewController ()<UIScrollViewDelegate>
 @property (nonatomic,strong) SubLogInViewController *subLogInViewController;
 @end
@@ -132,11 +133,67 @@
 }
 - (IBAction)thridPartLoginClicked:(UIButton *)sender {
     NSInteger tag = sender.tag;
-    NSNumber *loginType = [NSNumber numberWithInteger:tag];
+
+    NSString *platformName = nil;
+    switch (tag) {
+        case 0:
+            platformName = UMShareToQQ;
+            break;
+        case 1:
+            platformName = UMShareToWechatTimeline;
+            break;
+        case 2:
+            platformName = UMShareToSina;
+            break;
+        default:
+            platformName = UMShareToRenren;
+            break;
+    }
     
     
-    
-    
+    BOOL isOauth = [UMSocialAccountManager isOauthWithPlatform:platformName];
+    if (!isOauth) {
+        //`snsName` 代表各个支持云端分享的平台名，有`UMShareToSina`,`UMShareToTencent`等五个。
+        UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
+        snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+            
+            NSLog(@"response is %@",response);
+            //如果是授权到新浪微博，SSO之后如果想获取用户的昵称、头像等需要再次获取一次账户信息
+            if ([platformName isEqualToString:UMShareToSina]) {
+                [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *accountResponse){
+                    NSLog(@"%@",accountResponse.data);
+
+                }];
+            }
+            
+            //这里可以获取到腾讯微博openid,Qzone的token等
+           
+             else if ([platformName isEqualToString:UMShareToTencent]) {
+             [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToTencent completion:^(UMSocialResponseEntity *respose){
+                 NSLog(@"get openid  response is %@",respose);
+             }];
+             }
+            
+            
+        });
+
+    }else{
+        if ([platformName isEqualToString:UMShareToSina]) {
+            [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *accountResponse){
+                NSLog(@"%@",accountResponse.data);
+                
+            }];
+        }
+        
+        //这里可以获取到腾讯微博openid,Qzone的token等
+        
+        else if ([platformName isEqualToString:UMShareToTencent]) {
+            [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToTencent completion:^(UMSocialResponseEntity *respose){
+                NSLog(@"get openid  response is %@",respose);
+            }];
+        }
+
+    }
     
 }
 
