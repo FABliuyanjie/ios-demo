@@ -65,22 +65,31 @@
 //    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
 //    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:received options:NSJSONReadingMutableContainers error:nil];
     int status = [dict[@"status"]intValue];
-//MARK:DEBUG
+    //MARK:DEBUG
     if (status == 1) {
-        if ([dict[@"data"] intValue] == 0) {
+        if ([dict[@"data"] intValue] == 1) {
             [MBProgressHUD showError:[dict objectForKey:@"info"] toView:self.view];
-            SendNoti(kReflushUserInfo);
-            
-            [self performSelector:@selector(popViewController) withObject:nil afterDelay:2];
+            [User reflushUserInfoWithBlocSuccess:^(NSString *info) {
+                [MBProgressHUD showError:[dict objectForKey:@"info"] toView:self.view];
+
+                SendNoti(kReflushUserInfo);
+                [self performSelector:@selector(popViewController) withObject:nil afterDelay:1];
+
+            } failure:^(NSString *info) {
+                
+            }];
         }
         else
         {
             [MBProgressHUD showError:[dict objectForKey:@"info"] toView:self.view];
+            [self performSelector:@selector(popViewController) withObject:nil afterDelay:1];
         }
-
+        
     }else{
         [MBProgressHUD showSuccess:@"修改失败" toView:self.view];
+        [self performSelector:@selector(popViewController) withObject:nil afterDelay:1];
     }
+    
 }
 
 -(void)popViewController
