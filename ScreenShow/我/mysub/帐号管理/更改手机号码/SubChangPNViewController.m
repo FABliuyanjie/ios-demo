@@ -76,6 +76,9 @@
                 [self performSelector:@selector(popViewController) withObject:nil afterDelay:1];
 
             } failure:^(NSString *info) {
+                NSLog(@"asdfjkaskjdfkjaksj");
+                NSLog(@"asdfjkaskjdfkjaksj");
+                NSLog(@"asdfjkaskjdfkjaksj");
                 
             }];
         }
