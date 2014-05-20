@@ -163,93 +163,93 @@
 - (void)application:(UIApplication *)application willChangeStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation duration:(NSTimeInterval)duration
 {
 }
-- (void)userInfoUpdateHandler:(NSNotification *)notif
-{
-    NSMutableArray *authList = [NSMutableArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
-    if (authList == nil)
-    {
-        authList = [NSMutableArray array];
-    }
-    
-    NSString *platName = nil;
-    NSInteger plat = [[[notif userInfo] objectForKey:SSK_PLAT] integerValue];
-    switch (plat)
-    {
-        case ShareTypeSinaWeibo:
-            platName = NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博");
-            break;
-        case ShareType163Weibo:
-            platName = NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博");
-            break;
-        case ShareTypeDouBan:
-            platName = NSLocalizedString(@"TEXT_DOUBAN", @"豆瓣");
-            break;
-        case ShareTypeFacebook:
-            platName = @"Facebook";
-            break;
-        case ShareTypeKaixin:
-            platName = NSLocalizedString(@"TEXT_KAIXIN", @"开心网");
-            break;
-        case ShareTypeQQSpace:
-            platName = NSLocalizedString(@"TEXT_QZONE", @"QQ空间");
-            break;
-        case ShareTypeRenren:
-            platName = NSLocalizedString(@"TEXT_RENREN", @"人人网");
-            break;
-        case ShareTypeSohuWeibo:
-            platName = NSLocalizedString(@"TEXT_SOHO_WEIBO", @"搜狐微博");
-            break;
-        case ShareTypeTencentWeibo:
-            platName = NSLocalizedString(@"TEXT_TENCENT_WEIBO", @"腾讯微博");
-            break;
-        case ShareTypeTwitter:
-            platName = @"Twitter";
-            break;
-        case ShareTypeInstapaper:
-            platName = @"Instapaper";
-            break;
-        case ShareTypeYouDaoNote:
-            platName = NSLocalizedString(@"TEXT_YOUDAO_NOTE", @"有道云笔记");
-            break;
-        case ShareTypeGooglePlus:
-            platName = @"Google+";
-            break;
-        case ShareTypeLinkedIn:
-            platName = @"LinkedIn";
-            break;
-        default:
-            platName = NSLocalizedString(@"TEXT_UNKNOWN", @"未知");
-    }
-    
-    id<ISSPlatformUser> userInfo = [[notif userInfo] objectForKey:SSK_USER_INFO];
-    BOOL hasExists = NO;
-    for (int i = 0; i < [authList count]; i++)
-    {
-        NSMutableDictionary *item = [authList objectAtIndex:i];
-        ShareType type = (ShareType)[[item objectForKey:@"type"] integerValue];
-        if (type == plat)
-        {
-            [item setObject:[userInfo nickname] forKey:@"username"];
-            hasExists = YES;
-            break;
-        }
-    }
-    
-    if (!hasExists)
-    {
-        NSDictionary *newItem = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                 platName,
-                                 @"title",
-                                 [NSNumber numberWithInteger:plat],
-                                 @"type",
-                                 [userInfo nickname],
-                                 @"username",
-                                 nil];
-        [authList addObject:newItem];
-    }
-    
-    [authList writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
-}
+//- (void)userInfoUpdateHandler:(NSNotification *)notif
+//{
+//    NSMutableArray *authList = [NSMutableArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
+//    if (authList == nil)
+//    {
+//        authList = [NSMutableArray array];
+//    }
+//    
+//    NSString *platName = nil;
+//    NSInteger plat = [[[notif userInfo] objectForKey:SSK_PLAT] integerValue];
+//    switch (plat)
+//    {
+//        case ShareTypeSinaWeibo:
+//            platName = NSLocalizedString(@"TEXT_SINA_WEIBO", @"新浪微博");
+//            break;
+//        case ShareType163Weibo:
+//            platName = NSLocalizedString(@"TEXT_NETEASE_WEIBO", @"网易微博");
+//            break;
+//        case ShareTypeDouBan:
+//            platName = NSLocalizedString(@"TEXT_DOUBAN", @"豆瓣");
+//            break;
+//        case ShareTypeFacebook:
+//            platName = @"Facebook";
+//            break;
+//        case ShareTypeKaixin:
+//            platName = NSLocalizedString(@"TEXT_KAIXIN", @"开心网");
+//            break;
+//        case ShareTypeQQSpace:
+//            platName = NSLocalizedString(@"TEXT_QZONE", @"QQ空间");
+//            break;
+//        case ShareTypeRenren:
+//            platName = NSLocalizedString(@"TEXT_RENREN", @"人人网");
+//            break;
+//        case ShareTypeSohuWeibo:
+//            platName = NSLocalizedString(@"TEXT_SOHO_WEIBO", @"搜狐微博");
+//            break;
+//        case ShareTypeTencentWeibo:
+//            platName = NSLocalizedString(@"TEXT_TENCENT_WEIBO", @"腾讯微博");
+//            break;
+//        case ShareTypeTwitter:
+//            platName = @"Twitter";
+//            break;
+//        case ShareTypeInstapaper:
+//            platName = @"Instapaper";
+//            break;
+//        case ShareTypeYouDaoNote:
+//            platName = NSLocalizedString(@"TEXT_YOUDAO_NOTE", @"有道云笔记");
+//            break;
+//        case ShareTypeGooglePlus:
+//            platName = @"Google+";
+//            break;
+//        case ShareTypeLinkedIn:
+//            platName = @"LinkedIn";
+//            break;
+//        default:
+//            platName = NSLocalizedString(@"TEXT_UNKNOWN", @"未知");
+//    }
+//    
+//    id<ISSPlatformUser> userInfo = [[notif userInfo] objectForKey:SSK_USER_INFO];
+//    BOOL hasExists = NO;
+//    for (int i = 0; i < [authList count]; i++)
+//    {
+//        NSMutableDictionary *item = [authList objectAtIndex:i];
+//        ShareType type = (ShareType)[[item objectForKey:@"type"] integerValue];
+//        if (type == plat)
+//        {
+//            [item setObject:[userInfo nickname] forKey:@"username"];
+//            hasExists = YES;
+//            break;
+//        }
+//    }
+//    
+//    if (!hasExists)
+//    {
+//        NSDictionary *newItem = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+//                                 platName,
+//                                 @"title",
+//                                 [NSNumber numberWithInteger:plat],
+//                                 @"type",
+//                                 [userInfo nickname],
+//                                 @"username",
+//                                 nil];
+//        [authList addObject:newItem];
+//    }
+//    
+//    [authList writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
+//}
 
 #pragma mark- applecation
 //友盟分享需加内容
