@@ -9,5 +9,12 @@
 #import "LoginHelper.h"
 
 @implementation LoginHelper
-
+//+(NSDictionary*)getUserInfoForm:(NSString*)platformName
+//{
+//    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+//    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response)
+//                                  {
+//                                      NSLog(@"response is %@",response);
+//                                  });
+//}
 @end

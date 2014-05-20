@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "UMSocial.h"
 @interface LoginHelper : NSObject
-
++(NSDictionary*)getUserInfoForm:(NSString*)platformName;
 @end
