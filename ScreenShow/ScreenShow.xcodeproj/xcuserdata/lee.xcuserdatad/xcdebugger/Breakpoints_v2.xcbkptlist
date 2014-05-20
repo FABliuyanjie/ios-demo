@@ -89,22 +89,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "root&#x9875;&#x9762;/&#x6700;&#x8fd1;&#x8bbf;&#x95ee;/NewVisiteViewController.m"
-            timestampString = "422267417.012511"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-viewDidAppear:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "&#x4fa7;&#x8fb9;&#x680f;/&#x6211;&#x7684;&#x5173;&#x6ce8;/MyAttentionViewController.m"
             timestampString = "422267793.172819"
             startingColumnNumber = "9223372036854775807"
