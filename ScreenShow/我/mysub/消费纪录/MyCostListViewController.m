@@ -128,7 +128,8 @@
 //        }
 //    }
 //    [self.view setNeedsDisplay];
-    
+
+    //TODO: this is test！
     if (_segment.selectedSegmentIndex < _viewControllers.count - 1) {
         UIViewController *vc = _viewControllers[_segment.selectedSegmentIndex];
         vc.view.backgroundColor = [UIColor whiteColor];

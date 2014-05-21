@@ -112,7 +112,6 @@
     if(self.isFromMyViewController==YES){
         [self.navigationController popToRootViewControllerAnimated:YES];
     }else{
-        
         [self.navigationController popViewControllerAnimated:YES];
     }
     
