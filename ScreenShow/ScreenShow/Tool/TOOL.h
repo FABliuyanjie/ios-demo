@@ -53,4 +53,6 @@
 //第三方登录
 +(void)logInWithThirdPart:(id)actionNum,...;
 +(void)logInWithShareSDK:(ShareType)type result:(void (^)(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error)) blok;
+
+
 @end
