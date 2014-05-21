@@ -42,6 +42,7 @@
     self.userNameTf.text = @"18774671340";
     self.passwdTf.text = @"123456";
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginSuccess) name:kLogInSuccess object:nil];
     // Do any additional setup after loading the view.
 }
 
@@ -80,32 +81,69 @@
     // Pass the selected object to the new view controller.
 }
 
-
+/**
+ *  点击登录，普通登录
+ *
+ *  @param sender 登录按钮
+ */
 - (IBAction)logIn:(UIButton *)sender {
     if ([self chechTextField]) {
         __weak LogInViewController * weakSelf = self;
         [User logIn:self.userNameTf.text passWord:self.passwdTf.text success:^(NSString *info) {
-            
-            LOGIN;
-            [User saveUserInfo];
-            [[iToast makeText:@"登录成功"] show];
-            if(self.isFromMyViewController==YES){
-                [self.navigationController popToRootViewControllerAnimated:YES];
-            }else{
-                
-                [self.navigationController popViewControllerAnimated:YES];
-            }
-         
-            [APService setAlias:[NSString stringWithFormat:@"%ld",(long)[User shareUser].manID]callbackSelector:nil object:nil];
-            SendNoti(kLogInSuccess);
+            [weakSelf handleLoginSuccess];
         } failure:^(NSString *info){
-            LOGOUT;
-            [[iToast makeText:@"登录失败"] show];
+            [weakSelf handleLoginFailure];
         }];
         
     }
     
 }
+
+/**
+ *  登录成功后的操作
+ *
+ *  @return nil
+ */
+-(void)handleLoginSuccess
+{
+    [TOOL logIn];
+//    [User saveUserInfo];
+    [[iToast makeText:@"登录成功"] show];
+    if(self.isFromMyViewController==YES){
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else{
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+    [APService setAlias:[NSString stringWithFormat:@"%ld",(long)[User shareUser].manID]callbackSelector:nil object:nil];
+    SendNoti(kLogInSuccess);
+
+}
+
+/**
+ *  第一次第三方登录必须绑定一个账号
+ */
+-(void)handleBindAccount
+{
+    
+}
+
+/**
+ *  登录失败
+ */
+-(void)handleLoginFailure
+{
+    [TOOL logOut];
+    [[iToast makeText:@"登录失败"]show];
+    
+}
+
+/**
+ *  输入框架检测
+ *
+ *  @return 是否符合要求
+ */
 -(BOOL)chechTextField
 {
 //    NSString*  _phoneNum = self.userNameTf.text;
@@ -113,10 +151,6 @@
     BOOL _checkOK = YES;
     NSString *_externInfo = nil;
     
-//    if (_phoneNum.length!=11 || !_phoneNum.integerValue) {
-//        _externInfo = @"电话号码不对";
-//        _checkOK = NO;
-//    }else
     if (_pwd.length<6 || _pwd.length>20) {
         _externInfo = @"密码不对";
         _checkOK = NO;
@@ -128,73 +162,83 @@
     return _checkOK;
     
 }
+
+/**
+ *  收键盘
+ *
+ *  @param sender nil
+ */
 - (IBAction)tap:(id)sender {
     [self.view endEditing:YES];
 }
-- (IBAction)thridPartLoginClicked:(UIButton *)sender {
-    NSInteger tag = sender.tag;
 
+/**
+ *  第三方登录
+ *  通过判断Button的tag，来进行选定平台的登录,tag在storyboard中设置
+ *  @param sender button，
+ */
+- (IBAction)thridPartLoginClicked:(UIButton *)sender {
+    NSInteger tag = sender.tag-100;
+
+    //选择平台
     NSString *platformName = nil;
+    NSString *pfname = nil;
     switch (tag) {
         case 0:
-            platformName = UMShareToQQ;
+            platformName = UMShareToRenren;
+            pfname = @"renren";
             break;
         case 1:
-            platformName = UMShareToWechatTimeline;
+            platformName = UMShareToQzone ;
+            pfname = @"qzone";
             break;
         case 2:
             platformName = UMShareToSina;
+            pfname = @"sina";
             break;
-        default:
-            platformName = UMShareToRenren;
+        case 3:
+            platformName = UMShareToWechatTimeline;
+            pfname = @"wechat";
             break;
+            default:
+            platformName = UMShareToQQ;
     }
-    
-    
-    BOOL isOauth = [UMSocialAccountManager isOauthWithPlatform:platformName];
-    if (!isOauth) {
-        //`snsName` 代表各个支持云端分享的平台名，有`UMShareToSina`,`UMShareToTencent`等五个。
-        UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
-        snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
-            
-            NSLog(@"response is %@",response);
-            //如果是授权到新浪微博，SSO之后如果想获取用户的昵称、头像等需要再次获取一次账户信息
-            if ([platformName isEqualToString:UMShareToSina]) {
-                [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *accountResponse){
-                    NSLog(@"%@",accountResponse.data);
-
-                }];
+   __weak LogInViewController * weakSelf = self;
+    //唤起授权页
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        NSLog(@"response is %@",response);
+        //取得给定平台的username和usid
+        [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *respose){
+            NSDictionary *dict = respose.data[@"accounts"][pfname];
+            NSLog(@"sina%@",dict);
+            NSString *username = dict[@"username"];
+            NSString *usid = dict[@"usid"];
+            NSString *type = @"1";
+            if(dict==nil) {
+                [self handleLoginFailure];
             }
-            
-            //这里可以获取到腾讯微博openid,Qzone的token等
-           
-             else if ([platformName isEqualToString:UMShareToTencent]) {
-             [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToTencent completion:^(UMSocialResponseEntity *respose){
-                 NSLog(@"get openid  response is %@",respose);
-             }];
-             }
-            
-            
-        });
+            //发起第三方平台的登录
+            [User loginWithUMbyOpenid:usid openName:username type:type success:^(BOOL flag) {
+                if (flag) {//以前登录过，直接登录成功
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //TODO: 在主线程跳转,绑定操作
+                        [weakSelf handleLoginSuccess];
+                    });
 
-    }else{
-        if ([platformName isEqualToString:UMShareToSina]) {
-            [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *accountResponse){
-                NSLog(@"%@",accountResponse.data);
-                
+                }else{//第一次登录，绑定账号或者新注册一个
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //TODO: 在主线程跳转,绑定操作
+                        [weakSelf handleBindAccount];
+                   
+                    });
+                }
             }];
-        }
-        
-        //这里可以获取到腾讯微博openid,Qzone的token等
-        
-        else if ([platformName isEqualToString:UMShareToTencent]) {
-            [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToTencent completion:^(UMSocialResponseEntity *respose){
-                NSLog(@"get openid  response is %@",respose);
-            }];
-        }
-
-    }
-    
+            
+            
+        }];
+    });
 }
 
 

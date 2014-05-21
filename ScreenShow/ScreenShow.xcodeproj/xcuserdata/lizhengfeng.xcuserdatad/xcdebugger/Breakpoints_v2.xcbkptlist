@@ -89,7 +89,7 @@
                   symbolName = "__39+[TOOL uploadUserPhoto:photo:complete:]_block_invoke"
                   moduleName = "ScreenShow"
                   urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/ScreenShow/Tool/TOOL.m"
-                  timestampString = "422246393.255697"
+                  timestampString = "422270915.381018"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "119"
@@ -103,7 +103,7 @@
                   symbolName = "__39+[TOOL uploadUserPhoto:photo:complete:]_block_invoke63"
                   moduleName = "ScreenShow"
                   urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/ScreenShow/Tool/TOOL.m"
-                  timestampString = "422246393.255864"
+                  timestampString = "422270915.381225"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "119"
@@ -120,11 +120,107 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
-            timestampString = "422246392.67277"
+            timestampString = "422264745.369672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "@implementation LogInViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
+            timestampString = "422270607.948106"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "@implementation LogInViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
+            timestampString = "422270607.948106"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "-thridPartLoginClicked:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ScreenShow/models/User.m"
+            timestampString = "422269740.792749"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "+loginWithUMbyOpenid:openName:myName:pwd:type:success:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ScreenShow/models/User.m"
+            timestampString = "422269744.017308"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "+loginWithUMbyOpenid:openName:myName:pwd:type:success:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ScreenShow/models/User.m"
+            timestampString = "422270205.608319"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "+loginWithUMbyOpenid:openName:myName:pwd:type:success:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
+            timestampString = "422270656.839394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "-thridPartLoginClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -136,27 +232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
-            timestampString = "422246757.082592"
+            timestampString = "422270914.76728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "-thridPartLoginClicked:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
-            timestampString = "422246761.547342"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "-thridPartLoginClicked:"
             landmarkType = "5">
          </BreakpointContent>

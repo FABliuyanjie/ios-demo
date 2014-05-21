@@ -122,6 +122,7 @@
 #pragma mark- 退出
 - (IBAction)LogOut:(id)sender {
     LOGOUT;
+    [TOOL logOut];
     SendNoti(kLogOutSuccess);
     [APService setAlias:nil callbackSelector:nil object:nil];
     [self.navigationController popToRootViewControllerAnimated:YES];

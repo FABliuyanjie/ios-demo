@@ -8,6 +8,7 @@
 
 #import "User.h"
 #import "APService.h"
+#import "iToast.h"
 @implementation User
 
 #pragma mark - Coding protocol
@@ -97,21 +98,21 @@
 -(BOOL)setKeyWithDict:(NSDictionary*)dict
 {
     if(dict && [dict isKindOfClass:[NSDictionary class]]){
-    self.token = dict[@"token"];
-    self.manID = [dict[@"user_id"] intValue];
-    self.manName = dict[@"user_name"];
-    self.nickName = dict[@"nick_name"];
-    self.manType = [dict[@"user_type"]intValue];
-    self.photoUrl = dict[@"user_img"];
-    self.retainRed = [dict[@"retainRed"]intValue];//TODO:红包数
-    self.accountMoney = [dict[@"money"] doubleValue];
-    self.accountFB = [dict[@"intergral"]intValue];//TODO:F币
-    self.userLevel = [dict[@"v_exp"]intValue];
-    self.manPhone = dict[@"user_phone"];
-    self.manEmail = dict[@"user_email"];
-    self.mxJmImg = dict[@"mx_jm_img"];
-    self.isMotion=NO;
-    return YES;
+        self.token = dict[@"token"];
+        self.manID = [dict[@"user_id"] intValue];
+        self.manName = dict[@"user_name"];
+        self.nickName = dict[@"nick_name"];
+        self.manType = [dict[@"user_type"]intValue];
+        self.photoUrl = dict[@"user_img"];
+        self.retainRed = [dict[@"retainRed"]intValue];//TODO:红包数
+        self.accountMoney = [dict[@"money"] doubleValue];
+        self.accountFB = [dict[@"intergral"]intValue];//TODO:F币
+        self.userLevel = [dict[@"v_exp"]intValue];
+        self.manPhone = dict[@"user_phone"];
+        self.manEmail = dict[@"user_email"];
+        self.mxJmImg = dict[@"mx_jm_img"];
+        self.isMotion=NO;
+        return YES;
     }else{
         ERROR(@"User parser Error!");
     }
@@ -177,6 +178,65 @@
     return [self flushUserInfo:urlStr parameter:nil success:success failure:failure];
 
 }
+
+//MARK:第三方登录---1
++(void)loginWithUMbyOpenid:(NSString*)openid openName:(NSString*)name myName:(NSString*)username pwd:(NSString*)passWord type:(NSString*)type success:(void(^)(BOOL flag))success
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&username=%@&pwd=%@&type=%@",PORT_BINDQQ,openid,name,username,passWord,type];
+    [[AFAppDotNetAPIClient sharedClient]GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        int status = [[responseObject objectForKey:@"status"]intValue];
+        NSString *info = responseObject[@"info"];
+        [[iToast makeText:info]show];
+        if (status==1) {
+            [User logIn:username passWord:passWord success:^(NSString *info) {
+                LOGIN;
+                SendNoti(kLogInSuccess);
+            } failure:^(NSString *info) {
+                [[iToast makeText:@"登录失败"]show];
+       ;     }];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        ERROR(@"error:%@",error);
+        [User logIn:username passWord:passWord success:^(NSString *info) {
+            LOGIN;
+            SendNoti(kLogInSuccess);
+        } failure:^(NSString *info) {
+            [[iToast makeText:@"登录失败"]show];
+            ;     }];
+
+    }];
+
+}
+
+//MARK:第三方登录---2
+/**
+ *  进行第三方登录，数据层，处理所有的数据操作
+ *
+ *  @param openid  从第三方平台获取的usid
+ *  @param name    从第三方平台获取的username
+ *  @param type    登录的类型，1 为第三方登录或者注册 2为绑定 3 为解绑
+ *  @param success 成功后的UI操作
+ */
++(void)loginWithUMbyOpenid:(NSString *)openid openName:(NSString *)name type:(NSString *)type success:(void (^)(BOOL))success
+{
+    NSString *urlStr = [NSString stringWithFormat:@""];
+    [[AFAppDotNetAPIClient sharedClient]GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //TODO: 判断是否要绑定用户名
+        BOOL isRegistered=false;//FIXME: 解析数据,判断是否是第一次登录
+        
+         //TODO: 如果注册过了，要解析数据，刷新本地的用户信息，设置状态为已经登录
+        
+        if (isRegistered) {
+            //
+        }
+        success(isRegistered);
+       
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //TODO: 网络故障
+    }];
+}
+
 
 +(void)flushUserInfo:(NSString*)urlStr parameter:(NSDictionary*)dictr success:(void (^)(NSString* info))success failure:(void (^)(NSString *info))failure
 {

@@ -446,4 +446,6 @@
     [ShareSDK getUserInfoWithType:1 authOptions:nil result:blok];
     
 }
+
+
 @end
