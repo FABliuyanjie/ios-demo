@@ -149,7 +149,8 @@
          respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
         [delegateInterceptor.receiver scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
     }
-    if (scrollView.contentOffset.y + scrollView.height >= scrollView.contentSize.height+60) {
+    float tmpheight=MAX(scrollView.contentSize.height, scrollView.frame.size.height);
+    if (scrollView.contentOffset.y + scrollView.height >= tmpheight+60) {
          [self.pullDelegate didscrolltobottom];
 	}
 }

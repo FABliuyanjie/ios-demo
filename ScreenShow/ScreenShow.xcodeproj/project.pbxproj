@@ -142,8 +142,6 @@
 		9B07A04F18E589BD009D6303 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B079FFA18E589BD009D6303 /* AFURLResponseSerialization.m */; };
 		9B07A05018E589BD009D6303 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B079FFC18E589BD009D6303 /* AFURLSessionManager.m */; };
 		9B07A05118E589BD009D6303 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B079FFC18E589BD009D6303 /* AFURLSessionManager.m */; };
-		9B07A05218E589BD009D6303 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B07A00018E589BD009D6303 /* EGORefreshTableHeaderView.m */; };
-		9B07A05318E589BD009D6303 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B07A00018E589BD009D6303 /* EGORefreshTableHeaderView.m */; };
 		9B07A05618E589BD009D6303 /* MessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B07A00418E589BD009D6303 /* MessageInterceptor.m */; };
 		9B07A05718E589BD009D6303 /* MessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B07A00418E589BD009D6303 /* MessageInterceptor.m */; };
 		9B07A05818E589BD009D6303 /* PullPsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B07A00618E589BD009D6303 /* PullPsCollectionView.m */; };
@@ -296,6 +294,7 @@
 		9B9CF693190F56C700B6B4AD /* screenportait_vc_btn_guanzhu.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B9CF690190F56C700B6B4AD /* screenportait_vc_btn_guanzhu.png */; };
 		9B9CF694190F56C700B6B4AD /* screenportait_vc_btn_quxiaoguanzhu.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B9CF691190F56C700B6B4AD /* screenportait_vc_btn_quxiaoguanzhu.png */; };
 		9B9CF695190F56C700B6B4AD /* screenportait_vc_btn_quxiaoguanzhu.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B9CF691190F56C700B6B4AD /* screenportait_vc_btn_quxiaoguanzhu.png */; };
+		9BA12A621929DFF200CD25E0 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA12A611929DFF200CD25E0 /* EGORefreshTableHeaderView.m */; };
 		9BA59AE91925BA4E002624FF /* Delegatechain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA59AE81925BA4E002624FF /* Delegatechain.m */; };
 		9BA59B12192606D1002624FF /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BA59AEC192606D1002624FF /* UMSocialLocalizable.strings */; };
 		9BA59B13192606D1002624FF /* libUMSocial_Sdk_3.3.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA59AFA192606D1002624FF /* libUMSocial_Sdk_3.3.7.a */; };
@@ -715,8 +714,6 @@
 		9B079FFA18E589BD009D6303 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		9B079FFB18E589BD009D6303 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		9B079FFC18E589BD009D6303 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		9B079FFF18E589BD009D6303 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
-		9B07A00018E589BD009D6303 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		9B07A00318E589BD009D6303 /* MessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInterceptor.h; sourceTree = "<group>"; };
 		9B07A00418E589BD009D6303 /* MessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageInterceptor.m; sourceTree = "<group>"; };
 		9B07A00518E589BD009D6303 /* PullPsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullPsCollectionView.h; sourceTree = "<group>"; };
@@ -850,6 +847,8 @@
 		9B9CF68D190F554100B6B4AD /* screenportait_vc_btn_fullscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenportait_vc_btn_fullscreen.png; sourceTree = "<group>"; };
 		9B9CF690190F56C700B6B4AD /* screenportait_vc_btn_guanzhu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenportait_vc_btn_guanzhu.png; sourceTree = "<group>"; };
 		9B9CF691190F56C700B6B4AD /* screenportait_vc_btn_quxiaoguanzhu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenportait_vc_btn_quxiaoguanzhu.png; sourceTree = "<group>"; };
+		9BA12A601929DFF200CD25E0 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		9BA12A611929DFF200CD25E0 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		9BA59AE71925BA4E002624FF /* Delegatechain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Delegatechain.h; path = "root页面/直播列表/直播/视频/children/横屏/children/送大礼/Delegatechain.h"; sourceTree = "<group>"; };
 		9BA59AE81925BA4E002624FF /* Delegatechain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Delegatechain.m; path = "root页面/直播列表/直播/视频/children/横屏/children/送大礼/Delegatechain.m"; sourceTree = "<group>"; };
 		9BA59AED192606D1002624FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
@@ -1427,8 +1426,8 @@
 		9B079FFE18E589BD009D6303 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				9B079FFF18E589BD009D6303 /* EGORefreshTableHeaderView.h */,
-				9B07A00018E589BD009D6303 /* EGORefreshTableHeaderView.m */,
+				9BA12A601929DFF200CD25E0 /* EGORefreshTableHeaderView.h */,
+				9BA12A611929DFF200CD25E0 /* EGORefreshTableHeaderView.m */,
 				9B07A00318E589BD009D6303 /* MessageInterceptor.h */,
 				9B07A00418E589BD009D6303 /* MessageInterceptor.m */,
 				9B07A00518E589BD009D6303 /* PullPsCollectionView.h */,
@@ -3079,7 +3078,6 @@
 				0168EF7D1919D19D00A0F5FF /* FindPassWordViewController.m in Sources */,
 				9B07A04818E589BD009D6303 /* AFSecurityPolicy.m in Sources */,
 				A3CCC90C1908ED4A0011B7B9 /* PBFlatGroupedStyleCell.m in Sources */,
-				9B07A05218E589BD009D6303 /* EGORefreshTableHeaderView.m in Sources */,
 				9B07A07618E589BD009D6303 /* SDWebImageDownloader.m in Sources */,
 				9BDAB4FB18E9044100759D06 /* TSBlurView.m in Sources */,
 				9BDAB4D718E9044100759D06 /* TSMessage.m in Sources */,
@@ -3111,6 +3109,7 @@
 				9B52BAE7191A28150073F73B /* NSString+formatDate.m in Sources */,
 				9B07A05818E589BD009D6303 /* PullPsCollectionView.m in Sources */,
 				9B079E8A18E58119009D6303 /* MenuViewController.m in Sources */,
+				9BA12A621929DFF200CD25E0 /* EGORefreshTableHeaderView.m in Sources */,
 				A37A462318F3A4F2003C1BED /* CostListView.m in Sources */,
 				9B079F0218E583FC009D6303 /* ScreenViewController.m in Sources */,
 				9B07A08E18E589BD009D6303 /* UIWebView+AFNetworking.m in Sources */,
@@ -3268,7 +3267,6 @@
 				9B07A0CB18E58ACA009D6303 /* Audience.m in Sources */,
 				9BDAB4AF18E9039800759D06 /* ComboBoxView.m in Sources */,
 				9B07A07F18E589BD009D6303 /* UIImageView+WebCache.m in Sources */,
-				9B07A05318E589BD009D6303 /* EGORefreshTableHeaderView.m in Sources */,
 				9B07A0D518E58ACA009D6303 /* Program.m in Sources */,
 				9B07A04918E589BD009D6303 /* AFSecurityPolicy.m in Sources */,
 				9BDAB48A18E9023800759D06 /* CostListViewController.m in Sources */,
@@ -3493,7 +3491,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: peng li (5MLPEMTNDE)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
@@ -3537,7 +3535,7 @@
 				);
 				"OTHER_LDFLAGS[arch=*]" = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "C6FA5E4C-B9F2-4D23-B782-6BFB84014EEC";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -3551,7 +3549,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: peng li (5MLPEMTNDE)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
@@ -3588,7 +3586,7 @@
 				);
 				New_Setting = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "C6FA5E4C-B9F2-4D23-B782-6BFB84014EEC";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

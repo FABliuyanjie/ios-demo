@@ -93,13 +93,23 @@
         if (IS_LOGIN) {
             
             [self startnetwork:HttpUrlRequestNewVsite withPage:_page];
-//            [self startnetwork:[NSString stringWithFormat:@"index.php/Api/Show/recentAnchor?page=1&id=%d",[[User shareUser] manID]]];
         }
         else
         {
             UIViewController *loLogin = [[UIStoryboard storyboardWithName:@"MyStoryBoard" bundle:nil]instantiateViewControllerWithIdentifier:@"LogInViewController"];
             [self.navigationController pushViewController:loLogin animated:YES];
         }
+    }
+    else
+    {
+        if (IS_LOGIN) {
+        }
+        else
+        {
+            [self.anchorArray removeAllObjects];
+            [self.tableview reloadData];
+        }
+
     }
 }
 

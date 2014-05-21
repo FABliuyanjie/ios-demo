@@ -60,7 +60,7 @@
             
             [MBProgressHUD show:@"验证码发送中..." icon:nil view:self.view];
             
-            [TOOL sendVerifyCodeToPhone:self.mPNTf.text];
+            [TOOL sendVerifyCodeToPhoneForChangePhoneNum:self.mPNTf.text];
             
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             return YES;

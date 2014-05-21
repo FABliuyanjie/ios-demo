@@ -95,6 +95,17 @@
             [self.navigationController pushViewController:loLogin animated:YES];
         }
     }
+    else
+    {
+        if (IS_LOGIN) {
+        }
+        else
+        {
+            [anchorItems removeAllObjects];
+            [self.table reloadData];
+        }
+
+    }
 }
 
 -(void)startnetwork:(NSString *)prstr withPage:(NSInteger)page

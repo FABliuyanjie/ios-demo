@@ -284,12 +284,11 @@
     isLoading = NO;
     
 	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:.3];
+	[UIView setAnimationDuration:0.2];
     UIEdgeInsets currentInsets = scrollView.contentInset;
     currentInsets.top = 0;
     scrollView.contentInset = currentInsets;
 	[UIView commitAnimations];
-	
 	[self setState:EGOOPullNormal];
     
 }

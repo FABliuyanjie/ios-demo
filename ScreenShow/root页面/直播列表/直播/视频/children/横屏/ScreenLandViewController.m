@@ -42,7 +42,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     ScreenLandView *landView=(ScreenLandView *)self.view;
     landView.table.delegate=self;
     landView.table.dataSource=self;
@@ -54,6 +53,8 @@
     [controlArray addObject:landView.btnPortait];
     [controlArray addObject:landView.btnKeyboard];
     [controlArray addObject:landView.btnInfo];
+    [controlArray addObject:landView.btnleft];
+    [controlArray addObject:landView.btnright];
     
     [landView.btnBg addTarget:self action:@selector(btnControlClicked:) forControlEvents:UIControlEventTouchDown];
     [landView.btnBack addTarget:self action:@selector(btnBackClicked:) forControlEvents:UIControlEventTouchDown];
@@ -90,7 +91,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    
      ScreenLandView *landView=(ScreenLandView *)self.view;
     [landView insertSubview:btnKeyboardDown belowSubview:landView.textField];
     btnKeyboardDown.hidden=YES;

@@ -174,7 +174,7 @@
 +(void )reflushUserInfoWithBlocSuccess:(void (^)(NSString *info))success
                 failure:(void (^)(NSString *info))failure
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@=%ld",PORT_ACCOUNT,(long)[User shareUser].manID];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?token=%@",PORT_ACCOUNT,[User shareUser].token];
     return [self flushUserInfo:urlStr parameter:nil success:success failure:failure];
 
 }
@@ -246,6 +246,8 @@
         NSString *info = responseObject[@"info"];
         NSDictionary *dict =[responseObject objectForKey:@"data"];
         
+        NSLog(@"获取用户信息：%@", dict);
+        
         if (status==1) {
             User *man = [User shareUser];
             if ([man setKeyWithDict:dict]) {
@@ -264,6 +266,8 @@
                 
             }
         }else{
+            NSLog(@"获取用户信息：%@", dict);
+
             ERROR(@"error:%@",info);
             if (failure) {
                  failure(info);
@@ -273,6 +277,8 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         ERROR(@"error:%@",error);
+        NSLog(@"获取用户信息：%@", error.userInfo);
+
         NSString *errorStr = @"网络连接失败";
         if (failure) {
              failure(errorStr);

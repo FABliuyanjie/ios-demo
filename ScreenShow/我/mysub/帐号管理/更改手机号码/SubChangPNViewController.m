@@ -49,7 +49,7 @@
 */
 
 - (IBAction)reSendVerifyCode:(UIButton *)sender {
-    if( [TOOL sendVerifyCodeToPhone:self.mPhoneNum]){
+    if( [TOOL sendVerifyCodeToPhoneForChangePhoneNum:self.mPhoneNum]){
         [MBProgressHUD showSuccess:@"发送成功" toView:self.view];
     }
     else{
@@ -59,20 +59,46 @@
 }
 
 - (IBAction)EnVerifyCode:(id)sender {
-    NSURL *url = [NSURL URLWithString:@"http://api.hudong.com/iphonexml.do?type=focus-c"];
-    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:received options:NSJSONReadingMutableContainers error:nil];
+    NSDictionary * dict = [TOOL changePhoneNumber:self.mPhoneNum withVerifyCode:self.verifyCodeTextField.text];
+//    NSURL *url = [NSURL URLWithString:@"http://api.hudong.com/iphonexml.do?type=focus-c"];
+//    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+//    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+//    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:received options:NSJSONReadingMutableContainers error:nil];
     int status = [dict[@"status"]intValue];
-//MARK:DEBUG
-    if (status!=1) {
-        [MBProgressHUD showError:@"修改成功" toView:self.view];
-        SendNoti(kReflushUserInfo);
-        [self.navigationController popToRootViewControllerAnimated:YES];
+    //MARK:DEBUG
+    if (status == 1) {
+        if ([dict[@"data"] intValue] == 1) {
+            [MBProgressHUD showError:[dict objectForKey:@"info"] toView:self.view];
+            [User reflushUserInfoWithBlocSuccess:^(NSString *info) {
+                [MBProgressHUD showError:[dict objectForKey:@"info"] toView:self.view];
+
+                SendNoti(kReflushUserInfo);
+                [self performSelector:@selector(popViewController) withObject:nil afterDelay:1];
+
+            } failure:^(NSString *info) {
+                NSLog(@"asdfjkaskjdfkjaksj");
+                NSLog(@"asdfjkaskjdfkjaksj");
+                NSLog(@"asdfjkaskjdfkjaksj");
+                 NSLog(@"asdfjkaskjdfkjaksj");
+                
+            }];
+        }
+        else
+        {
+            [MBProgressHUD showError:[dict objectForKey:@"info"] toView:self.view];
+            [self performSelector:@selector(popViewController) withObject:nil afterDelay:1];
+        }
+        
     }else{
         [MBProgressHUD showSuccess:@"修改失败" toView:self.view];
+        [self performSelector:@selector(popViewController) withObject:nil afterDelay:1];
     }
-
-
+    
 }
+
+-(void)popViewController
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 @end
