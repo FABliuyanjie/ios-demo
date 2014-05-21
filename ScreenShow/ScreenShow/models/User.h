@@ -38,7 +38,6 @@
             failure:(void (^)(NSString *info))failure;
 //第三方登录
 +(void)loginWithUMbyOpenid:(NSString*)openid openName:(NSString*)name myName:(NSString*)username pwd:(NSString*)passWord type:(NSString*)type success:(void(^)(BOOL flag))success;
-//MARK:第三方登录---2
 +(void)loginWithUMbyOpenid:(NSString *)openid openName:(NSString *)name type:(NSString *)type success:(void (^)(BOOL))success;
 
 //处理用户信息的请求
