@@ -121,7 +121,11 @@
     
     [[AFAppDotNetAPIClient sharedClient] GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.isloading = NO;
-
+        
+        if (!responseObject) {
+            self.isloading = NO;
+            [self doneLoadingTableViewData];
+        }
         NSLog(@"%@",responseObject);
         NSDictionary *lodic=(NSDictionary *)responseObject;
         if ([[lodic objectForKey:@"status"] integerValue]==1) {
@@ -143,6 +147,11 @@
                     anchor.rankpic=[lodic1 valueForKey:@"rank_img"];
                     [self.anchorArray addObject:anchor];
                 }
+            }
+            else
+            {
+                self.isloading = NO;
+                [self doneLoadingTableViewData];
             }
             
             if (![[lodic objectForKey:@"other"] isKindOfClass:[NSNull class]]) {

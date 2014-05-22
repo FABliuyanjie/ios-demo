@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "root&#x9875;&#x9762;/&#x6700;&#x8fd1;&#x8bbf;&#x95ee;/NewVisiteViewController.m"
-            timestampString = "422428414.43266"
+            timestampString = "422440256.679861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "-startnetwork:withPage:"
             landmarkType = "5">
          </BreakpointContent>
