@@ -34,11 +34,11 @@ const double cMonth = cDay*30;
     [super loadView];
     self.view.backgroundColor = [UIColor whiteColor];
     NSArray *combineData = @[@"最近一天",@"最近一周",@"最近一个月",@"全部"];
-    _timeSelectView = [[ComboBoxView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
+    _timeSelectView = [[ComboBoxView alloc]initWithFrame:CGRectMake(7, 0, 306, 100)];
     _timeSelectView.delegate = self;
     _timeSelectView.comboBoxDatasource = combineData;
     _timeSelectView.backgroundColor = [UIColor clearColor];
-    [_timeSelectView setContent:combineData[0]];
+    [_timeSelectView setContent:@"请选择时间段"];
     [self.view addSubview:_timeSelectView];
     
     _tableView  =[[PullTableView alloc]initWithFrame:CGRectMake(0,_timeSelectView.bottom + 10, 320, SCREEN_HEIGHT - 64 - 50 -_timeSelectView.bottom - 10) style:UITableViewStylePlain];
@@ -49,7 +49,43 @@ const double cMonth = cDay*30;
 //    [self downloadDataAdd:YES];
     self.tableView.pullDelegate = self;
 //....head view start
+   
+                                   UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
+                                   UIFont *font1 = [UIFont systemFontOfSize:14];
+                                   
+                                   NSString *str1 = @"共充值";
+                                   CGSize size1 = [str1 sizeWithFont:font1];
+                                   UILabel *lb1 = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, size1.width, 20)];
+                                   [headView addSubview:lb1];
+                                   
+                                   CGSize size2 = [_money sizeWithFont:font1];
+                                   UILabel *lb2 = [[UILabel alloc]initWithFrame:CGRectMake(lb1.right, 10, size2.width, 20)];
+                                   lb2.textColor = [UIColor redColor];
+                                   [headView addSubview:lb2];
+                                   
+                                   NSString *str3 = @"元，获得F币";
+                                   CGSize size3 = [str3 sizeWithFont:font1];
+                                   UILabel *lb3 = [[UILabel alloc]initWithFrame:CGRectMake(lb2.right, 10, size3.width, 20)];
+                                   
+                                   [headView addSubview:lb3];
+                                   
+                                   if (_fb ==nil) {
+                                       _fb = @"0";
+                                   }
+                                   CGSize size4 = [_fb sizeWithFont:font1];
+                                   UILabel *lb4 = [[UILabel alloc]initWithFrame:CGRectMake(lb3.right, 10, size4.width, 20)];
+                                   lb4.textColor = [UIColor redColor];
+                                   [headView addSubview:lb4];
+                                   
+                                   NSString *str5 = @"个";
+                                   CGSize size5 = [str5 sizeWithFont:font1];
+                                   UILabel *lb5 = [[UILabel alloc]initWithFrame:CGRectMake(lb4.right, 10, size5.width, 20)];
+                                   
+                                   [headView addSubview:lb5];
+                                   
     
+
+       _tableView.tableHeaderView = headView;
     [self.view addSubview:_tableView];
   
 //....end
@@ -140,50 +176,7 @@ const double cMonth = cDay*30;
 
     return cell;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 40.f;
-}
--(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
-    UIFont *font1 = [UIFont systemFontOfSize:14];
-    
-    NSString *str1 = @"共充值";
-    CGSize size1 = [str1 sizeWithFont:font1];
-    UILabel *lb1 = [[UILabel alloc]initWithFrame:CGRectMake(20, 10, size1.width, 20)];
-    [headView addSubview:lb1];
-    
-    if (_money ==nil) {
-        _money = @"0";
-    }
-    CGSize size2 = [_money sizeWithFont:font1];
-    UILabel *lb2 = [[UILabel alloc]initWithFrame:CGRectMake(lb1.right, 10, size2.width, 20)];
-    lb2.textColor = [UIColor redColor];
-    [headView addSubview:lb2];
-    
-    NSString *str3 = @"元，获得F币";
-    CGSize size3 = [str3 sizeWithFont:font1];
-    UILabel *lb3 = [[UILabel alloc]initWithFrame:CGRectMake(lb2.right, 10, size3.width, 20)];
-    
-    [headView addSubview:lb3];
-    
-    if (_fb ==nil) {
-        _fb = @"0";
-    }
-    CGSize size4 = [_fb sizeWithFont:font1];
-    UILabel *lb4 = [[UILabel alloc]initWithFrame:CGRectMake(lb3.right, 10, size4.width, 20)];
-    lb4.textColor = [UIColor redColor];
-    [headView addSubview:lb4];
-    
-    NSString *str5 = @"个";
-    CGSize size5 = [str5 sizeWithFont:font1];
-    UILabel *lb5 = [[UILabel alloc]initWithFrame:CGRectMake(lb4.right, 10, size5.width, 20)];
-    
-    [headView addSubview:lb5];
-    
-    return headView;
-}
+
 
 #pragma mark - CombineBox Delegate
 -(void)comboxCellDidSelected:(ComboBoxView*)combox atIndex:(NSIndexPath*)index;
@@ -222,7 +215,7 @@ const double cMonth = cDay*30;
         
         if (status==1) {
             NSDictionary *data = responseObject[@"data"];
-            _money = data[@"all_money"];
+            _money = [NSString stringWithFormat:@"%@",data[@"all_money"]];
             NSArray *log = data[@"log"];
             
             if (_totalArray==nil) {

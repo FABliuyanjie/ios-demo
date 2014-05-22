@@ -529,6 +529,7 @@
 		A36A32FB19064C3C0024657F /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A36A32F719064C3C0024657F /* ReportViewController.m */; };
 		A36A32FC19064C3C0024657F /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A36A32F819064C3C0024657F /* ReportViewController.xib */; };
 		A36A32FF19064CAF0024657F /* EmotionScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = A36A32FE19064CAF0024657F /* EmotionScroller.m */; };
+		A36DB134192DA1430044FBCF /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36DB133192DA1430044FBCF /* Reveal.framework */; };
 		A375286718F6A50E00543B02 /* EnsureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A375286618F6A50E00543B02 /* EnsureViewController.m */; };
 		A37A462318F3A4F2003C1BED /* CostListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A37A462218F3A4F2003C1BED /* CostListView.m */; };
 		A37A462718F3C1EE003C1BED /* CostLogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A37A462618F3C1EE003C1BED /* CostLogItem.m */; };
@@ -1128,6 +1129,7 @@
 		A36A32F819064C3C0024657F /* ReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportViewController.xib; path = "root页面/直播列表/直播/视频/children/竖屏/举报/ReportViewController.xib"; sourceTree = "<group>"; };
 		A36A32FD19064CAF0024657F /* EmotionScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmotionScroller.h; path = "root页面/直播列表/直播/聊天/children/公聊/EmotionScroller.h"; sourceTree = "<group>"; };
 		A36A32FE19064CAF0024657F /* EmotionScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmotionScroller.m; path = "root页面/直播列表/直播/聊天/children/公聊/EmotionScroller.m"; sourceTree = "<group>"; };
+		A36DB133192DA1430044FBCF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		A375286518F6A50E00543B02 /* EnsureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnsureViewController.h; sourceTree = "<group>"; };
 		A375286618F6A50E00543B02 /* EnsureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnsureViewController.m; sourceTree = "<group>"; };
 		A37A462118F3A4F2003C1BED /* CostListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostListView.h; sourceTree = "<group>"; };
@@ -1215,6 +1217,7 @@
 				A3685F4E18FE887D00151B97 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
 				A3B07DBD18F64869000DEFFF /* AlipayRsaLib.a in Frameworks */,
 				A3685F3C18FE887C00151B97 /* TencentOpenAPI.framework in Frameworks */,
+				A36DB134192DA1430044FBCF /* Reveal.framework in Frameworks */,
 				9BA59B20192606D1002624FF /* libSocialWechat.a in Frameworks */,
 				A3B07DBE18F64869000DEFFF /* AlixPaylib_arc.a in Frameworks */,
 				A3685F4018FE887C00151B97 /* libSinaWeiboSDK.a in Frameworks */,
@@ -1868,6 +1871,7 @@
 		9BA9A40F18C4118B0043C937 = {
 			isa = PBXGroup;
 			children = (
+				A36DB133192DA1430044FBCF /* Reveal.framework */,
 				9BF372891924CD02005E7049 /* vcchain */,
 				9B079F2618E58556009D6303 /* resources */,
 				9BA9A42118C4118C0043C937 /* ScreenShow */,
