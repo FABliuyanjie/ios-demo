@@ -145,7 +145,7 @@
 -(void)flushUIWhenNotLogined
 {
     //设置默认头像，用户名
-    [self.headImageView setImage:[UIImage imageNamed:@"headImage"]];
+    [self.headImageView setImage:[UIImage imageNamed:@"login_headImage"]];
     self.userName.text = [NSString stringWithFormat:@"游客%@",@"235"];
     self.userType.text = @"";
     
@@ -165,18 +165,13 @@
 {
     //头像
     User *user = [User readUserInfo];
-    if (self.headImageView.image==nil) {
-        [self.headImageView setImageWithURL:[NSURL URLWithString:user.photoUrl] placeholderImage:[UIImage imageNamed:@"headImage"] success:^(UIImage *image) {
-            user.photo = image;
-            [User saveUserInfo];
-        } failure:^(NSError *error) {
-            //
-        }];
-        
-    }else{
-        self.headImageView.image = user.photo;
-    }
     
+    [self.headImageView setImageWithURL:[NSURL URLWithString:user.photoUrl] placeholderImage:[UIImage imageNamed:@"login_headImage"] success:^(UIImage *image) {
+        user.photo = image;
+        [User saveUserInfo];
+    } failure:^(NSError *error) {
+        //
+    }];
     //=======
     //登录 注册 系统设置 按钮
     self.userName.text = user.nickName;

@@ -223,12 +223,13 @@
     NSString *urlStr = [NSString stringWithFormat:@""];
     [[AFAppDotNetAPIClient sharedClient]GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //TODO: 判断是否要绑定用户名
-        BOOL isRegistered=false;//FIXME: 解析数据,判断是否是第一次登录
         
-         //TODO: 如果注册过了，要解析数据，刷新本地的用户信息，设置状态为已经登录
+        BOOL isRegistered= [responseObject[@"status"] boolValue];
+        
+         // 如果注册过了，要解析数据，刷新本地的用户信息，设置状态为已经登录
         
         if (isRegistered) {
-            //
+            NSLog(@"registered!,%s",__FUNCTION__);
         }
         success(isRegistered);
        

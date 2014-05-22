@@ -9,6 +9,7 @@
 #import "MyCostListViewController.h"
 #import "CostListViewController.h"
 #import "RechangViewController.h"
+#import "UIImage+Additions.h"
 @interface MyCostListViewController ()
 
 @end
@@ -65,7 +66,11 @@
     [_segment addTarget:self action:@selector(segmentValueChanged) forControlEvents:UIControlEventValueChanged];
     _segment.selectedTextColor = [UIColor whiteColor];
     _segment.normalTextColor = [UIColor blackColor];
-    _segment.selectedTextShadowColor = [UIColor lightGrayColor];
+//    _segment.selectedTextShadowColor = [UIColor lightGrayColor];
+    _segment.normalImageLeft = [UIImage imageWithColor:[UIColor colorWithWhite:0.873 alpha:1.000]];
+    _segment.selectedImageLeft = [UIImage imageWithColor:[UIColor colorWithRed:0.583 green:0.229 blue:0.315 alpha:1.000]];
+    _segment.normalImageRight = [UIImage imageWithColor:[UIColor colorWithWhite:0.873 alpha:1.000]];
+    _segment.selectedImageRight = [UIImage imageWithColor:[UIColor colorWithRed:0.583 green:0.229 blue:0.315 alpha:1.000]];
     _segment.frame = CGRectMake(0, 0, 320, 0);
     _segment.hidden = NO;
     [self.view addSubview:_segment];
@@ -87,6 +92,7 @@
     }
 
     vc.view.frame = CGRectMake(0, 50, self.view.width, self.view.height-50);
+    [self addChildViewController:vc];
     [vc didMoveToParentViewController:self];
     [self.view bringSubviewToFront:vc.view];
 }
@@ -128,8 +134,9 @@
 //        }
 //    }
 //    [self.view setNeedsDisplay];
-    
-    if (_segment.selectedSegmentIndex < _viewControllers.count - 1) {
+
+    //TODO: this is test！
+    if (_segment.selectedSegmentIndex < _viewControllers.count ) {
         UIViewController *vc = _viewControllers[_segment.selectedSegmentIndex];
         vc.view.backgroundColor = [UIColor whiteColor];
         [self addChildViewController:vc];
