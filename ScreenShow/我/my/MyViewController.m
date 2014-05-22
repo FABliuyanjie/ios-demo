@@ -48,6 +48,8 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"test");
+
     [super viewDidLoad];
    self.title = @"我的";
     
