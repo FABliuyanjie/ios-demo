@@ -70,7 +70,7 @@ extern const double cMonth ;
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row==0) {
-        return 40;
+        return 30;
     }
     return 56.f;
 }
@@ -82,37 +82,72 @@ extern const double cMonth ;
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *idCell = @"costList";
-    CostListCell *cell = [tableView dequeueReusableCellWithIdentifier:idCell];
-    if (!cell) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"CostListCell" owner:self options:nil]lastObject];
+    static NSString *idCell2 = @"headerView";
+    if (indexPath.row==0) {
+        UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:idCell2];
+        UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+        UIFont *font1 = [UIFont systemFontOfSize:14];
+        
+        NSString *str1 = @"共充值";
+        CGSize size1 = [str1 sizeWithFont:font1];
+        UILabel *lb1 = [[UILabel alloc]initWithFrame:CGRectMake(20, 5, size1.width, 20)];
+        lb1.font = font1;
+        lb1.text = str1;
+        [headView addSubview:lb1];
+        
+        CGSize size2 = [_money sizeWithFont:font1];
+        UILabel *lb2 = [[UILabel alloc]initWithFrame:CGRectMake(lb1.right, 5, size2.width, 20)];
+        lb2.font =font1;
+        lb2.textColor = [UIColor redColor];
+        lb2.text = _money;
+        [headView addSubview:lb2];
+        
+        NSString *str3 = @"元，获得F币";
+        CGSize size3 = [str3 sizeWithFont:font1];
+        UILabel *lb3 = [[UILabel alloc]initWithFrame:CGRectMake(lb2.right, 5, size3.width, 20)];
+        lb3.font =font1;
+        lb3.text = str3;
+        [headView addSubview:lb3];
+        
+        CGSize size4 = [_fmoney sizeWithFont:font1];
+        UILabel *lb4 = [[UILabel alloc]initWithFrame:CGRectMake(lb3.right, 5, size4.width, 20)];
+        lb4.textColor = [UIColor redColor];
+        lb4.font = font1;
+        lb4.text = _fmoney;
+        [headView addSubview:lb4];
+        
+        NSString *str5 = @"个";
+        CGSize size5 = [str5 sizeWithFont:font1];
+        UILabel *lb5 = [[UILabel alloc]initWithFrame:CGRectMake(lb4.right, 5, size5.width, 20)];
+        lb5.text = str5;
+        lb5.font = font1;
+        [headView addSubview:lb5];
+        
+        [cell addSubview:headView];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        return cell;
+    }else{
+        CostListCell *cell = [tableView dequeueReusableCellWithIdentifier:idCell];
+        if (!cell) {
+            cell = [[[NSBundle mainBundle]loadNibNamed:@"CostListCell" owner:self options:nil]lastObject];
+        }
+        ReChangItem *item = _fiteredArray[indexPath.row-1];
+        cell.firstLb.text = [NSString stringWithFormat:@"金额：%@元",item.total_fee];
+        
+        cell.secondLb.text = [NSString stringWithFormat:@"F币：%ld个",(long)item.f_money];
+        cell.threeLb.text = item.time;
+        cell.fourLb.hidden = YES;
+        
+        if (indexPath.row % 2 != 0) {
+            cell.contentView.backgroundColor = [UIColor colorWithRed:245 / 255.0f green:245 / 255.0f blue:245 / 255.0f alpha:1];
+        }else{
+            cell.contentView.backgroundColor = [UIColor whiteColor];
+        }
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        return cell;
     }
-    ReChangItem *item = _fiteredArray[indexPath.row];
-    cell.firstLb.text = [NSString stringWithFormat:@"金额：%@元",item.total_fee];
-    
-    cell.secondLb.text = [NSString stringWithFormat:@"F币：%ld个",(long)item.f_money];
-    cell.threeLb.text = item.time;
-    cell.fourLb.hidden = YES;
-    
-    if (indexPath.row % 2 != 0) {
-        cell.contentView.backgroundColor = [UIColor colorWithRed:245 / 255.0f green:245 / 255.0f blue:245 / 255.0f alpha:1];
-    }
-    else
-        cell.contentView.backgroundColor = [UIColor whiteColor];
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
-
-    return cell;
+    return nil;
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 
 #pragma mark - CombineBox Delegate
 -(void)comboxCellDidSelected:(ComboBoxView*)combox atIndex:(NSIndexPath*)index;
@@ -152,8 +187,8 @@ extern const double cMonth ;
         self.info.text = info;
         if (status==1) {
             NSDictionary *data = responseObject[@"data"];
-            _money = data[@"all_money"];
-            _fmoney = data[@"all_f"];
+            _money = [NSString stringWithFormat:@"%@",data[@"all_money"]];
+            _fmoney = [NSString stringWithFormat:@"%@",data[@"all_f"]];
             
             NSArray *log = data[@"log"];
             
@@ -179,7 +214,7 @@ extern const double cMonth ;
             self.tableView.pullTableIsRefreshing = NO;
         }
         
-        
+        [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //      UIAlertView *alert = [UIAlertView alloc]i

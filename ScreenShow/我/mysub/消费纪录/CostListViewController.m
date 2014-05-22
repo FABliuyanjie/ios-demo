@@ -46,52 +46,12 @@ const double cMonth = cDay*30;
     _tableView.dataSource = self;
     _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.pullDelegate = self;
-//    [self downloadDataAdd:YES];
-    self.tableView.pullDelegate = self;
-//....head view start
-   
-                                   UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
-                                   UIFont *font1 = [UIFont systemFontOfSize:14];
-                                   
-                                   NSString *str1 = @"共充值";
-                                   CGSize size1 = [str1 sizeWithFont:font1];
-                                   UILabel *lb1 = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, size1.width, 20)];
-                                   [headView addSubview:lb1];
-                                   
-                                   CGSize size2 = [_money sizeWithFont:font1];
-                                   UILabel *lb2 = [[UILabel alloc]initWithFrame:CGRectMake(lb1.right, 10, size2.width, 20)];
-                                   lb2.textColor = [UIColor redColor];
-                                   [headView addSubview:lb2];
-                                   
-                                   NSString *str3 = @"元，获得F币";
-                                   CGSize size3 = [str3 sizeWithFont:font1];
-                                   UILabel *lb3 = [[UILabel alloc]initWithFrame:CGRectMake(lb2.right, 10, size3.width, 20)];
-                                   
-                                   [headView addSubview:lb3];
-                                   
-                                   if (_fb ==nil) {
-                                       _fb = @"0";
-                                   }
-                                   CGSize size4 = [_fb sizeWithFont:font1];
-                                   UILabel *lb4 = [[UILabel alloc]initWithFrame:CGRectMake(lb3.right, 10, size4.width, 20)];
-                                   lb4.textColor = [UIColor redColor];
-                                   [headView addSubview:lb4];
-                                   
-                                   NSString *str5 = @"个";
-                                   CGSize size5 = [str5 sizeWithFont:font1];
-                                   UILabel *lb5 = [[UILabel alloc]initWithFrame:CGRectMake(lb4.right, 10, size5.width, 20)];
-                                   
-                                   [headView addSubview:lb5];
-                                   
-    
-
-       _tableView.tableHeaderView = headView;
     [self.view addSubview:_tableView];
   
 //....end
     
-    UINib *cellNib = [UINib nibWithNibName:@"CostListCell" bundle:nil];
-    [_tableView registerNib:cellNib forCellReuseIdentifier:kReuseid];
+//    UINib *cellNib = [UINib nibWithNibName:@"CostListCell" bundle:nil];
+//    [_tableView registerNib:cellNib forCellReuseIdentifier:kReuseid];
     
     self.view.autoresizesSubviews = YES;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -121,60 +81,89 @@ const double cMonth = cDay*30;
 }
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 #pragma mark - tableView Delegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row==0) {
+        return 30.f;
+    }
     return 56.f;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _fiteredArray.count;
+    return _fiteredArray.count+1;
 }
 
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CostListCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseid];
+    static NSString *cellid = @"headerView";
     
-    if (_segIndex==0) {
-        CostLogItem *item = _fiteredArray[indexPath.row];
+    if (indexPath.row==0) {
+        UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
+        UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+        UIFont *font1 = [UIFont systemFontOfSize:14];
+        
+        NSString *str1 = @"共消费";
+        CGSize size1 = [str1 sizeWithFont:font1];
+        UILabel *lb1 = [[UILabel alloc]initWithFrame:CGRectMake(20, 5, size1.width, 20)];
+        lb1.font = font1;
+        lb1.text = str1;
+        [headView addSubview:lb1];
+        
+        CGSize size2 = [_money sizeWithFont:font1];
+        UILabel *lb2 = [[UILabel alloc]initWithFrame:CGRectMake(lb1.right, 5, size2.width, 20)];
+        lb2.font =font1;
+        lb2.textColor = [UIColor redColor];
+        lb2.text = _money;
+        [headView addSubview:lb2];
+        
+        NSString *str3 = @"元";
+        CGSize size3 = [str3 sizeWithFont:font1];
+        UILabel *lb3 = [[UILabel alloc]initWithFrame:CGRectMake(lb2.right, 5, size3.width, 20)];
+        lb3.font =font1;
+        lb3.text = str3;
+        [headView addSubview:lb3];
+        
+//        CGSize size4 = [_fmoney sizeWithFont:font1];
+//        UILabel *lb4 = [[UILabel alloc]initWithFrame:CGRectMake(lb3.right, 5, size4.width, 20)];
+//        lb4.textColor = [UIColor redColor];
+//        lb4.font = font1;
+//        lb4.text = _fmoney;
+//        [headView addSubview:lb4];
+//        
+//        NSString *str5 = @"个";
+//        CGSize size5 = [str5 sizeWithFont:font1];
+//        UILabel *lb5 = [[UILabel alloc]initWithFrame:CGRectMake(lb4.right, 5, size5.width, 20)];
+//        lb5.text = str5;
+//        lb5.font = font1;
+//        [headView addSubview:lb5];
+        
+        
+        [cell addSubview:headView];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        return cell;
+    }else{
+        CostListCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseid];
+
+        CostLogItem *item = _fiteredArray[indexPath.row-1];
         cell.firstLb.text = [NSString stringWithFormat:@"购买：%@",item.gift_name];
 
         cell.secondLb.text = [NSString stringWithFormat:@"数量：%ld",(long)item.pnum];
         cell.threeLb.text = item.time;
         cell.fourLb.text = [NSString stringWithFormat:@"F币：%ld",(long)item.money];;
     //    cell.giftLb.text = @"土豪金";
-    }else{
-    
-        ReChangItem *item = _fiteredArray[indexPath.row];
-        cell.firstLb.text = [NSString stringWithFormat:@"金额：%@元",item.total_fee];
-        
-        cell.secondLb.text = [NSString stringWithFormat:@"F币：%ld个",(long)item.f_money];
-        cell.threeLb.text = item.time;
-        cell.fourLb.hidden = YES;
 
+        if (indexPath.row % 2 != 0) {
+            cell.contentView.backgroundColor = [UIColor colorWithRed:245 / 255.0f green:245 / 255.0f blue:245 / 255.0f alpha:1];
+        }else {
+            cell.contentView.backgroundColor = [UIColor whiteColor];
+        }
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        return cell;
     }
-    
-    if (indexPath.row % 2 != 0) {
-        cell.contentView.backgroundColor = [UIColor colorWithRed:245 / 255.0f green:245 / 255.0f blue:245 / 255.0f alpha:1];
-    }
-    else
-        cell.contentView.backgroundColor = [UIColor whiteColor];
-    
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
-
-    return cell;
+    return nil;
 }
 
 
@@ -216,6 +205,7 @@ const double cMonth = cDay*30;
         if (status==1) {
             NSDictionary *data = responseObject[@"data"];
             _money = [NSString stringWithFormat:@"%@",data[@"all_money"]];
+            _fmoney = [NSString stringWithFormat:@"%@",data[@"all_f"]];
             NSArray *log = data[@"log"];
             
             if (_totalArray==nil) {
@@ -246,9 +236,9 @@ const double cMonth = cDay*30;
             self.tableView.backgroundColor = [UIColor clearColor];
         }else{
             self.tableView.backgroundColor = [UIColor whiteColor];
-            [self.tableView reloadData];
+            
         }
-        
+        [self.tableView reloadData];
         if (isAdd==YES) {
              self.tableView.pullTableIsLoadingMore = NO;
         }else{
