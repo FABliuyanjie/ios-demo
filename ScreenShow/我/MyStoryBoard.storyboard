@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="S7Z-Uf-cm5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="S7Z-Uf-cm5">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--My View Controller - 我的-->
@@ -168,6 +168,7 @@
                     <navigationItem key="navigationItem" id="xMb-3I-t61"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="2104"/>
                     <connections>
                         <outlet property="aboutUse" destination="Qok-xi-RmS" id="IXV-2u-iXG"/>
                         <outlet property="biLb" destination="5LR-QT-wlM" id="BIL-L3-t9u"/>
@@ -306,6 +307,7 @@
                     <navigationItem key="navigationItem" title="账户管理" id="yWP-pL-NCb"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="2692"/>
                     <connections>
                         <outlet property="emailBtn" destination="dgB-WD-W97" id="FL9-Gj-wnl"/>
                         <outlet property="headImage" destination="LS6-QS-Q6z" id="BQc-nC-0Uq"/>
@@ -355,6 +357,7 @@
                     <navigationItem key="navigationItem" title="感谢您给我们提得宝贵意见" id="Fzg-5V-T2O"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="2680"/>
                     <connections>
                         <outlet property="commitBtn" destination="QAQ-8F-urh" id="2rk-uO-xwv"/>
                     </connections>
@@ -408,6 +411,7 @@
                     <navigationItem key="navigationItem" title="关于我们" id="Qhy-hM-me3"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="2680"/>
                     <connections>
                         <outlet property="checkVersionBtn" destination="xRV-YD-4rd" id="5gm-vi-jOn"/>
                         <outlet property="nameLabel" destination="btw-zZ-mFH" id="2xq-zC-toK"/>
@@ -495,11 +499,11 @@
             <objects>
                 <viewController storyboardIdentifier="SelectRechangMoneyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wk5-Cj-WEM" customClass="SelectRechangMoneyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Cc-D9-fDb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2F0-Au-FQh">
-                                <rect key="frame" x="20" y="78" width="213" height="0.0"/>
+                                <rect key="frame" x="20" y="78" width="213" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值账号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BVI-xU-gpl">
@@ -728,6 +732,7 @@
                     <navigationItem key="navigationItem" title="记录" id="Qrg-4T-wg3"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="2680"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3Y-KL-UuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -749,6 +754,7 @@
                     <navigationItem key="navigationItem" title="系统设置" id="EYv-gd-hBF"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="2680"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gT2-Ya-G5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -760,6 +766,7 @@
                 <viewController storyboardIdentifier="ChangEmailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vdi-0M-FZf" customClass="ChangEmailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FMO-WB-69X">
                         <rect key="frame" x="0.0" y="64" width="320" height="2948"/>
+
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更换邮箱后，下次登录请使用新邮箱" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zq1-2B-HrG">
@@ -901,7 +908,9 @@
             <objects>
                 <viewController storyboardIdentifier="ChangPhoneNumberViewController" title=" 更换手机号码" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1rc-cT-fDf" customClass="ChangPhoneNumberViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Goo-yr-P0M">
+
                         <rect key="frame" x="0.0" y="64" width="320" height="2948"/>
+
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="U4S-8r-7Ss">
@@ -983,7 +992,9 @@
             <objects>
                 <viewController storyboardIdentifier="SubChangPNViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NWI-8v-Unw" customClass="SubChangPNViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZGR-ft-NVU">
-                        <rect key="frame" x="0.0" y="64" width="320" height="2948"/>
+
+                        <rect key="frame" x="0.0" y="64" width="320" height="2628"/>
+
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0VJ-l2-fAa">
@@ -1059,6 +1070,7 @@
             <objects>
                 <viewController id="PdX-3T-A2j" customClass="SignInViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDx-wz-XOr">
+
                         <rect key="frame" x="0.0" y="64" width="320" height="2168"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -1249,6 +1261,7 @@
             <objects>
                 <viewController storyboardIdentifier="LogInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xdp-E9-Bde" customClass="LogInViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDe-fB-YMy">
+
                         <rect key="frame" x="0.0" y="64" width="320" height="2912"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1341,7 +1354,7 @@
                                             <segue destination="PdX-3T-A2j" kind="push" id="2jt-Zs-Xij"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sQe-dp-9Co" customClass="PBFlatButton">
+                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sQe-dp-9Co" customClass="PBFlatButton">
                                         <rect key="frame" x="2" y="402" width="316" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1349,8 +1362,11 @@
                                         <state key="normal" title="QQ登录">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="thridPartLoginClicked:" destination="xdp-E9-Bde" eventType="touchUpInside" id="pAZ-gm-KCF"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9OB-wF-KX4" customClass="PBFlatButton">
+                                    <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9OB-wF-KX4" customClass="PBFlatButton">
                                         <rect key="frame" x="0.0" y="478" width="316" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1358,8 +1374,11 @@
                                         <state key="normal" title="微信登录">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="thridPartLoginClicked:" destination="xdp-E9-Bde" eventType="touchUpInside" id="75f-Kp-qtk"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cOm-C3-p66" customClass="PBFlatButton">
+                                    <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cOm-C3-p66" customClass="PBFlatButton">
                                         <rect key="frame" x="2" y="440" width="316" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1367,8 +1386,11 @@
                                         <state key="normal" title="微博登录">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="thridPartLoginClicked:" destination="xdp-E9-Bde" eventType="touchUpInside" id="QCU-CB-D3e"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="idQ-Mr-fVv" customClass="PBFlatButton">
+                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="idQ-Mr-fVv" customClass="PBFlatButton">
                                         <rect key="frame" x="2" y="364" width="316" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1377,7 +1399,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="thridPartLoginClicked:" destination="xdp-E9-Bde" eventType="touchUpInside" id="bgd-kM-dyD"/>
+                                            <action selector="thridPartLoginClicked:" destination="xdp-E9-Bde" eventType="touchUpInside" id="wlo-wX-odA"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1394,6 +1416,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="headImage" destination="d6f-S7-2Fs" id="acW-Dy-yJH"/>
                         <outlet property="headImageBackView" destination="55L-Qf-tPt" id="d7b-yZ-sBf"/>
@@ -1452,6 +1475,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="3128"/>
                     <connections>
                         <outlet property="emailBtn" destination="ajM-4u-p6A" id="yd9-cH-0du"/>
                         <outlet property="phoneNumBtn" destination="gVJ-sl-lRd" id="v9a-1k-rjv"/>
@@ -1549,8 +1573,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7Wx-pm-w6L"/>
-        <segue reference="aEK-f1-aEV"/>
         <segue reference="eVj-Uh-zQc"/>
+        <segue reference="aEK-f1-aEV"/>
+        <segue reference="2jt-Zs-Xij"/>
     </inferredMetricsTieBreakers>
 </document>

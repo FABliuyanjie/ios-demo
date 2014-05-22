@@ -494,7 +494,6 @@
 		A349C33618EBF59700E7039E /* ChangPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A349C33518EBF59700E7039E /* ChangPhoneNumberViewController.m */; };
 		A349C33918EBF5B700E7039E /* SubChangPNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A349C33818EBF5B700E7039E /* SubChangPNViewController.m */; };
 		A349C33C18EC0B5700E7039E /* ChangHeadPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A349C33B18EC0B5700E7039E /* ChangHeadPhotoViewController.m */; };
-		A34B627F1900D0820072500F /* LoginHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A34B627E1900D0820072500F /* LoginHelper.m */; };
 		A34B62871900D0BE0072500F /* AGAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A34B62821900D0BE0072500F /* AGAuthViewController.m */; };
 		A34B62881900D0BE0072500F /* AGShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A34B62841900D0BE0072500F /* AGShareCell.m */; };
 		A34B62891900D0BE0072500F /* UIView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = A34B62861900D0BE0072500F /* UIView+Common.m */; };
@@ -530,6 +529,7 @@
 		A36A32FB19064C3C0024657F /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A36A32F719064C3C0024657F /* ReportViewController.m */; };
 		A36A32FC19064C3C0024657F /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A36A32F819064C3C0024657F /* ReportViewController.xib */; };
 		A36A32FF19064CAF0024657F /* EmotionScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = A36A32FE19064CAF0024657F /* EmotionScroller.m */; };
+		A36DB134192DA1430044FBCF /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36DB133192DA1430044FBCF /* Reveal.framework */; };
 		A375286718F6A50E00543B02 /* EnsureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A375286618F6A50E00543B02 /* EnsureViewController.m */; };
 		A37A462318F3A4F2003C1BED /* CostListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A37A462218F3A4F2003C1BED /* CostListView.m */; };
 		A37A462718F3C1EE003C1BED /* CostLogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A37A462618F3C1EE003C1BED /* CostLogItem.m */; };
@@ -1078,8 +1078,6 @@
 		A349C33818EBF5B700E7039E /* SubChangPNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubChangPNViewController.m; path = "更改手机号码/SubChangPNViewController.m"; sourceTree = "<group>"; };
 		A349C33A18EC0B5700E7039E /* ChangHeadPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangHeadPhotoViewController.h; path = "更换头像/ChangHeadPhotoViewController.h"; sourceTree = "<group>"; };
 		A349C33B18EC0B5700E7039E /* ChangHeadPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChangHeadPhotoViewController.m; path = "更换头像/ChangHeadPhotoViewController.m"; sourceTree = "<group>"; };
-		A34B627D1900D0820072500F /* LoginHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginHelper.h; sourceTree = "<group>"; };
-		A34B627E1900D0820072500F /* LoginHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginHelper.m; sourceTree = "<group>"; };
 		A34B62811900D0BE0072500F /* AGAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGAuthViewController.h; sourceTree = "<group>"; };
 		A34B62821900D0BE0072500F /* AGAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGAuthViewController.m; sourceTree = "<group>"; };
 		A34B62831900D0BE0072500F /* AGShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGShareCell.h; sourceTree = "<group>"; };
@@ -1131,6 +1129,7 @@
 		A36A32F819064C3C0024657F /* ReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportViewController.xib; path = "root页面/直播列表/直播/视频/children/竖屏/举报/ReportViewController.xib"; sourceTree = "<group>"; };
 		A36A32FD19064CAF0024657F /* EmotionScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmotionScroller.h; path = "root页面/直播列表/直播/聊天/children/公聊/EmotionScroller.h"; sourceTree = "<group>"; };
 		A36A32FE19064CAF0024657F /* EmotionScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmotionScroller.m; path = "root页面/直播列表/直播/聊天/children/公聊/EmotionScroller.m"; sourceTree = "<group>"; };
+		A36DB133192DA1430044FBCF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		A375286518F6A50E00543B02 /* EnsureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnsureViewController.h; sourceTree = "<group>"; };
 		A375286618F6A50E00543B02 /* EnsureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnsureViewController.m; sourceTree = "<group>"; };
 		A37A462118F3A4F2003C1BED /* CostListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostListView.h; sourceTree = "<group>"; };
@@ -1218,6 +1217,7 @@
 				A3685F4E18FE887D00151B97 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
 				A3B07DBD18F64869000DEFFF /* AlipayRsaLib.a in Frameworks */,
 				A3685F3C18FE887C00151B97 /* TencentOpenAPI.framework in Frameworks */,
+				A36DB134192DA1430044FBCF /* Reveal.framework in Frameworks */,
 				9BA59B20192606D1002624FF /* libSocialWechat.a in Frameworks */,
 				A3B07DBE18F64869000DEFFF /* AlixPaylib_arc.a in Frameworks */,
 				A3685F4018FE887C00151B97 /* libSinaWeiboSDK.a in Frameworks */,
@@ -1871,6 +1871,7 @@
 		9BA9A40F18C4118B0043C937 = {
 			isa = PBXGroup;
 			children = (
+				A36DB133192DA1430044FBCF /* Reveal.framework */,
 				9BF372891924CD02005E7049 /* vcchain */,
 				9B079F2618E58556009D6303 /* resources */,
 				9BA9A42118C4118C0043C937 /* ScreenShow */,
@@ -2177,7 +2178,6 @@
 		9BDAB46718E9023800759D06 /* 登陆 */ = {
 			isa = PBXGroup;
 			children = (
-				A34B627C1900D0820072500F /* LoginHelper */,
 				9BDAB46818E9023800759D06 /* LogInViewController.h */,
 				9BDAB46918E9023800759D06 /* LogInViewController.m */,
 				A349C2FA18EBA31A00E7039E /* SubLogInViewController.h */,
@@ -2507,15 +2507,6 @@
 				A349C33818EBF5B700E7039E /* SubChangPNViewController.m */,
 			);
 			name = "修改手机号";
-			sourceTree = "<group>";
-		};
-		A34B627C1900D0820072500F /* LoginHelper */ = {
-			isa = PBXGroup;
-			children = (
-				A34B627D1900D0820072500F /* LoginHelper.h */,
-				A34B627E1900D0820072500F /* LoginHelper.m */,
-			);
-			path = LoginHelper;
 			sourceTree = "<group>";
 		};
 		A34B62801900D0BE0072500F /* 第三方授权管理 */ = {
@@ -3140,7 +3131,6 @@
 				A3D8B82519175E9700E8BBCE /* iToast.m in Sources */,
 				9BC6CCF1192456180039B126 /* Personalinfo.m in Sources */,
 				9B07A05A18E589BD009D6303 /* PullTableView.m in Sources */,
-				A34B627F1900D0820072500F /* LoginHelper.m in Sources */,
 				9B07A0D618E58ACA009D6303 /* RechargeRecord.m in Sources */,
 				9B07A0D218E58ACA009D6303 /* LiveStudio.m in Sources */,
 				9B079EDF18E5837B009D6303 /* FansTableViewCell.m in Sources */,

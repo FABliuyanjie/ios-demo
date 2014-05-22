@@ -33,27 +33,24 @@ extern const double cMonth ;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.delegate = self;
+
     self.title = @"充值记录";
     
-    
+    //选择时间段，下拉列表
     NSArray *combineData = @[@"最近一天",@"最近一周",@"最近一个月",@"全部"];
-    self.timeSelectView = [[ComboBoxView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
+    self.timeSelectView = [[ComboBoxView alloc]initWithFrame:CGRectMake(7, 0, 306, 100)];
     self.timeSelectView.delegate = self;
     self.timeSelectView.comboBoxDatasource = combineData;
     self.timeSelectView.backgroundColor = [UIColor whiteColor];
-    [self.timeSelectView setContent:combineData[0]];
+    [self.timeSelectView setContent:@"请选择时间段"];
     [self.view addSubview:self.timeSelectView];
 
-//    [self downloadDataAdd:YES];
-//    self.tableView.pullDelegate = self;
-    
+    //记录显示表格
     _tableView  =[[PullTableView alloc]initWithFrame:CGRectMake(0,_timeSelectView.bottom + 10, 320, SCREEN_HEIGHT - 64 - 50 -_timeSelectView.bottom - 10) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.pullDelegate = self;
-    // Do any additional setup after loading the view.
     [self.view addSubview:_tableView];
 
 }
@@ -72,12 +69,15 @@ extern const double cMonth ;
 #pragma mark - TableView Delegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row==0) {
+        return 40;
+    }
     return 56.f;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _fiteredArray.count;
+    return _fiteredArray.count+1;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -153,7 +153,7 @@ extern const double cMonth ;
         if (status==1) {
             NSDictionary *data = responseObject[@"data"];
             _money = data[@"all_money"];
-            
+            _fmoney = data[@"all_f"];
             
             NSArray *log = data[@"log"];
             
@@ -172,10 +172,7 @@ extern const double cMonth ;
             [alert show];
         }
         [self.tableView reloadData];
-        
         [self fiterResultArray:_type];
-        
-        
         if (isAdd==YES) {
             self.tableView.pullTableIsLoadingMore = NO;
         }else{

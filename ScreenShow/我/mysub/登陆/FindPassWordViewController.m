@@ -152,10 +152,11 @@
     self.popUpBox.tipsLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     
     [self.popUpBox.downButton setTitle:@"返回" forState:UIControlStateNormal];
+    __weak FindPassWordViewController *weakSelf = self;
     self.popUpBox.downClickBlock = ^(NSString * upString, NSString * downString, id pop){
         
         NSLog(@"返回");
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         
         
     };

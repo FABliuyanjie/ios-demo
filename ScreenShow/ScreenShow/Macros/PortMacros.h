@@ -26,8 +26,11 @@
 //普通登录
 #define PORT_USERINFO PORT_URLBASE"userInfo"
 
-//图片登录
+//第三方登录
 #define PORT_USERINFOTHIRD PORT_URLBASE"userInfoThird"
+
+//第三方登录接口--QQ
+#define PORT_BINDQQ PORT_URLBASE"bindqq"
 
 //用户信息
 #define PORT_ACCOUNT PORT_URLBASE"account"
@@ -55,6 +58,7 @@
 
 //关于我们
 #define PORT_ABOUTUS PORT_URLBASE"aboutUs"
+
 
 
 #endif
