@@ -54,6 +54,8 @@
     }
     else{
         [MBProgressHUD showError:@"发送失败" toView:self.view];
+        
+        NSLog(@"dsssssssss");
     };
     
 }

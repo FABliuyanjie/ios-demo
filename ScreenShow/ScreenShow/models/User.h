@@ -38,8 +38,8 @@
             success:(void (^)(NSString *info))success
             failure:(void (^)(NSString *info))failure;
 
-//第三方登录--如果第一次登陆，需要添加用户名和密码
-+(void)loginWithUMbyOpenid:(NSString*)openid openName:(NSString*)name myName:(NSString*)username pwd:(NSString*)passWord type:(NSString*)type success:(void(^)(BOOL flag))success;
+//第三方登录--如果第一次登陆，需要添加用户名和密码或者绑定现有用户名
++(void)loginWithUMbyOpenid:(NSString*)openid openName:(NSString*)name myName:(NSString*)username pwd:(NSString*)passWord thirdType:(NSString*)thirdType type:(NSString*)type success:(void(^)(BOOL flag))success;
 
 //第三方登录--如果不是第一次，就直接登录
 +(void)loginWithUMbyOpenid:(NSString *)openid openName:(NSString *)name type:(NSString *)type success:(void (^)(BOOL))success;
