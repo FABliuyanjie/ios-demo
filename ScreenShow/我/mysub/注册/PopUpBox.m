@@ -116,13 +116,13 @@
 
 -(void)setUpTextFieldWithTop:(CGFloat)top
 {
-    self.upTextField.frame = CGRectMake(15, top - 10, self.imageView.width - 30, 30);
+    self.upTextField.frame = CGRectMake(20, top - 10, self.imageView.width - 40, 30);
     [self reloadInputViews];
 }
 
 -(void)setDownTextFieldWithTop:(CGFloat)top
 {
-    self.downTextField.frame = CGRectMake(15, top - 10, self.imageView.width - 30, 30);
+    self.downTextField.frame = CGRectMake(20, top - 10, self.imageView.width - 40, 30);
     [self reloadInputViews];
 
 }

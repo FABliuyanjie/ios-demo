@@ -164,7 +164,7 @@
 -(void)flushUIWhenLogined
 {
     //头像
-    User *user = [User readUserInfo];
+    User *user = [User shareUser];
     
     [self.headImageView setImageWithURL:[NSURL URLWithString:user.photoUrl] placeholderImage:[UIImage imageNamed:@"login_headImage"] success:^(UIImage *image) {
         user.photo = image;
