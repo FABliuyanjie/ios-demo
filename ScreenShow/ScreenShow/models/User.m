@@ -180,31 +180,22 @@
 }
 
 //MARK:第三方登录---1
-+(void)loginWithUMbyOpenid:(NSString*)openid openName:(NSString*)name myName:(NSString*)username pwd:(NSString*)passWord type:(NSString*)type success:(void(^)(BOOL flag))success
++(void)loginWithUMbyOpenid:(NSString*)openid openName:(NSString*)name myName:(NSString*)username pwd:(NSString*)passWord thirdType:(NSString*)thirdType type:(NSString*)type success:(void(^)(BOOL flag))success;
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&username=%@&pwd=%@&type=%@",PORT_BINDQQ,openid,name,username,passWord,type];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&username=%@&pwd=%@&thirdtype=%@&type=%@",PORT_BINDQQ,openid,name,username,passWord,thirdType,type];
     [[AFAppDotNetAPIClient sharedClient]GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        int status = [[responseObject objectForKey:@"status"]intValue];
-        NSString *info = responseObject[@"info"];
-        [[iToast makeText:info]show];
-        if (status==1) {
-            [User logIn:username passWord:passWord success:^(NSString *info) {
-                LOGIN;
-                SendNoti(kLogInSuccess);
-            } failure:^(NSString *info) {
-                [[iToast makeText:@"登录失败"]show];
-       ;     }];
+        BOOL status = [[responseObject objectForKey:@"status"]boolValue];
+        if (status) {
+//            NSString *info = responseObject[@"info"];
+            NSDictionary *dict = responseObject[@"data"];
+            User *man = [User shareUser];
+            if ([man setKeyWithDict:dict]) {
+                [User saveUserInfo];
+                success(status);
+            }
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         ERROR(@"error:%@",error);
-        [User logIn:username passWord:passWord success:^(NSString *info) {
-            LOGIN;
-            SendNoti(kLogInSuccess);
-        } failure:^(NSString *info) {
-            [[iToast makeText:@"登录失败"]show];
-            ;     }];
-
     }];
 
 }
@@ -220,15 +211,18 @@
  */
 +(void)loginWithUMbyOpenid:(NSString *)openid openName:(NSString *)name type:(NSString *)type success:(void (^)(BOOL))success
 {
-    NSString *urlStr = [NSString stringWithFormat:@""];
+    NSString *codeName = [name stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&thirdtype=%@",PORT_USERINFOTHIRD,openid,codeName,type];
+   
     [[AFAppDotNetAPIClient sharedClient]GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //TODO: 判断是否要绑定用户名
-        BOOL isRegistered=false;//FIXME: 解析数据,判断是否是第一次登录
         
-         //TODO: 如果注册过了，要解析数据，刷新本地的用户信息，设置状态为已经登录
+        BOOL isRegistered= [responseObject[@"status"] boolValue];
+        
+         // 如果注册过了，要解析数据，刷新本地的用户信息，设置状态为已经登录
         
         if (isRegistered) {
-            //
+            NSLog(@"registered!,%s",__FUNCTION__);
         }
         success(isRegistered);
        

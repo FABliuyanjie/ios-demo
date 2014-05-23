@@ -49,6 +49,8 @@
 		018A66D21917976E000B1D33 /* popUpBox_closeBtnImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 018A66CE1917976E000B1D33 /* popUpBox_closeBtnImage@2x.png */; };
 		01AC3AF7191B2BB20008B46D /* TComposeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AC3AF6191B2BB20008B46D /* TComposeView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		01AC3AFD191B2EC30008B46D /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AC3AFC191B2EC30008B46D /* NSStringAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		01E2AD82192DE9B9002FFC6B /* ThirdLoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E2AD81192DE9B9002FFC6B /* ThirdLoginStoryboard.storyboard */; };
+		01E2AD85192DEBC5002FFC6B /* SelectLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E2AD84192DEBC5002FFC6B /* SelectLoginViewController.m */; };
 		9B05634418DA93C80048269B /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B05634318DA93C80048269B /* AssetsLibrary.framework */; };
 		9B05634618DABE840048269B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B05634518DABE840048269B /* AVFoundation.framework */; };
 		9B079E8218E58119009D6303 /* LeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B079E7B18E58119009D6303 /* LeftTableViewCell.m */; };
@@ -529,6 +531,7 @@
 		A36A32FB19064C3C0024657F /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A36A32F719064C3C0024657F /* ReportViewController.m */; };
 		A36A32FC19064C3C0024657F /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A36A32F819064C3C0024657F /* ReportViewController.xib */; };
 		A36A32FF19064CAF0024657F /* EmotionScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = A36A32FE19064CAF0024657F /* EmotionScroller.m */; };
+		A36DB134192DA1430044FBCF /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36DB133192DA1430044FBCF /* Reveal.framework */; };
 		A375286718F6A50E00543B02 /* EnsureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A375286618F6A50E00543B02 /* EnsureViewController.m */; };
 		A37A462318F3A4F2003C1BED /* CostListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A37A462218F3A4F2003C1BED /* CostListView.m */; };
 		A37A462718F3C1EE003C1BED /* CostLogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A37A462618F3C1EE003C1BED /* CostLogItem.m */; };
@@ -633,6 +636,9 @@
 		01AC3AFB191B2EC30008B46D /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		01AC3AFC191B2EC30008B46D /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		01AC3B01191B330A0008B46D /* MyBaseDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBaseDefine.h; sourceTree = "<group>"; };
+		01E2AD81192DE9B9002FFC6B /* ThirdLoginStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ThirdLoginStoryboard.storyboard; path = "我/ThirdLoginStoryboard.storyboard"; sourceTree = SOURCE_ROOT; };
+		01E2AD83192DEBC5002FFC6B /* SelectLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectLoginViewController.h; path = "我/SelectLoginViewController.h"; sourceTree = SOURCE_ROOT; };
+		01E2AD84192DEBC5002FFC6B /* SelectLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectLoginViewController.m; path = "我/SelectLoginViewController.m"; sourceTree = SOURCE_ROOT; };
 		9B05634318DA93C80048269B /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		9B05634518DABE840048269B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9B079E7A18E58119009D6303 /* LeftTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewCell.h; sourceTree = "<group>"; };
@@ -1128,6 +1134,7 @@
 		A36A32F819064C3C0024657F /* ReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportViewController.xib; path = "root页面/直播列表/直播/视频/children/竖屏/举报/ReportViewController.xib"; sourceTree = "<group>"; };
 		A36A32FD19064CAF0024657F /* EmotionScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmotionScroller.h; path = "root页面/直播列表/直播/聊天/children/公聊/EmotionScroller.h"; sourceTree = "<group>"; };
 		A36A32FE19064CAF0024657F /* EmotionScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmotionScroller.m; path = "root页面/直播列表/直播/聊天/children/公聊/EmotionScroller.m"; sourceTree = "<group>"; };
+		A36DB133192DA1430044FBCF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		A375286518F6A50E00543B02 /* EnsureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnsureViewController.h; sourceTree = "<group>"; };
 		A375286618F6A50E00543B02 /* EnsureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnsureViewController.m; sourceTree = "<group>"; };
 		A37A462118F3A4F2003C1BED /* CostListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostListView.h; sourceTree = "<group>"; };
@@ -1215,6 +1222,7 @@
 				A3685F4E18FE887D00151B97 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
 				A3B07DBD18F64869000DEFFF /* AlipayRsaLib.a in Frameworks */,
 				A3685F3C18FE887C00151B97 /* TencentOpenAPI.framework in Frameworks */,
+				A36DB134192DA1430044FBCF /* Reveal.framework in Frameworks */,
 				9BA59B20192606D1002624FF /* libSocialWechat.a in Frameworks */,
 				A3B07DBE18F64869000DEFFF /* AlixPaylib_arc.a in Frameworks */,
 				A3685F4018FE887C00151B97 /* libSinaWeiboSDK.a in Frameworks */,
@@ -1283,6 +1291,16 @@
 				01AC3B01191B330A0008B46D /* MyBaseDefine.h */,
 			);
 			name = category;
+			sourceTree = "<group>";
+		};
+		01D03CF4192EF5910003ADBF /* 第三方登录 */ = {
+			isa = PBXGroup;
+			children = (
+				01E2AD81192DE9B9002FFC6B /* ThirdLoginStoryboard.storyboard */,
+				01E2AD83192DEBC5002FFC6B /* SelectLoginViewController.h */,
+				01E2AD84192DEBC5002FFC6B /* SelectLoginViewController.m */,
+			);
+			name = "第三方登录";
 			sourceTree = "<group>";
 		};
 		9B079E7918E58119009D6303 /* 侧边栏 */ = {
@@ -1868,6 +1886,7 @@
 		9BA9A40F18C4118B0043C937 = {
 			isa = PBXGroup;
 			children = (
+				A36DB133192DA1430044FBCF /* Reveal.framework */,
 				9BF372891924CD02005E7049 /* vcchain */,
 				9B079F2618E58556009D6303 /* resources */,
 				9BA9A42118C4118C0043C937 /* ScreenShow */,
@@ -2174,6 +2193,7 @@
 		9BDAB46718E9023800759D06 /* 登陆 */ = {
 			isa = PBXGroup;
 			children = (
+				01D03CF4192EF5910003ADBF /* 第三方登录 */,
 				9BDAB46818E9023800759D06 /* LogInViewController.h */,
 				9BDAB46918E9023800759D06 /* LogInViewController.m */,
 				A349C2FA18EBA31A00E7039E /* SubLogInViewController.h */,
@@ -2800,6 +2820,7 @@
 				9B72D597191CC9D70071A155 /* liveportrait_vc_audience.png in Resources */,
 				9B72D592191CC9340071A155 /* SystemSettings_vc_btn_check_select@2x.png in Resources */,
 				9B72D593191CC9340071A155 /* SystemSettings_vc_btn_check_selected@2x.png in Resources */,
+				01E2AD82192DE9B9002FFC6B /* ThirdLoginStoryboard.storyboard in Resources */,
 				A398FCFA190E2BA200E051C8 /* MyAttentionTableViewCell.xib in Resources */,
 				9BDAB4DB18E9044100759D06 /* NotificationBackgroundError@2x.png in Resources */,
 				9B07A06218E589BD009D6303 /* blueArrow@2x.png in Resources */,
@@ -3170,6 +3191,7 @@
 				9B2FEEF718C9906200C85E6D /* MynavViewController.m in Sources */,
 				9BF3728C1924CD22005E7049 /* VCchain.m in Sources */,
 				9B07A04C18E589BD009D6303 /* AFURLRequestSerialization.m in Sources */,
+				01E2AD85192DEBC5002FFC6B /* SelectLoginViewController.m in Sources */,
 				9BDAB49918E9028C00759D06 /* AFAppDotNetAPIClient.m in Sources */,
 				9B07A07E18E589BD009D6303 /* UIImageView+WebCache.m in Sources */,
 				9BDAB47D18E9023800759D06 /* RchargeViewController.m in Sources */,

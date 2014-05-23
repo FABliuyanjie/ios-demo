@@ -23,7 +23,7 @@
     NSMutableArray *_fiteredArray;
     
     NSString *_money;
-    
+    NSString *_fmoney;
     kFiterType _type;
 }
 @property (nonatomic,copy) NSString *urlStr;

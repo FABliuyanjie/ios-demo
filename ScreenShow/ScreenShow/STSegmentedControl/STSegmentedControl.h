@@ -65,6 +65,9 @@ enum {
 @property (nonatomic, retain) UIColor *normalTextShadowColor;
 @property (nonatomic, retain) UIColor *selectedTextShadowColor;
 
+
+
+
 // Image Stretch... default:14
 @property (nonatomic, assign) NSInteger leftCapWidth;
 @property (nonatomic, assign) NSInteger rightCapWidth;

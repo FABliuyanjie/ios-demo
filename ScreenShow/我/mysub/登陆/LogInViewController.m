@@ -11,11 +11,19 @@
 #import "User.h"
 #import "APService.h"
 #import "UMSocial.h"
+#import "SelectLoginViewController.h"
+
 @interface LogInViewController ()<UIScrollViewDelegate>
 @property (nonatomic,strong) SubLogInViewController *subLogInViewController;
 @end
 
 @implementation LogInViewController
+{
+    NSString * username;
+    NSString * usid;
+    NSString * pfname;
+    NSString * photoUrl;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,7 +41,7 @@
     self.scrollView.contentSize = CGSizeMake(320, 620);
     self.headImageBackView.layer.cornerRadius = 60;
     self.headImageBackView.layer.borderColor = [UIColor blackColor].CGColor;
-    self.headImageBackView.layer.borderWidth = 2;
+    self.headImageBackView.layer.borderWidth = 4;
     
 //    self.headImage.layer.cornerRadius = ;
     
@@ -42,7 +50,6 @@
     self.userNameTf.text = @"18774671340";
     self.passwdTf.text = @"123456";
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginSuccess) name:kLogInSuccess object:nil];
     // Do any additional setup after loading the view.
 }
 
@@ -112,7 +119,6 @@
     if(self.isFromMyViewController==YES){
         [self.navigationController popToRootViewControllerAnimated:YES];
     }else{
-        
         [self.navigationController popViewControllerAnimated:YES];
     }
     
@@ -126,6 +132,13 @@
  */
 -(void)handleBindAccount
 {
+
+    SelectLoginViewController * selectLoginVC = [[UIStoryboard storyboardWithName:@"ThirdLoginStoryboard" bundle:nil]instantiateViewControllerWithIdentifier:@"SelectLoginViewController"];//[SelectLoginViewController alloc] init];
+    selectLoginVC.userName = username;
+    selectLoginVC.openID = usid;
+    selectLoginVC.typeName = pfname;
+    selectLoginVC.headPhotoUrl = photoUrl;
+    [self.navigationController pushViewController:selectLoginVC animated:YES];
     
 }
 
@@ -178,11 +191,15 @@
  *  @param sender button，
  */
 - (IBAction)thridPartLoginClicked:(UIButton *)sender {
+    
+//    [self handleBindAccount];
+//    return;
+    
     NSInteger tag = sender.tag-100;
 
     //选择平台
     NSString *platformName = nil;
-    NSString *pfname = nil;
+    pfname = nil;
     switch (tag) {
         case 0:
             platformName = UMShareToRenren;
@@ -212,15 +229,17 @@
         //取得给定平台的username和usid
         [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *respose){
             NSDictionary *dict = respose.data[@"accounts"][pfname];
-            NSLog(@"sina%@",dict);
-            NSString *username = dict[@"username"];
-            NSString *usid = dict[@"usid"];
-            NSString *type = @"1";
+            NSLog(@"%@:%@",pfname,dict);
+    
+            username = dict[@"username"];
+            usid = dict[@"usid"];
+            photoUrl = dict[@"icon"];
             if(dict==nil) {
                 [self handleLoginFailure];
             }
+            //判断是否绑定过
             //发起第三方平台的登录
-            [User loginWithUMbyOpenid:usid openName:username type:type success:^(BOOL flag) {
+            [User loginWithUMbyOpenid:usid openName:username type:pfname success:^(BOOL flag) {
                 if (flag) {//以前登录过，直接登录成功
                     dispatch_async(dispatch_get_main_queue(), ^{
                         //TODO: 在主线程跳转,绑定操作

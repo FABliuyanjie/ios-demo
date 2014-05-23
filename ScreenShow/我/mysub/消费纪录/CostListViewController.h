@@ -24,7 +24,7 @@ typedef enum : NSUInteger {
     NSMutableArray *_fiteredArray;
     
     NSString *_money;
-    NSString *_fb;
+    NSString *_fmoney;
     kFiterType _type;
 }
 @property (nonatomic,copy) NSString *urlStr;
