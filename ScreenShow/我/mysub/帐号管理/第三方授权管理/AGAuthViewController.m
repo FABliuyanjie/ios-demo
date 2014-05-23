@@ -41,123 +41,95 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        //监听用户信息变更
-        [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
-                                   target:self
-                                   action:@selector(userInfoUpdateHandler:)];
-        
-        _shareTypeArray = [[NSMutableArray alloc] init];
-
-        NSArray *shareTypes = [ShareSDK connectedPlatformTypes];
-        for (int i = 0; i < [shareTypes count]; i++)
-        {
-            NSNumber *typeNum = [shareTypes objectAtIndex:i];
-            ShareType type = (ShareType)[typeNum integerValue];
-            id<ISSPlatformApp> app = [ShareSDK getClientWithType:type];
-            
-            if ([app isSupportOneKeyShare] || type == ShareTypeInstagram || type == ShareTypeGooglePlus || type == ShareTypeQQSpace)
-            {
-                [_shareTypeArray addObject:[NSMutableDictionary dictionaryWithObject:[shareTypes objectAtIndex:i]
-                                                                              forKey:@"type"]];
-            }
-        }
-        
-        NSArray *authList = [NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
-        if (authList == nil)
-        {
-            [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
-        }
-        else
-        {
-            for (int i = 0; i < [authList count]; i++)
-            {
-                NSDictionary *item = [authList objectAtIndex:i];
-                for (int j = 0; j < [_shareTypeArray count]; j++)
-                {
-                    if ([[[_shareTypeArray objectAtIndex:j] objectForKey:@"type"] integerValue] == [[item objectForKey:@"type"] integerValue])
-                    {
-                        [_shareTypeArray replaceObjectAtIndex:j withObject:[NSMutableDictionary dictionaryWithDictionary:item]];
-                        break;
-                    }
-                }
-            }
-        }
+        [self startnetwork];
     }
     return self;
 }
+
+-(void)startnetwork
+{
+    NSString * url = [NSString stringWithFormat:@"index.php/Api/User/bindinfo?token=%@", [[User shareUser] token]];
+    
+    NSLog(@"requestAddress = %@",url);
+    
+    [[AFAppDotNetAPIClient sharedClient] GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if ([[responseObject objectForKey:@"status"] intValue] == 1) {
+            NSArray * array = [responseObject objectForKey:@"data"];
+            if (![array isKindOfClass:[NSNull class]]) {
+                if (array.count !=0) {
+                    requestTypeArray = [[NSMutableArray alloc] init];
+
+                    for (NSDictionary * dict in array) {
+                        
+                        [requestTypeArray addObject:[dict objectForKey:@"type"]];
+
+                        if ([[dict objectForKey:@"type"] isEqualToString:@"qq"]) {
+                            
+                           NSString * str = [_shareTypeArray objectAtIndex:0];
+                            str = @"QQ（已绑定）";
+                            [_shareTypeArray replaceObjectAtIndex:0 withObject:str];
+                        }
+                        else if ( [[dict objectForKey:@"type"] isEqualToString:@"微信"])
+                        {
+                            NSString * str = [_shareTypeArray objectAtIndex:1];
+                            str = @"微信（已绑定）";
+                            [_shareTypeArray replaceObjectAtIndex:1 withObject:str];
+                        }
+                        else if ( [[dict objectForKey:@"type"] isEqualToString:@"微博"])
+                        {
+                            NSString * str = [_shareTypeArray objectAtIndex:2];
+                            str = @"微博（已绑定）";
+                            [_shareTypeArray replaceObjectAtIndex:2 withObject:str];
+                        }
+                        else if ( [[dict objectForKey:@"type"] isEqualToString:@"renren"])
+                        {
+                            NSString * str = [_shareTypeArray objectAtIndex:3];
+                            str = @"人人（已绑定）";
+                            [_shareTypeArray replaceObjectAtIndex:3 withObject:str];
+                        }
+                        [_tableView reloadData];
+                    }
+                }
+                else
+                {
+                    
+                }
+            }
+        }
+        
+        NSLog(@"%@",responseObject);
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        [self initData];
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [ShareSDK removeNotificationWithName:SSN_USER_INFO_UPDATE target:self];
 
-}
-
--(void)initData
-{
-    //监听用户信息变更
-    [ShareSDK addNotificationWithName:SSN_USER_INFO_UPDATE
-                               target:self
-                               action:@selector(userInfoUpdateHandler:)];
-    
-    _shareTypeArray = [[NSMutableArray alloc] init];
-    
-    NSArray *shareTypes = [ShareSDK connectedPlatformTypes];
-    for (int i = 0; i < [shareTypes count]; i++)
-    {
-        NSNumber *typeNum = [shareTypes objectAtIndex:i];
-        ShareType type = (ShareType)[typeNum integerValue];
-        id<ISSPlatformApp> app = [ShareSDK getClientWithType:type];
-        
-        if ([app isSupportOneKeyShare] || type == ShareTypeInstagram || type == ShareTypeGooglePlus || type == ShareTypeQQSpace)
-        {
-            [_shareTypeArray addObject:[NSMutableDictionary dictionaryWithObject:[shareTypes objectAtIndex:i]
-                                                                          forKey:@"type"]];
-        }
-    }
-    
-    NSArray *authList = [NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()]];
-    if (authList == nil)
-    {
-        [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
-    }
-    else
-    {
-        for (int i = 0; i < [authList count]; i++)
-        {
-            NSDictionary *item = [authList objectAtIndex:i];
-            for (int j = 0; j < [_shareTypeArray count]; j++)
-            {
-                if ([[[_shareTypeArray objectAtIndex:j] objectForKey:@"type"] integerValue] == [[item objectForKey:@"type"] integerValue])
-                {
-                    [_shareTypeArray replaceObjectAtIndex:j withObject:[NSMutableDictionary dictionaryWithDictionary:item]];
-                    break;
-                }
-            }
-        }
-    }
-
-}
 
 - (void)loadView
 {
     [super loadView];
     
-    [self initData];
+    [self startnetwork];
     if ([[UIDevice currentDevice].systemVersion versionStringCompare:@"7.0"] != NSOrderedAscending)
     {
         [self setExtendedLayoutIncludesOpaqueBars:NO];
         [self setEdgesForExtendedLayout:SSRectEdgeBottom | SSRectEdgeLeft | SSRectEdgeRight];
     }
 
+    _shareTypeArray = [[NSMutableArray alloc] initWithObjects:@"QQ（未绑定）", @"微信（未绑定）", @"微博（未绑定）", @"人人（未绑定）", nil];
+    
+    typeArray = [[NSArray alloc] initWithObjects:@"qq", @"weixin", @"weibo", @"renren", nil];
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(2.0, 0.0, self.view.width-4, self.view.height)
                                                style:UITableViewStylePlain];
     _tableView.rowHeight = 50.0;
@@ -173,68 +145,6 @@
     [self.view addSubview:_tableView];
 }
 
-- (void)authSwitchChangeHandler:(UISwitch *)sender
-{
-    NSInteger index = sender.tag - BASE_TAG;
-    
-    if (index < [_shareTypeArray count])
-    {
-        NSMutableDictionary *item = [_shareTypeArray objectAtIndex:index];
-        if (sender.on)
-        {
-            //MAKR:绑定分享平台
-            //用户用户信息
-            ShareType type = (ShareType)[[item objectForKey:@"type"] integerValue];
-            
-            id<ISSAuthOptions> authOptions = nil;
-            id<ISSPlatformApp> app = [ShareSDK getClientWithType:type];
-            if ([app isSupportOneKeyShare] || type == ShareTypeInstagram || type == ShareTypeGooglePlus || type == ShareTypeQQSpace)
-            {
-                authOptions   = [ShareSDK authOptionsWithAutoAuth:YES
-                                                    allowCallback:YES
-                                                    authViewStyle:SSAuthViewStylePopup
-                                                     viewDelegate:nil
-                                          authManagerViewDelegate:nil];
-                
-                //在授权页面中添加关注官方微博
-                [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                                SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                                [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                                SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
-                                                nil]];
-                
-            }
-            
-            [ShareSDK getUserInfoWithType:type
-                              authOptions:authOptions
-                                   result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
-                                       if (result)
-                                       {
-                                           [item setObject:[userInfo nickname] forKey:@"username"];
-                                           [_shareTypeArray writeToFile:[NSString stringWithFormat:@"%@/authListCache.plist",NSTemporaryDirectory()] atomically:YES];
-                                       }
-                                       NSLog(@"%ld:%@",(long)[error errorCode], [error errorDescription]);
-                                       
-                                       
-                                       [_tableView reloadData];
-                                   }];
-            
-            
-            
-            
-            
-            
-        }
-        else
-        {
-            //取消授权
-            [ShareSDK cancelAuthWithType:(ShareType)[[item objectForKey:@"type"] integerValue]];
-            [_tableView reloadData];
-        }
-        
-    }
-}
 
 #pragma mark - UITableViewDataSource
 
@@ -248,38 +158,41 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TARGET_CELL_ID];
     if (cell == nil)
     {
-        cell = [[AGShareCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TARGET_CELL_ID] ;
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TARGET_CELL_ID] ;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        UISwitch *switchCtrl = [[UISwitch alloc] initWithFrame:CGRectZero];
-        [switchCtrl sizeToFit];
-        [switchCtrl addTarget:self action:@selector(authSwitchChangeHandler:) forControlEvents:UIControlEventValueChanged];
-        cell.accessoryView = switchCtrl;
     }
     if (indexPath.row < [_shareTypeArray count])
     {
-        NSDictionary *item = [_shareTypeArray objectAtIndex:indexPath.row];
-        
-        UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:
-                                            @"Icon/sns_icon_%ld.png",
-                                            (long)[[item objectForKey:@"type"] integerValue]]
-                                bundleName:BUNDLE_NAME];
-        cell.imageView.image = img;
-        
-        ((UISwitch *)cell.accessoryView).on = [ShareSDK hasAuthorizedWithType:(ShareType)[[item objectForKey:@"type"] integerValue]];
-        ((UISwitch *)cell.accessoryView).tag = BASE_TAG + indexPath.row;
-        
-        if (((UISwitch *)cell.accessoryView).on)
-        {
-            cell.textLabel.text = [item objectForKey:@"username"];
-        }
-        else
-        {
-            cell.textLabel.text = @"尚未授权";
-        }
+        NSString * typeName = [_shareTypeArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = typeName;
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.textLabel.font = [UIFont systemFontOfSize:20.0f];
     }
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    for (NSString * type in requestTypeArray) {
+        if ([type isEqualToString:[typeArray objectAtIndex:indexPath.row]]) {
+            
+            NSString * str = [NSString stringWithFormat:@"确定要解除%@的绑定？", [_shareTypeArray objectAtIndex:indexPath.row]];
+            
+            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:str delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [alertView show];
+            return;
+        }
+    }
+    
+    NSLog(@"绑定");
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        NSLog(@"解除绑定");
+    }
 }
 
 #pragma mark - Private

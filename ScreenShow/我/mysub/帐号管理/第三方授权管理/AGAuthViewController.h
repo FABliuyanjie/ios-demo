@@ -12,11 +12,13 @@
 /**
  *	@brief	授权视图控制器
  */
-@interface AGAuthViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface AGAuthViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UIAlertViewDelegate>
 {
 @private
     UITableView *_tableView;
     NSMutableArray *_shareTypeArray;
+    NSArray * typeArray;
+    NSMutableArray * requestTypeArray;
 }
 
 @end
