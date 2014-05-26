@@ -55,7 +55,8 @@ typedef void(^handler)(bool ,NSString*);
 
 //登录对话框
 +(void)showLoginViewControllerForm:(UIViewController*)vc Push:(BOOL)push;
-
+//支付框
++(void)showPayViewControllerForm:(UIViewController*)vc Push:(BOOL)push;
 //分享
 +(void)shareAllButtonClickHandler:(UIViewController *)vc WithInfo:(NSDictionary*)info;
 

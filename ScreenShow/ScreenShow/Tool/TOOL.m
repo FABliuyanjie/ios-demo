@@ -277,6 +277,16 @@
 
 }
 
-
++(void)showPayViewControllerForm:(UIViewController*)vc Push:(BOOL)push;
+{
+    UIViewController *payVC = [[UIStoryboard storyboardWithName:@"MyStoryBoard" bundle:nil]instantiateViewControllerWithIdentifier:@"RchargeViewController"];
+    if (vc.navigationController==nil || push==NO) {
+        [vc presentViewController:payVC animated:YES completion:nil];
+    }else{
+        [vc.navigationController pushViewController:payVC animated:YES];
+    }
+    
+    
+}
 
 @end
