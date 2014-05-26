@@ -39,7 +39,12 @@ typedef void(^handler)(bool ,NSString*);
 +(void)changPwdByPhone:(NSString*)phone Verify:(NSString*)code password:(NSString*)pwd completionHandler:handler;
 //修改用户头像
 +(void)uploadUserPhoto:(UIImage*)image completionHandler:(void (^)(bool status, NSString *info))handler;
-
+/**
+ *  通用，处理确认信息
+ *
+ *  @param urlStr 链接
+ */
++(void)handleResureInfoWithString:(NSString*)urlStr completionHandler:(void(^)(bool status, NSString *indo)) handler;
 
 //系统设置
 + (BOOL)soundWhenReceiveMessage;

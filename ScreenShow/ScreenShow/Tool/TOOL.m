@@ -62,7 +62,6 @@
 
 +(void)sendVerifyCodeToPhone:(NSString*)phoneNum type:(NSString*)type completionHandler:handler;
 {
-    //TODO:获取手机验证码
     NSString *urlStr = [NSString stringWithFormat:@"%@?phone=%@&type=%@",PORT_PHONEVERIFY, phoneNum,type];
    [[self class] handleResureInfoWithString:urlStr completionHandler:handler];
 }
@@ -166,7 +165,7 @@
     }];
     
 }
-
+#pragma mark- 通用功能
 //由颜色得到图片
 + (UIImage *)createImageWithColor:(UIColor *)color
 {
@@ -258,7 +257,7 @@
 //    return [self findString:@"自动删除30天前的缓存"];
 }
 
-#pragma mark- 登录界面显示
+#pragma mark- 显示登录界面
 
 /**
  *  显示登录界面

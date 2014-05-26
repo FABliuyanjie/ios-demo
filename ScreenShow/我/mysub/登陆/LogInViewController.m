@@ -35,14 +35,10 @@
     self.headImageBackView.layer.borderColor = [UIColor blackColor].CGColor;
     self.headImageBackView.layer.borderWidth = 4;
     
-//    self.headImage.layer.cornerRadius = ;
-    
-    
     //FIXME: 调试
     self.userNameTf.text = @"18774671340";
     self.passwdTf.text = @"1";
     
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,14 +74,14 @@
 - (IBAction)logIn:(UIButton *)sender {
     if ([self chechTextField]) {
         __weak LogInViewController * weakSelf = self;
-        [User logIn:self.userNameTf.text passWord:self.passwdTf.text success:^(NSString *info) {
-            [weakSelf handleLoginSuccess];
-        } failure:^(NSString *info){
-            [weakSelf handleLoginFailure];
+        [User logInUser:self.userNameTf.text passWord:self.passwdTf.text completionHandler:^(bool status, NSString *info) {
+            if (status) {
+                [weakSelf handleLoginSuccess];
+            }else{
+                [weakSelf handleLoginFailure];
+            }
         }];
-        
     }
-    
 }
 
 /**
@@ -135,7 +131,7 @@
 -(BOOL)chechTextField
 {
 //    NSString*  _phoneNum = self.userNameTf.text;
-    NSString*   _pwd = self.passwdTf.text;
+//    NSString*   _pwd = self.passwdTf.text;
     BOOL _checkOK = YES;
     NSString *_externInfo = nil;
 //    
@@ -195,37 +191,36 @@
     //唤起授权页
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
     snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
-        
-        NSLog(@"response is %@",response);
         //取得给定平台的username和usid
         [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *respose){
             NSDictionary *dict = respose.data[@"accounts"][pfname];
-            NSLog(@"%@:%@",pfname,dict);
-    
+            if (dict==nil) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //TODO: 在主线程跳转,绑定操作
+                    [weakSelf handleLoginFailure];
+                });
+            }
             NSString *username = dict[@"username"];
             NSString *usid = dict[@"usid"];
 
-            if(dict==nil) {
-                [self handleLoginFailure];
-            }
             //判断是否绑定过
             //发起第三方平台的登录
-            [User loginWithUMbyOpenid:usid openName:username type:pfname success:^(BOOL flag) {
-                if (flag) {//以前登录过，直接登录成功
-                    dispatch_async(dispatch_get_main_queue(), ^{
+            [User loginWithUMbyOpenid:usid openName:username thirdType:pfname completionHandler:^(bool status, NSString *info) {
+                if (status) {//以前登录过，直接登录成功
+//                    dispatch_async(dispatch_get_main_queue(), ^{
                         //TODO: 在主线程跳转,绑定操作
                         [weakSelf handleLoginSuccess];
-                    });
-
+//                    });
+                    
                 }else{//第一次登录，绑定账号或者新注册一个
-                    dispatch_async(dispatch_get_main_queue(), ^{
+//                    dispatch_async(dispatch_get_main_queue(), ^{
                         //TODO: 在主线程跳转,绑定操作
                         [weakSelf handleBindAccount];
-                   
-                    });
+                        
+//                    });
                 }
+
             }];
-            
             
         }];
     });

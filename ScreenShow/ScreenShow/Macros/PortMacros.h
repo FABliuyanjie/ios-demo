@@ -26,11 +26,11 @@
 //普通登录
 #define PORT_USERINFO PORT_URLBASE"userInfo"
 
-//第三方登录
-#define PORT_USERINFOTHIRD PORT_URLBASE"userInfoThird"
+//第三方--绑定
+#define PORT_ThirdBind PORT_URLBASE"bindthird"
 
-//第三方登录接口--QQ
-#define PORT_BINDQQ PORT_URLBASE"bindqq"
+//第三方--登录
+#define PORT_ThirdLogin PORT_URLBASE"thirdlogin"
 
 //用户信息
 #define PORT_ACCOUNT PORT_URLBASE"account"

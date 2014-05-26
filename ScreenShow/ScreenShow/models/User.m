@@ -8,7 +8,7 @@
 
 #import "User.h"
 #import "APService.h"
-#import "iToast.h"
+#import "TOOL.h"
 @implementation User
 
 #pragma mark - Coding protocol
@@ -33,7 +33,7 @@
 }
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [User shareUser];
+    self = [super init];
     if (self) {
         self.manID = [aDecoder decodeIntegerForKey:@"user_id"];
         self.manName = [aDecoder decodeObjectForKey:@"user_name"];
@@ -147,148 +147,116 @@
 
 #pragma mark - Login and Register
 
-+(void)logIn:(NSString*)userName passWord:(NSString*)pwd
-     success:(void (^)(NSString *info))success
-     failure:(void (^)(NSString *info))failure;
++(void)logInUser:(NSString*)userName
+        passWord:(NSString*)pwd
+completionHandler:(void (^)(bool status, NSString *info))handler;
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@?user_name=%@&pwd=%@",PORT_USERINFO,userName,pwd];
-    return [self flushUserInfo:urlStr parameter:nil success:success failure:failure];
+    return [self refreshUserInfo:urlStr parameter:nil completionHandler:handler];
 }
 
 
 
 //注册 普通
-+(void)registerUser:(NSString*)phone_num verify:(NSString*)code password:(NSString*)pwd nickeName:(NSString*)name userName:(NSString *)userName
-            success:(void (^)(NSString *info))success
-            failure:(void (^)(NSString *info))failure;
++(void)registerUser:(NSString*)phone_num
+             verify:(NSString*)code
+           password:(NSString*)pwd
+          nickeName:(NSString*)name
+           userName:(NSString *)userName
+  completionHandler:(void (^)(bool status, NSString *info))handler;
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@?user_name=%@&phone=%@&verify=%@&pwd=%@&name=%@&type=register",PORT_REGISTERNORMAL, userName,phone_num,code,pwd,name];
-    
-    NSLog(@"注册requestAddress = %@", urlStr);
-    
-    return [self flushUserInfo:urlStr parameter:nil success:success failure:failure];
+    return [self refreshUserInfo:urlStr parameter:nil completionHandler:handler];
     
 }
 
 //更新用户信息
-+(void )reflushUserInfoWithBlocSuccess:(void (^)(NSString *info))success
-                failure:(void (^)(NSString *info))failure
++(void )reflushUserInfoCompletionHandler:(void (^)(bool status, NSString *info))handler;
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@?token=%@",PORT_ACCOUNT,[User shareUser].token];
-    return [self flushUserInfo:urlStr parameter:nil success:success failure:failure];
+    return [self refreshUserInfo:urlStr parameter:nil completionHandler:handler];
 
 }
 
-//MARK:第三方登录---1
-+(void)loginWithUMbyOpenid:(NSString*)openid openName:(NSString*)name myName:(NSString*)username pwd:(NSString*)passWord type:(NSString*)type success:(void(^)(BOOL flag))success
+//第三方登录--第一次登录，需要注册新号
++ (void)loginWithUMAndRegisterByOpenid:(NSString*)openid
+                              openName:(NSString*)name
+                                myName:(NSString*)username
+                                   pwd:(NSString*)passWord
+                             thirdType:(NSString*)type
+                     completionHandler:(void (^)(bool status, NSString *info))handler;
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&username=%@&pwd=%@&type=%@",PORT_BINDQQ,openid,name,username,passWord,type];
-    [[AFAppDotNetAPIClient sharedClient]GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        int status = [[responseObject objectForKey:@"status"]intValue];
-        NSString *info = responseObject[@"info"];
-        [[iToast makeText:info]show];
-        if (status==1) {
-            [User logIn:username passWord:passWord success:^(NSString *info) {
-                LOGIN;
-                SendNoti(kLogInSuccess);
-            } failure:^(NSString *info) {
-                [[iToast makeText:@"登录失败"]show];
-       ;     }];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        ERROR(@"error:%@",error);
-        [User logIn:username passWord:passWord success:^(NSString *info) {
-            LOGIN;
-            SendNoti(kLogInSuccess);
-        } failure:^(NSString *info) {
-            [[iToast makeText:@"登录失败"]show];
-            ;     }];
-
-    }];
-
+    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&username=%@&pwd=%@&type=%@&thirdtype=%@",PORT_ThirdBind,openid,name,username,passWord,@"1",type];
+    return [self refreshUserInfo:urlStr parameter:nil completionHandler:handler];
 }
 
-//MARK:第三方登录---2
-/**
- *  进行第三方登录，数据层，处理所有的数据操作
- *
- *  @param openid  从第三方平台获取的usid
- *  @param name    从第三方平台获取的username
- *  @param type    登录的类型，1 为第三方登录或者注册 2为绑定 3 为解绑
- *  @param success 成功后的UI操作
- */
-+(void)loginWithUMbyOpenid:(NSString *)openid openName:(NSString *)name type:(NSString *)type success:(void (^)(BOOL))success
+//第三方登录--第一次登录，绑定原来的账号
++ (void)loginWithUMAndBindByOpenid:(NSString*)openid
+                          openName:(NSString*)name
+                            myName:(NSString*)username
+                               pwd:(NSString*)passWord
+                         thirdType:(NSString*)type
+                 completionHandler:(void (^)(bool status, NSString *info))handler;
 {
-    NSString *urlStr = [NSString stringWithFormat:@""];
-    [[AFAppDotNetAPIClient sharedClient]GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //TODO: 判断是否要绑定用户名
-        
-        BOOL isRegistered= [responseObject[@"status"] boolValue];
-        
-         // 如果注册过了，要解析数据，刷新本地的用户信息，设置状态为已经登录
-        
-        if (isRegistered) {
-            NSLog(@"registered!,%s",__FUNCTION__);
-        }
-        success(isRegistered);
-       
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //TODO: 网络故障
-    }];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&username=%@&pwd=%@&type=%@thirdtype=%@",PORT_ThirdBind,openid,name,username,passWord,@"2",type];
+    return [self refreshUserInfo:urlStr parameter:nil completionHandler:handler];
 }
 
+//第三方登录--不是第一次，直接登录
++(void)loginWithUMbyOpenid:(NSString *)openid
+                  openName:(NSString *)name
+                 thirdType:(NSString*)type
+         completionHandler:(void (^)(bool status, NSString *info))handler;
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&thirdtype=%@",PORT_ThirdLogin,openid,name,type];
+     return [self refreshUserInfo:urlStr parameter:nil completionHandler:handler];
+}
 
-+(void)flushUserInfo:(NSString*)urlStr parameter:(NSDictionary*)dictr success:(void (^)(NSString* info))success failure:(void (^)(NSString *info))failure
+//通用处理用户数据
++(void)refreshUserInfo:(NSString*)urlStr
+             parameter:(NSDictionary*)dictr
+     completionHandler:(void (^)(bool status, NSString *info))handler;
 {
     [[AFAppDotNetAPIClient sharedClient]GET:urlStr parameters:dictr success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        int status = [[responseObject objectForKey:@"status"]intValue];
+        bool status = [[responseObject objectForKey:@"status"]boolValue];
         NSString *info = responseObject[@"info"];
         NSDictionary *dict =[responseObject objectForKey:@"data"];
-        
-        NSLog(@"获取用户信息：%@", dict);
-        
-        if (status==1) {
-            User *man = [User shareUser];
-            if ([man setKeyWithDict:dict]) {
-                [User saveUserInfo];
-                if (success) {
-                     success(info);
-                
-                }
-               
-            }else{
-                ERROR(@"error:%@",info);
-                if (failure) {
-                   failure(@"服务器错误");
-                }
-
-                
-            }
-        }else{
-            NSLog(@"获取用户信息：%@", dict);
-
-            ERROR(@"error:%@",info);
-            if (failure) {
-                 failure(info);
-            }
-
-           
+        if (status) {
+            [[User shareUser]setKeyWithDict:dict];
         }
+        handler(status,info);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        ERROR(@"error:%@",error);
-        NSLog(@"获取用户信息：%@", error.userInfo);
-
-        NSString *errorStr = @"网络连接失败";
-        if (failure) {
-             failure(errorStr);
-        }
-       
+        handler(NO,@"网络故障");
     }];
     
 }
 
-
+//---已经登录之后的
+//解除绑定
++(void)unbindThirdAccountWithThirdType:(NSString*)type
+                     completionHandler:(void (^)(bool status, NSString *info))handler;
+{
+    NSString *token = [User shareUser].token;
+    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&token=%@&thirdtype=%@&type=%@",PORT_ThirdLogin,@"",token,type,@"3"];
+    return [self bindHandler:urlStr completionHandler:handler];
+    
+}
+//绑定
++(void)bindThirdAccountByOpenid:(NSString*)openid
+                       openName:(NSString*)name
+                      thirdType:(NSString*)type
+              completionHandler:(void (^)(bool status, NSString *info))handler;
+{
+    NSString *token = [User shareUser].token;
+    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&thirdtype=%@&token=%@",PORT_ThirdLogin,openid,name,type,token];
+    return [self bindHandler:urlStr completionHandler:handler];
+    
+}
+//通用处理
++(void)bindHandler:(NSString*)urlStr completionHandler:(void (^)(bool status, NSString *info))handler;
+{
+    [TOOL handleResureInfoWithString:urlStr completionHandler:handler];
+}
 
 @end
