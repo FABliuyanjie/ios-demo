@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="S7Z-Uf-cm5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="S7Z-Uf-cm5">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--My View Controller - 我的-->
@@ -168,6 +168,7 @@
                     <navigationItem key="navigationItem" id="xMb-3I-t61"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="2104"/>
                     <connections>
                         <outlet property="aboutUse" destination="Qok-xi-RmS" id="IXV-2u-iXG"/>
                         <outlet property="biLb" destination="5LR-QT-wlM" id="BIL-L3-t9u"/>
@@ -444,6 +445,7 @@
                     <navigationItem key="navigationItem" title="感谢您给我们提得宝贵意见" id="Fzg-5V-T2O"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="2680"/>
                     <connections>
                         <outlet property="commitBtn" destination="QAQ-8F-urh" id="2rk-uO-xwv"/>
                     </connections>
@@ -497,6 +499,7 @@
                     <navigationItem key="navigationItem" title="关于我们" id="Qhy-hM-me3"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="2680"/>
                     <connections>
                         <outlet property="checkVersionBtn" destination="xRV-YD-4rd" id="5gm-vi-jOn"/>
                         <outlet property="nameLabel" destination="btw-zZ-mFH" id="2xq-zC-toK"/>
@@ -511,7 +514,7 @@
         <!--Rcharge View Controller - 充值-->
         <scene sceneID="2hb-Bc-GKt">
             <objects>
-                <viewController id="9Mx-Dk-tmG" customClass="RchargeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RchargeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Mx-Dk-tmG" customClass="RchargeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wcd-TK-qRr">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -817,6 +820,7 @@
                     <navigationItem key="navigationItem" title="记录" id="Qrg-4T-wg3"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="2680"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3Y-KL-UuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -838,6 +842,7 @@
                     <navigationItem key="navigationItem" title="系统设置" id="EYv-gd-hBF"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="2680"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gT2-Ya-G5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1492,6 +1497,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="headImage" destination="d6f-S7-2Fs" id="acW-Dy-yJH"/>
                         <outlet property="headImageBackView" destination="55L-Qf-tPt" id="d7b-yZ-sBf"/>
@@ -1550,6 +1556,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="3128"/>
                     <connections>
                         <outlet property="emailBtn" destination="ajM-4u-p6A" id="yd9-cH-0du"/>
                         <outlet property="phoneNumBtn" destination="gVJ-sl-lRd" id="v9a-1k-rjv"/>
