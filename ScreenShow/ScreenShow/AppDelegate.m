@@ -21,7 +21,7 @@
 #import "AlixLibService.h"
 
 //MAKR:shareSDK
-#import <ShareSDK/ShareSDK.h>
+
 
 #import <TencentOpenAPI/QQApi.h>
 #import <TencentOpenAPI/QQApiInterface.h>

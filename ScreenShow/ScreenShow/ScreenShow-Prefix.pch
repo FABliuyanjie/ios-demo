@@ -38,11 +38,7 @@
     //UIView +
     #import "UIView+Common.h"
 
-    //ShareSDK
-
-    #import <AGCommon/CoreDefinition.h>
-
-
+ 
     //NSString的类目
 //    #import "NSStringAddition.h"
     #import "NSStringAdditions.h"
@@ -61,6 +57,9 @@
 #define STATUSBAR_HEIGHT_IOS7 20
 #define addressport @"http://100.100.40.214/"
 
+#define kCodeTypeRegister @"register"
+#define kCodeTypeChangNum    @"cpaapi"
+#define kCodeTypeChangPwd  @"xgpwd"
 
 //MARK:shareSDK
 #define BUNDLE_NAME @"Resource"

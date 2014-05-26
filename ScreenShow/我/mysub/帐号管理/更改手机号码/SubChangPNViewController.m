@@ -49,51 +49,21 @@
 */
 
 - (IBAction)reSendVerifyCode:(UIButton *)sender {
-    if( [TOOL sendVerifyCodeToPhoneForChangePhoneNum:self.mPhoneNum]){
-        [MBProgressHUD showSuccess:@"发送成功" toView:self.view];
-    }
-    else{
-        [MBProgressHUD showError:@"发送失败" toView:self.view];
-    };
-    
+    [TOOL sendVerifyCodeToPhone:self.mPhoneNum type:kCodeTypeChangNum completionHandler:^(bool status, NSString*info){
+        [[iToast makeText:info]show];
+    }];
+        
+        
 }
 
 - (IBAction)EnVerifyCode:(id)sender {
-    NSDictionary * dict = [TOOL changePhoneNumber:self.mPhoneNum withVerifyCode:self.verifyCodeTextField.text];
-//    NSURL *url = [NSURL URLWithString:@"http://api.hudong.com/iphonexml.do?type=focus-c"];
-//    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-//    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-//    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:received options:NSJSONReadingMutableContainers error:nil];
-    int status = [dict[@"status"]intValue];
-    //MARK:DEBUG
-    if (status == 1) {
-        if ([dict[@"data"] intValue] == 1) {
-            [MBProgressHUD showError:[dict objectForKey:@"info"] toView:self.view];
-            [User reflushUserInfoWithBlocSuccess:^(NSString *info) {
-                [MBProgressHUD showError:[dict objectForKey:@"info"] toView:self.view];
-
-                SendNoti(kReflushUserInfo);
-                [self performSelector:@selector(popViewController) withObject:nil afterDelay:1];
-
-            } failure:^(NSString *info) {
-                NSLog(@"asdfjkaskjdfkjaksj");
-                NSLog(@"asdfjkaskjdfkjaksj");
-                NSLog(@"asdfjkaskjdfkjaksj");
-                 NSLog(@"asdfjkaskjdfkjaksj");
-                
-            }];
+    __block SubChangPNViewController *weaKSelf = self;
+    [TOOL changePhoneNumber:self.mPhoneNum withVerifyCode:self.verifyCode completionHandler:^(bool status, NSString *info){
+        [[iToast makeText:info]show];
+        if (status) {
+            [weaKSelf.navigationController popToRootViewControllerAnimated:YES];
         }
-        else
-        {
-            [MBProgressHUD showError:[dict objectForKey:@"info"] toView:self.view];
-            [self performSelector:@selector(popViewController) withObject:nil afterDelay:1];
-        }
-        
-    }else{
-        [MBProgressHUD showSuccess:@"修改失败" toView:self.view];
-        [self performSelector:@selector(popViewController) withObject:nil afterDelay:1];
-    }
-    
+    }];
 }
 
 -(void)popViewController

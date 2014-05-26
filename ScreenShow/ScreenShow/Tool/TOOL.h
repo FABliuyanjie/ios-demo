@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ShareSDK/ShareSDK.h>
+
 @class BaseMan;
 #define kConfigFileName @"SystemConfig"
 
@@ -18,7 +18,7 @@
 #define RECEIVEMESSAGESHAKE     @"receiveMessageShake"
 #define SHAKEANDCHANGE          @"shakeAndChange"
 #define AUTODELETECACHE         @"autoDeleteCache"
-
+typedef void(^handler)(bool ,NSString*);
 
 @interface TOOL : NSObject
 
@@ -28,13 +28,17 @@
 +(void)logIn;
 
 //发送验证码
-+(BOOL)sendVerifyCodeToPhone:(NSString*)phoneNum;
-+(BOOL)sendVerifyCodeToEmail:(NSString*)email;
-+(NSDictionary *)changePhoneNumber:(NSString *)newPhoneNum withVerifyCode:(NSString *)verifyCode;
-+(BOOL)sendVerifyCodeToPhoneForChangePhoneNum:(NSString*)phoneNum;
-
++(void)sendVerifyCodeToPhone:(NSString*)phoneNum type:(NSString*)type completionHandler:handler;
+//修改手机号码
++(void)changePhoneNumber:(NSString *)newPhoneNum withVerifyCode:(NSString *)verifyCode  completionHandler:handler;
+//修改邮箱
++ (void)changEmailAddress:(NSString*)user_email completionHandler:handler;
+//通过邮箱找回密码
++(void)sendVerifyCodeToEmail:(NSString*)email completionHandler:handler;
+//通过手机验证码找回密码
++(void)changPwdByPhone:(NSString*)phone Verify:(NSString*)code password:(NSString*)pwd completionHandler:handler;
 //修改用户头像
-+(void)uploadUserPhoto:(NSString*)userInfo photo:(UIImage*)image complete:(void(^)(bool success))block;
++(void)uploadUserPhoto:(UIImage*)image completionHandler:(void (^)(bool status, NSString *info))handler;
 
 
 //系统设置
@@ -52,7 +56,7 @@
 
 //第三方登录
 +(void)logInWithThirdPart:(id)actionNum,...;
-+(void)logInWithShareSDK:(ShareType)type result:(void (^)(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error)) blok;
+
 
 
 @end

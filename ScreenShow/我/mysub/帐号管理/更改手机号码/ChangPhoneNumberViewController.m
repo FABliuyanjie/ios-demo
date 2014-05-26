@@ -60,7 +60,9 @@
             
             [MBProgressHUD show:@"验证码发送中..." icon:nil view:self.view];
             
-            [TOOL sendVerifyCodeToPhoneForChangePhoneNum:self.mPNTf.text];
+            [TOOL sendVerifyCodeToPhone:self.mPNTf.text type:kCodeTypeChangNum completionHandler:^(bool status, NSString* info){
+                [[iToast makeText:info]show];
+            }];
             
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             return YES;

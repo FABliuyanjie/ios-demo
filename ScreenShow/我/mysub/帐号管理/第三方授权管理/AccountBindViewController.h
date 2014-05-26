@@ -7,7 +7,17 @@
 //
 
 #import "BaseTableViewController.h"
-
+@protocol DetailsViewControllerDelegate
+- (void)didSelectPhotoAttributeWithKey:(NSString *)key;
+@end
 @interface AccountBindViewController : BaseTableViewController
 
+/**
+ *  从新从服务器请求绑定的用户信息
+ */
+-(void)refreshInfo;
+
+
+
 @end
+

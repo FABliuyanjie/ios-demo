@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ShareSDK/ShareSDK.h>
+
 
 @interface ShareViewController : UIViewController
 {

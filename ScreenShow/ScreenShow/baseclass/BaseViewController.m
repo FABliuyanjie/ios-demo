@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "UIImage+Additions.h"
-#import <AGCommon/AGCommon.h>
+
 #define kBtnImage [UIImage imageNamed:@"btn_back_small.png"]
 #define kBtnHgighLighImage [UIImage imageNamed:@"btn_back_highligh.png"]
 @interface BaseViewController ()

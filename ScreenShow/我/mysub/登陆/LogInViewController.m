@@ -7,12 +7,12 @@
 //
 
 #import "LogInViewController.h"
-#import "SubLogInViewController.h"
+
 #import "User.h"
 #import "APService.h"
 #import "UMSocial.h"
 @interface LogInViewController ()<UIScrollViewDelegate>
-@property (nonatomic,strong) SubLogInViewController *subLogInViewController;
+
 @end
 
 @implementation LogInViewController
@@ -68,17 +68,7 @@
     [self.view endEditing:YES];
 }
 
-#pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSLog(@"segue:%@",segue.identifier);
-    if ([segue.identifier  isEqual:@"SubLogInViewController"]) {
-        _subLogInViewController = segue.destinationViewController;
-    }
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
 
 /**
  *  点击登录，普通登录
