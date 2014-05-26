@@ -12,7 +12,7 @@
 #import "APService.h"
 #import "SDImageCache.h"
 
-#import <ShareSDK/ShareSDK.h>
+
 
 @interface AccountManagementViewController ()
 {
@@ -96,10 +96,12 @@
     }
     User *user = [User readUserInfo];
     NSString *token = user.token;
-    [TOOL uploadUserPhoto:token photo:image complete:^(bool success){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(success? @"上传成功":@"上传失败") message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    [TOOL uploadUserPhoto:image completionHandler:^(bool status, NSString *info) {
         
-        [alert setBackgroundColor:[UIColor blueColor]];
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(status? @"上传成功":@"上传失败") message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+        
+        [alert setBackgroundColor:[UIColor grayColor]];
         
         [alert setContentMode:UIViewContentModeScaleAspectFit];
         
@@ -108,7 +110,7 @@
         
         [self  performSelector:@selector(hidenAlter:) withObject:alert afterDelay:2];
         
-        if (success) {
+        if (status) {
             user.photo = image;
             [User saveUserInfo];
             SendNoti(kReflushUserInfo);

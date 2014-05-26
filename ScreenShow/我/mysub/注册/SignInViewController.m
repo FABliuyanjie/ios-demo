@@ -7,12 +7,12 @@
 //
 
 #import "SignInViewController.h"
-#import "SubSignTableViewController.h"
+
 #import "User.h"
 #import "APService.h"
 
 @interface SignInViewController ()<UIScrollViewDelegate,UITextFieldDelegate>
-@property (nonatomic,strong) SubSignTableViewController *subSignViewController;
+//@property (nonatomic,strong) SubSignTableViewController *subSignViewController;
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumTF;
 @property (weak, nonatomic) IBOutlet UIButton *VerifyBtn;
@@ -58,18 +58,6 @@
 }
 
 
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    NSLog(@"segue:%@",segue.identifier);
-    if ([segue.identifier  isEqual:@"subSignTableViewSegue"]) {
-        _subSignViewController = segue.destinationViewController;
-    }
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
 
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -92,42 +80,28 @@
     
 }
 
-//-(void)textFieldDidBeginEditing:(UITextField *)textField
-//{
-//    self.scrollView.contentOffset = CGPointMake(0, textField.bottom);
-//}
-//
-//-(void)textFieldDidEndEditing:(UITextField *)textField
-//{
-//    self.scrollView.contentOffset = CGPointZero;
-//}
+
 - (IBAction)signIn:(UIButton *)sender
 {
-//    if (![_subSignViewController checkValue]) {
-//        [TSMessage showNotificationWithTitle:_subSignViewController.externInfo type:TSMessageNotificationTypeError];
-//        return;
-//    }else{
-        __weak SignInViewController * weakSelf = self;
-        [User registerUser:_phoneNumTF.text verify:_verifyTF.text password:_pwdTF.text nickeName:_nameTF.text userName:_useNameTF.text success:^(NSString *info) {
-            NSLog(@"注册成功：%@", info);
-            LOGIN;
-            [User saveUserInfo];
-            [[iToast makeText:@"注册成功"]show];
-            if(self.isFromMyViewController==YES){
-                [self.navigationController popToRootViewControllerAnimated:YES];
-            }else{
-                [self.navigationController popViewControllerAnimated:YES];
-            }
-            [APService setAlias:[NSString stringWithFormat:@"%ld",(long)[User shareUser].manID]callbackSelector:nil object:nil];
-            SendNoti(kLogInSuccess);
-        } failure:^(NSString *info){
-            NSLog(@"注册失败：%@", info);
+    __block SignInViewController * weakSelf = self;
+    [User registerUser:_phoneNumTF.text verify:_verifyTF.text password:_pwdTF.text nickeName:_nameTF.text userName:_useNameTF.text success:^(NSString *info) {
+        NSLog(@"注册成功：%@", info);
+        LOGIN;
+        [User saveUserInfo];
+        [[iToast makeText:@"注册成功"]show];
+        if(weakSelf.isFromMyViewController==YES){
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
+        [APService setAlias:[NSString stringWithFormat:@"%ld",(long)[User shareUser].manID]callbackSelector:nil object:nil];
+        SendNoti(kLogInSuccess);
+    } failure:^(NSString *info){
+        NSLog(@"注册失败：%@", info);
 
-            LOGOUT;
-            [[iToast makeText:@"注册失败"]show];
-        }];
-        
-//    }
+        LOGOUT;
+        [[iToast makeText:@"注册失败"]show];
+    }];
 }
 
 //检测textField的值
@@ -171,18 +145,12 @@
 }
 
 - (IBAction)sendVerifyCode:(UIButton *)sender {
-//    char *str = [_phoneNum cStringUsingEncoding:<#(NSStringEncoding)#>]
-//    if (_phoneNum) {
-//        <#statements#>
-//    }
-    
     _phoneNum = _phoneNumTF.text;
-    if ([TOOL sendVerifyCodeToPhone:_phoneNum]) {
-        //TODO:发送验证码后
-    }else{
-        //TODO:发送验证码失败
-    }
-    
+    [TOOL sendVerifyCodeToPhone:_phoneNum type:@"register" completionHandler:^(BOOL status, NSString *info){
+     
+        [[iToast makeText:info]show];
+        
+    }];
     
 }
 @end

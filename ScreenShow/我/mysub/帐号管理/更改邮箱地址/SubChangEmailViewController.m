@@ -54,7 +54,7 @@
     bt.enabled = NO;
     [bt setBackgroundColor:[UIColor grayColor]];
     [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(until60s:) userInfo:bt repeats:NO];
-    [TOOL sendVerifyCodeToEmail:self.email];
+
 }
 
 -(void)until60s:(id)info
