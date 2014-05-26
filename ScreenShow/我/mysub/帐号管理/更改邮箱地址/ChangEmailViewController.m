@@ -57,11 +57,15 @@
         
         [MBProgressHUD show:@"验证码发送中..." icon:nil view:self.view];
         
-        [TOOL sendVerifyCodeToEmail:self.mEmail.text];
+        [TOOL sendVerifyCodeToEmail:self.mEmail.text completionHandler:^(bool status, NSString *info){
+            if (status) {
+                [self.navigationController pushViewController:@"" animated:YES];
+            }
+        }];
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
-        return YES;
+        return NO;
     }
     return YES;
 }

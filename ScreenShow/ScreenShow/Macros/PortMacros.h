@@ -15,11 +15,11 @@
 #define PORT_ALLNUM PORT_URLBASE"allNum"
 
 //获取手机验证码
-//#define PORT_PHONEVERIFY PORT_URLBASE"registerVerify"
 #define PORT_PHONEVERIFY PORT_URLBASE"verify"
 
 //获取邮箱验证码
-#define PORT_EMAILVERIFY PORT_URLBASE"registerVerify"
+#define PORT_EMAILVERIFY PORT_URLBASE"emailcode"
+
 //普通注册
 #define PORT_REGISTERNORMAL PORT_URLBASE"registerNormal"
 
@@ -59,6 +59,7 @@
 //关于我们
 #define PORT_ABOUTUS PORT_URLBASE"aboutUs"
 
-
+//通过手机验证码，修改密码
+#define PORT_CHANGPWD_PHONE PORT_URLBASE"changepwd"
 
 #endif

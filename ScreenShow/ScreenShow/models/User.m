@@ -218,11 +218,12 @@
         //TODO: 判断是否要绑定用户名
         
         BOOL isRegistered= [responseObject[@"status"] boolValue];
-        
+        NSDictionary *dict = responseObject[@"data"];
          // 如果注册过了，要解析数据，刷新本地的用户信息，设置状态为已经登录
         
         if (isRegistered) {
             NSLog(@"registered!,%s",__FUNCTION__);
+            [[User shareUser]setKeyWithDict:dict];
         }
         success(isRegistered);
        

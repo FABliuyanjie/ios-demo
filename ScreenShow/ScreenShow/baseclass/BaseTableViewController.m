@@ -8,7 +8,7 @@
 
 #import "BaseTableViewController.h"
 #import "UIImage+Additions.h"
-#import <AGCommon/AGCommon.h>
+
 
 @interface BaseTableViewController ()
 

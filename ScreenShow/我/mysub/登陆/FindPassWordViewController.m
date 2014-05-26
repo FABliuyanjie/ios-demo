@@ -9,7 +9,12 @@
 #import "FindPassWordViewController.h"
 
 @interface FindPassWordViewController ()
-
+{
+    BOOL _timerStarted;
+    NSDate* _startTime;
+     NSDate*  _endTime;
+}
+@property (nonatomic, copy)     NSTimer * timer;
 @end
 
 @implementation FindPassWordViewController
@@ -27,6 +32,7 @@
 {
     [super viewDidLoad];
     self.title = @"找回密码";
+    
     // Do any additional setup after loading the view.
 }
 
@@ -44,23 +50,38 @@
     self.popUpBox.upTextField.hidden = NO;
     self.popUpBox.upTextField.delegate = self;
     
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(getTime) userInfo:nil repeats:YES];
+    [_timer setFireDate:[NSDate distantFuture]];
+    
+    
+    
+    [self.popUpBox setUpButtonWithTop:self.popUpBox.upTextField.bottom + 35];
+    [self.popUpBox.upButton setTitle:@"发送验证码" forState:UIControlStateNormal];
+    self.popUpBox.upButton.hidden = NO;
+    
+    __block UIButton *weakupBtn = self.popUpBox.upButton;
+    __block NSTimer *weakTimer = _timer;
+    __block NSDate *weakStartTime = _startTime;
+    __block FindPassWordViewController *weakSelf = self;
     self.popUpBox.upBtnClickBlock = ^(NSString * string){
         if (string.length != 11 || string == nil) {
             NSLog(@"请输入手机号");
         }
         else
         {
+            [TOOL sendVerifyCodeToEmail:string completionHandler:^(bool status, NSString *info) {
+                [[iToast makeText:info]show];
+                if (status) {//发送验证码成功
+                    weakupBtn.enabled = NO;
+                    weakStartTime = [NSDate date];
+                    [weakTimer setFireDate:[NSDate distantPast]];
+                }else{
+                    [weakupBtn setTitle:@"重新发送验证码" forState:UIControlStateNormal];
+                }
+                
+            }];
             NSLog(@"获取验证码");
         }
-    };
-    
-    [self.popUpBox setUpButtonWithTop:self.popUpBox.upTextField.bottom + 35];
-    [self.popUpBox.upButton setTitle:@"发送验证码" forState:UIControlStateNormal];
-    self.popUpBox.upButton.hidden = NO;
-    self.popUpBox.upBtnClickBlock = ^(NSString * string){
-    
-        NSLog(@"发送验证码");
-        
     };
     
     [self.popUpBox setDownTextFieldWithTop:self.popUpBox.upButton.bottom + 60];
@@ -79,7 +100,7 @@
         
 //        [(PopUpBox *)pop closeBtnClick];
         
-        [self addEnsurePasswordView];
+        [weakSelf addEnsurePasswordView];
         
     };
     
@@ -89,6 +110,19 @@
         
         [(PopUpBox *)pop removeFromSuperview];
     };
+}
+
+-(void)getTime
+{
+    NSTimeInterval stayTime = [_startTime timeIntervalSinceNow]/1000;
+    if (stayTime < 60) {
+        NSString * time = [NSString stringWithFormat:@"%f秒重新获取",60 - stayTime];
+        [self.popUpBox.upButton setTitle:time  forState:UIControlStateDisabled];
+    }else{
+        self.popUpBox.upButton.enabled = YES;
+        [self.popUpBox.upButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [_timer setFireDate:[NSDate distantFuture]];
+    }
 }
 
 //确认
@@ -118,11 +152,11 @@
     self.popUpBox.downButton.hidden = NO;
     
     NSLog(@"self.popUpBox.downButton.frame = %@", NSStringFromCGRect(self.popUpBox.downButton.frame));
-    
+    __block FindPassWordViewController *weakSelf = self;
     self.popUpBox.downClickBlock = ^(NSString * upString, NSString * downString, id pop){
         
         NSLog(@"确认");
-        [self upDateFindSucceedView];
+        [weakSelf upDateFindSucceedView];
         
     };
     

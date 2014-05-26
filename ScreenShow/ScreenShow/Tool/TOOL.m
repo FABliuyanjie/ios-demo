@@ -6,19 +6,6 @@
 //  Copyright (c) 2013年 FAB. All rights reserved.
 //
 
-
-
-#import <AGCommon/UINavigationBar+Common.h>
-#import <AGCommon/UIImage+Common.h>
-
-
-#import <AGCommon/UIColor+Common.h>
-#import <AGCommon/UIDevice+Common.h>
-#import <AGCommon/NSString+Common.h>
-
-
-#import <RenRenConnection/RenRenConnection.h>
-
 #define TABLE_CELL_ID @"tableCell"
 
 #define ACTION_SHEET_GET_USER_INFO 200
@@ -57,96 +44,127 @@
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"Cookie"];
   
 }
+
+
 +(void)logIn
 {
     [[NSUserDefaults standardUserDefaults]setBool:YES  forKey:@"Cookie"];
 }
 
-+(BOOL)sendVerifyCodeToPhone:(NSString*)phoneNum;
+#pragma mark- 验证功能
+/**
+ *  发送验证码
+ *
+ *  @param phoneNum 手机号码
+ *  @param type     类型 （注册时就用type=register）（更换手机号时用type=cpapi）(用手机号修改密码 type=xgpwd)
+ */
+
+
++(void)sendVerifyCodeToPhone:(NSString*)phoneNum type:(NSString*)type completionHandler:handler;
 {
     //TODO:获取手机验证码
-//    NSString *urlStr = [NSString stringWithFormat:@"%@?id=%d&user_email=%@",PORT_PHONEVERIFY,[User shareUser].manID,phoneNum];
-    NSString *urlStr = [NSString stringWithFormat:@"%@?phone=%@&type=register",PORT_PHONEVERIFY, phoneNum];
-
-    NSURL *url = [NSURL URLWithString:urlStr];
-    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
-    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:received options:NSJSONReadingMutableContainers error:nil];
-    int status = [dict[@"status"]intValue];
-    if (status==1) {
-        return YES;
-    }
-    return NO;
+    NSString *urlStr = [NSString stringWithFormat:@"%@?phone=%@&type=%@",PORT_PHONEVERIFY, phoneNum,type];
+   [[self class] handleResureInfoWithString:urlStr completionHandler:handler];
 }
 
-+(BOOL)sendVerifyCodeToPhoneForChangePhoneNum:(NSString*)phoneNum
-{
-    //TODO:获取手机验证码
-    //    NSString *urlStr = [NSString stringWithFormat:@"%@?id=%d&user_email=%@",PORT_PHONEVERIFY,[User shareUser].manID,phoneNum];
-    NSString *urlStr = [NSString stringWithFormat:@"%@?phone=%@&type=cpapi",PORT_PHONEVERIFY, phoneNum];
-    
-    NSURL *url = [NSURL URLWithString:urlStr];
-    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
-    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:received options:NSJSONReadingMutableContainers error:nil];
-    int status = [dict[@"status"]intValue];
-    if (status==1) {
-        return YES;
-    }
-    return NO;
-}
-
-+(NSDictionary *)changePhoneNumber:(NSString *)newPhoneNum withVerifyCode:(NSString *)verifyCode
-{
+/**
+ *  更换手机号码
+ *
+ *  @param newPhoneNum 新手机号码
+ *  @param verifyCode  验证码
+ *
+ *  @return
+ */
++(void)changePhoneNumber:(NSString *)newPhoneNum withVerifyCode:(NSString *)verifyCode  completionHandler:handler{
     NSString * urlStr = [NSString stringWithFormat:@"%@?token=%@&user_phone=%@&verify=%@", PORT_PHONECHANGE, [User shareUser].token, newPhoneNum, verifyCode];
-    NSURL * url = [NSURL URLWithString:urlStr];
-    NSURLRequest * request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
-    NSData * received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:received options:NSJSONReadingMutableContainers error:nil];
-    return dict;
-}
-
-+(BOOL)sendVerifyCodeToEmail:(NSString*)email
-{
-//TODO:修改邮箱地址
-    NSString *urlStr = [NSString stringWithFormat:@"%@?id=%d&user_email=%@",PORT_EMAILCHANGE,[User shareUser].manID,email];
-    NSURL *url = [NSURL URLWithString:urlStr];
-    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
-    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:received options:NSJSONReadingMutableContainers error:nil];
-    int status = [dict[@"status"]intValue];
-    if (status==1) {
-        return YES;
-    }
-    return NO;
-
-    return YES;
-}
-
-
-+(void)uploadUserPhoto:(NSString*)token photo:(UIImage*)image complete:(void(^)(bool success))block
-{
     
+    [[self class] handleResureInfoWithString:urlStr completionHandler:handler];
+}
+
+/**
+ *  更换邮箱
+ *
+ *  @param user_email 必需是注册时绑定的邮箱地址
+ */
++ (void)changEmailAddress:(NSString*)user_email completionHandler:handler
+{
+    NSString * urlStr = [NSString stringWithFormat:@"%@?token=%@&user_email=%@", PORT_EMAILCHANGE, [User shareUser].token, user_email];
+   [[self class] handleResureInfoWithString:urlStr completionHandler:handler];
+}
+
+/**
+ *  通过邮件找回密码
+ *
+ *  @param email   以前绑定的邮箱号码
+ *  @param handler
+ */
++(void)sendVerifyCodeToEmail:(NSString*)email completionHandler:handler
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@?uid=%d&user_email=%@",PORT_EMAILVERIFY,[User shareUser].manID,email];
+    [[self class] handleResureInfoWithString:urlStr completionHandler:handler];
+}
+
+/**
+ *  通过手机验证码找回密码
+ *
+ *  @param phone 手机号码
+ *  @param code  验证码
+ *  @param pwd   新密码
+ */
++(void)changPwdByPhone:(NSString*)phone Verify:(NSString*)code password:(NSString*)pwd completionHandler:handler
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@?phone=%@&verify=%@&pwd=%@",PORT_CHANGPWD_PHONE,phone,code,pwd];
+    [[self class] handleResureInfoWithString:urlStr completionHandler:handler];
+}
+
+/**
+ *  上传头像
+ *
+ *  @param image   新的头像
+ *  @param handler 处理回调
+ */
++(void)uploadUserPhoto:(UIImage*)image completionHandler:(void (^)(bool, NSString *))handler
+{
     NSData *data = UIImagePNGRepresentation(image);
     NSString *aString = [TOOL base64forData:data];
-    
+    NSString *token = [User shareUser].token;
      //构造字段
+    
     NSString *urlStr = [NSString stringWithFormat:@"%@?",PORT_HEADIMAGE];
     NSDictionary *partameter = @{@"token":token,@"img":aString};
     [[AFAppDotNetAPIClient sharedClient] POST:urlStr parameters:partameter success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //
-        int status = [responseObject[@"status"]intValue];
-        if (status==1) {
-            block(YES);
-            
-        }else{
-            block(NO);
-        }
-        
+       
+        bool status = [responseObject[@"status"]boolValue];
+        NSString *info = responseObject[@"info"];
+        handler(status,info);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //
-        block(NO);
+        handler(NO,@"网络故障");
     }];
+}
+
+/**
+ *  通用，处理确认信息
+ *
+ *  @param urlStr 链接
+ */
++(void)handleResureInfoWithString:(NSString*)urlStr completionHandler:(void(^)(bool status, NSString *indo)) handler
+{
+    NSURL * url = [NSURL URLWithString:urlStr];
+    NSURLRequest * request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        bool status = NO;
+        NSString *info = nil;
+        if (data==nil || connectionError==nil) {
+            status = NO;
+            info = @"网络故障";
+        }else{
+            status = [dict[@"status"]boolValue];
+            info = dict[@"info"];
+        }
+        handler(status,info);
+    }];
+    
 }
 
 //由颜色得到图片
@@ -197,21 +215,6 @@
 
 #pragma mark - 系统设置
 
-//+(BOOL)findString:(NSString*)mstring
-//{
-//    NSString *path = [[NSBundle mainBundle]pathForResource:kConfigFileName ofType:@"plist"];
-//    NSArray *dataArray = [NSMutableArray arrayWithContentsOfFile:path];
-//    __block BOOL isOk;
-//    [dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//        NSString *string= [(NSDictionary*)obj objectForKey:@"string"];
-//        if ([string isEqualToString:mstring]) {
-//            isOk = [[(NSDictionary*)obj objectForKey:@"value"]boolValue];
-//            *stop = YES;
-//        }
-//    }];
-//    return isOk;
-//}
-
 +(BOOL)findStatuesWithString:(NSString *)string
 {
     NSUserDefaults * user = [NSUserDefaults standardUserDefaults];
@@ -255,7 +258,14 @@
 //    return [self findString:@"自动删除30天前的缓存"];
 }
 
+#pragma mark- 登录界面显示
 
+/**
+ *  显示登录界面
+ *
+ *  @param vc   登录界面现实的额界面
+ *  @param push 是否是模态
+ */
 +(void)showLoginViewControllerForm:(UIViewController*)vc Push:(BOOL)push;
 {
     UIViewController *loginVC = [[UIStoryboard storyboardWithName:@"MyStoryBoard" bundle:nil]instantiateViewControllerWithIdentifier:@"LogInViewController"];
@@ -268,211 +278,6 @@
 
 }
 
-#pragma mark - 分享
-
-/**
- *	@brief	分享全部
- *
- *	@param 	sender 	事件对象 info 要分享的信息
- */
-+ (void)shareAllButtonClickHandler:(UIViewController *)vc WithInfo:(NSDictionary*)info
-{
-    NSString *content = info[@"content"];
-    NSString *url = info[@"url"];
-    NSString *title = info[@"title"];
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
-    
-    //构造分享内容
-    id<ISSContent> publishContent = [ShareSDK content:content
-                                       defaultContent:@"form FABShow"
-                                                image:[ShareSDK imageWithPath:imagePath]
-                                                title:title
-                                                  url:url
-                                          description:content
-                                            mediaType:SSPublishContentMediaTypeNews];
-    
-    ///////////////////////
-    //以下信息为特定平台需要定义分享内容，如果不需要可省略下面的添加方法
-    
-    //定制人人网信息
-    [publishContent addRenRenUnitWithName:INHERIT_VALUE
-                              description:INHERIT_VALUE
-                                      url:INHERIT_VALUE
-                                  message:INHERIT_VALUE
-                                    image:INHERIT_VALUE
-                                  caption:nil];
-    
-    //定制QQ空间信息
-    [publishContent addQQSpaceUnitWithTitle:INHERIT_VALUE
-                                        url:INHERIT_VALUE
-                                       site:nil
-                                    fromUrl:nil
-                                    comment:INHERIT_VALUE
-                                    summary:INHERIT_VALUE
-                                      image:INHERIT_VALUE
-                                       type:INHERIT_VALUE
-                                    playUrl:nil
-                                       nswb:nil];
-    
-    //定制微信好友信息
-    [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
-                                         content:INHERIT_VALUE
-                                           title:NSLocalizedString(@"TEXT_HELLO_WECHAT_SESSION", @"Hello 微信好友!")
-                                             url:INHERIT_VALUE
-                                      thumbImage:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/67037d3d539b6003af38f5c4c4f372ac65c1038b63f.jpg"]
-                                           image:INHERIT_VALUE
-                                    musicFileUrl:nil
-                                         extInfo:nil
-                                        fileData:nil
-                                    emoticonData:nil];
-    
-    //定制微信朋友圈信息
-    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeMusic]
-                                          content:INHERIT_VALUE
-                                            title:INHERIT_VALUE
-                                              url:@"http://y.qq.com/i/song.html#p=7B22736F6E675F4E616D65223A22E4BDA0E4B88DE698AFE79C9FE6ADA3E79A84E5BFABE4B990222C22736F6E675F5761704C69766555524C223A22687474703A2F2F74736D7573696332342E74632E71712E636F6D2F586B303051563558484A645574315070536F4B7458796931667443755A68646C2F316F5A4465637734356375386355672B474B304964794E6A3770633447524A574C48795333383D2F3634363232332E6D34613F7569643D32333230303738313038266469723D423226663D312663743D3026636869643D222C22736F6E675F5769666955524C223A22687474703A2F2F73747265616D31382E71716D757369632E71712E636F6D2F33303634363232332E6D7033222C226E657454797065223A2277696669222C22736F6E675F416C62756D223A22E5889BE980A0EFBC9AE5B08FE5B7A8E89B8B444E414C495645EFBC81E6BC94E594B1E4BC9AE5889BE7BAAAE5BD95E99FB3222C22736F6E675F4944223A3634363232332C22736F6E675F54797065223A312C22736F6E675F53696E676572223A22E4BA94E69C88E5A4A9222C22736F6E675F576170446F776E4C6F616455524C223A22687474703A2F2F74736D757369633132382E74632E71712E636F6D2F586C464E4D31354C5569396961495674593739786D436534456B5275696879366A702F674B65356E4D6E684178494C73484D6C6A307849634A454B394568572F4E3978464B316368316F37636848323568413D3D2F33303634363232332E6D70333F7569643D32333230303738313038266469723D423226663D302663743D3026636869643D2673747265616D5F706F733D38227D"
-                                       thumbImage:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/67037d3d539b6003af38f5c4c4f372ac65c1038b63f.jpg"]
-                                            image:INHERIT_VALUE
-                                     musicFileUrl:nil
-                                          extInfo:nil
-                                         fileData:nil
-                                     emoticonData:nil];
-    
-    //定制微信收藏信息
-    [publishContent addWeixinFavUnitWithType:INHERIT_VALUE
-                                     content:INHERIT_VALUE
-                                       title:INHERIT_VALUE
-                                         url:INHERIT_VALUE
-                                  thumbImage:[ShareSDK imageWithUrl:@"http://img1.bdstatic.com/img/image/67037d3d539b6003af38f5c4c4f372ac65c1038b63f.jpg"]
-                                       image:INHERIT_VALUE
-                                musicFileUrl:nil
-                                     extInfo:nil
-                                    fileData:nil
-                                emoticonData:nil];
-    
-    //定制QQ分享信息
-    [publishContent addQQUnitWithType:INHERIT_VALUE
-                              content:INHERIT_VALUE
-                                title:@"Hello QQ!"
-                                  url:INHERIT_VALUE
-                                image:INHERIT_VALUE];
-    
-    //定制邮件信息
-    [publishContent addMailUnitWithSubject:INHERIT_VALUE
-                                   content:INHERIT_VALUE
-                                    isHTML:[NSNumber numberWithBool:YES]
-                               attachments:INHERIT_VALUE
-                                        to:nil
-                                        cc:nil
-                                       bcc:nil];
-    
-    //定制短信信息
-    [publishContent addSMSUnitWithContent:[NSString stringWithFormat:@"%@/%@",title,content]];
-    
-    //定制有道云笔记信息
-    [publishContent addYouDaoNoteUnitWithContent:INHERIT_VALUE
-                                           title:INHERIT_VALUE
-                                          author:@"星光秀"
-                                          source:nil
-                                     attachments:INHERIT_VALUE];
-    
-   
-    
-    //结束定制信息
-    ////////////////////////
- 
-    
-    //创建弹出菜单容器
-    id<ISSContainer> container = [ShareSDK container];
-    [container setIPhoneContainerWithViewController:vc];
-    
-    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
-                                                         allowCallback:NO
-                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
-                                                          viewDelegate:nil
-                                               authManagerViewDelegate:nil];
-    
-    //在授权页面中添加关注官方微博
-    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
-                                    nil]];
-    
-    id<ISSShareOptions> shareOptions = [ShareSDK defaultShareOptionsWithTitle:@"星光秀分享"
-                                                              oneKeyShareList:[NSArray defaultOneKeyShareList]
-                                                               qqButtonHidden:YES
-                                                        wxSessionButtonHidden:YES
-                                                       wxTimelineButtonHidden:YES
-                                                         showKeyboardOnAppear:NO
-                                                            shareViewDelegate:nil
-                                                          friendsViewDelegate:nil
-                                                        picViewerViewDelegate:nil];
-    
-    //弹出分享菜单
-    [ShareSDK showShareActionSheet:container
-                         shareList:nil
-                           content:publishContent
-                     statusBarTips:YES
-                       authOptions:authOptions
-                      shareOptions:shareOptions
-                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                
-                                if (state == SSResponseStateSuccess)
-                                {
-                                    NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));
-                                }
-                                else if (state == SSResponseStateFail)
-                                {
-                                    NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
-                                }
-                            }];
-}
-
-
-
-#pragma mark - 第三方登录
-+(void)logInWithThirdPart:(id)actionNum,...
-{
-    NSMutableArray *argsArray = [[NSMutableArray alloc] init];
-    va_list params; //定义一个指向个数可变的参数列表指针；
-    va_start(params,actionNum);//va_start  得到第一个可变参数地址,
-    id arg;
-    
-    if (actionNum) {
-        //将第一个参数添加到array
-        id prev = actionNum;
-        [argsArray addObject:prev];
-        
-        //va_arg 指向下一个参数地址
-        //这里是问题的所在 网上的例子，没有保存第一个参数地址，后边循环，指针将不会在指向第一个参数
-        while( (arg = va_arg(params,id)) )
-        {
-            if ( arg ){
-                [argsArray addObject:arg];
-            }
-            
-        }
-        //置空
-        va_end(params);
-        //这里循环 将看到所有参数
-        for (NSNumber *num in argsArray) {
-            NSLog(@"%d", [num intValue]);
-        }
-    }
-    [ShareSDK getUserInfoWithType:1 authOptions:nil result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
-        //
-    }];
-    
-    return ;
-}
-
-+(void)logInWithShareSDK:(ShareType)type result:(void (^)(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error)) blok
-{
-    [ShareSDK getUserInfoWithType:1 authOptions:nil result:blok];
-    
-}
 
 
 @end

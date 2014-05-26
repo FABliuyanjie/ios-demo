@@ -9,38 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ScreenShow/Tool/TOOL.m"
-            timestampString = "422246392.67277"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "+uploadUserPhoto:photo:complete:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ScreenShow/Tool/TOOL.m"
-            timestampString = "422246392.67277"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "+uploadUserPhoto:photo:complete:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "&#x6211;/mysub/&#x5e10;&#x53f7;&#x7ba1;&#x7406;/AccountManagementViewController.m"
             timestampString = "422183762.014323"
             startingColumnNumber = "9223372036854775807"
@@ -57,45 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ScreenShow/Tool/TOOL.m"
-            timestampString = "422246392.67277"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "+uploadUserPhoto:photo:complete:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ScreenShow/Tool/TOOL.m"
-            timestampString = "422246392.67277"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "+uploadUserPhoto:photo:complete:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
             timestampString = "422416665.799705"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
             endingLineNumber = "135"
-            landmarkName = "-handleLoginFailure"
+            landmarkName = "-chechTextField"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -111,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
             endingLineNumber = "137"
-            landmarkName = "-handleLoginFailure"
+            landmarkName = "-chechTextField"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -127,8 +63,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
             endingLineNumber = "155"
-            landmarkName = "-chechTextField"
-            landmarkType = "5">
+            landmarkName = "@implementation LogInViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -153,7 +89,7 @@
                   symbolName = "__61+[User loginWithUMbyOpenid:openName:myName:pwd:type:success:]_block_invoke_2"
                   moduleName = "ScreenShow"
                   urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/ScreenShow/models/User.m"
-                  timestampString = "422421132.957262"
+                  timestampString = "422766538.280356"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "195"
@@ -167,7 +103,7 @@
                   symbolName = "__61+[User loginWithUMbyOpenid:openName:myName:pwd:type:success:]_block_invoke_3"
                   moduleName = "ScreenShow"
                   urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/ScreenShow/models/User.m"
-                  timestampString = "422421132.957463"
+                  timestampString = "422766538.280561"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "195"
@@ -215,7 +151,7 @@
                   symbolName = "__61+[User loginWithUMbyOpenid:openName:myName:pwd:type:success:]_block_invoke"
                   moduleName = "ScreenShow"
                   urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/ScreenShow/models/User.m"
-                  timestampString = "422421132.969773"
+                  timestampString = "422766538.281892"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "199"
@@ -229,7 +165,7 @@
                   symbolName = "__61+[User loginWithUMbyOpenid:openName:myName:pwd:type:success:]_block_invoke"
                   moduleName = "ScreenShow"
                   urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/ScreenShow/models/User.m"
-                  timestampString = "422421132.969986"
+                  timestampString = "422766538.282108"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "199"
@@ -243,7 +179,7 @@
                   symbolName = "__61+[User loginWithUMbyOpenid:openName:myName:pwd:type:success:]_block_invoke210"
                   moduleName = "ScreenShow"
                   urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/ScreenShow/models/User.m"
-                  timestampString = "422421132.970155"
+                  timestampString = "422766538.282324"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "199"
@@ -281,7 +217,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "169"
             endingLineNumber = "169"
-            landmarkName = "-tap:"
+            landmarkName = "-thridPartLoginClicked:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -336,100 +272,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x6211;/my/MyViewController.m"
-            timestampString = "422417186.344975"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "-flushUIWhenLogined"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x6211;/my/MyViewController.m"
-            timestampString = "422417192.528039"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "-flushUIWhenLogined"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[MyViewController flushUIWhenLogined]"
-                  moduleName = "ScreenShow"
-                  urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/%E6%88%91/my/MyViewController.m"
-                  timestampString = "422421132.97554"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "167"
-                  endingLineNumber = "167"
-                  offsetFromSymbolStart = "72">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__38-[MyViewController flushUIWhenLogined]_block_invoke"
-                  moduleName = "ScreenShow"
-                  urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/%E6%88%91/my/MyViewController.m"
-                  timestampString = "422421132.975816"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "167"
-                  endingLineNumber = "167"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x6211;/my/MyViewController.m"
-            timestampString = "422417555.614828"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "-flushUIWhenLogined"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x6211;/my/MyViewController.m"
-            timestampString = "422417558.636323"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "-flushUIWhenLogined"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -455,7 +297,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
             endingLineNumber = "150"
-            landmarkName = "-downloadDataAdd:"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
