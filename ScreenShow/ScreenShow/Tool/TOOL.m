@@ -267,7 +267,7 @@
  */
 +(void)showLoginViewControllerForm:(UIViewController*)vc Push:(BOOL)push;
 {
-    UIViewController *loginVC = [[UIStoryboard storyboardWithName:@"MyStoryBoard" bundle:nil]instantiateViewControllerWithIdentifier:@"LogInViewController"];
+    LogInViewController *loginVC = [[UIStoryboard storyboardWithName:@"MyStoryBoard" bundle:nil]instantiateViewControllerWithIdentifier:@"LogInViewController"];
     if (vc.navigationController==nil || push==NO) {
         [vc presentViewController:loginVC animated:YES completion:nil];
     }else{
@@ -281,7 +281,8 @@
 {
     UIViewController *payVC = [[UIStoryboard storyboardWithName:@"MyStoryBoard" bundle:nil]instantiateViewControllerWithIdentifier:@"RchargeViewController"];
     if (vc.navigationController==nil || push==NO) {
-        [vc presentViewController:payVC animated:YES completion:nil];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:payVC];
+        [vc presentViewController:nav animated:YES completion:nil];
     }else{
         [vc.navigationController pushViewController:payVC animated:YES];
     }
