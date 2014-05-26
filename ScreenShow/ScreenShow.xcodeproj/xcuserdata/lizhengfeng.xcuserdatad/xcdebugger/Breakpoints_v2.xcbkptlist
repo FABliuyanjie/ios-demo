@@ -26,43 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
-            timestampString = "422416665.799705"
+            timestampString = "422780332.223346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "-chechTextField"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
-            timestampString = "422416665.799705"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "-chechTextField"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
-            timestampString = "422416665.799705"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "@implementation LogInViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -73,44 +41,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ScreenShow/models/User.m"
-            timestampString = "422269740.792749"
+            filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
+            timestampString = "422780332.223346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "+loginWithUMbyOpenid:openName:myName:pwd:type:success:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__61+[User loginWithUMbyOpenid:openName:myName:pwd:type:success:]_block_invoke_2"
-                  moduleName = "ScreenShow"
-                  urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/ScreenShow/models/User.m"
-                  timestampString = "422766538.280356"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "195"
-                  endingLineNumber = "195"
-                  offsetFromSymbolStart = "337">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__61+[User loginWithUMbyOpenid:openName:myName:pwd:type:success:]_block_invoke_3"
-                  moduleName = "ScreenShow"
-                  urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/ScreenShow/models/User.m"
-                  timestampString = "422766538.280561"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "195"
-                  endingLineNumber = "195"
-                  offsetFromSymbolStart = "59">
-               </Location>
-            </Locations>
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "@implementation LogInViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -119,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ScreenShow/models/User.m"
-            timestampString = "422269744.017308"
+            filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
+            timestampString = "422780332.223346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "+loginWithUMbyOpenid:openName:myName:pwd:type:success:"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "-chechTextField"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -136,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ScreenShow/models/User.m"
-            timestampString = "422270205.608319"
+            timestampString = "422780332.223346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "+loginWithUMbyOpenid:openName:myName:pwd:type:success:"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "+loginWithUMAndRegisterByOpenid:openName:myName:pwd:thirdType:completionHandler:"
             landmarkType = "5">
             <Locations>
                <Location
@@ -187,38 +125,6 @@
                   offsetFromSymbolStart = "109">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
-            timestampString = "422416665.799705"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "@implementation LogInViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x6211;/mysub/&#x767b;&#x9646;/LogInViewController.m"
-            timestampString = "422416665.799705"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "-thridPartLoginClicked:"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
