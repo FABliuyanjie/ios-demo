@@ -79,29 +79,48 @@
     return YES;
     
 }
+/**
+ *  登录成功后的操作
+ *
+ *  @return nil
+ */
+-(void)handleLoginSuccess
+{
+    [TOOL logIn];
+    [[iToast makeText:@"登录成功"] show];
+    if(self.isFromMyViewController==YES){
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+    [APService setAlias:[NSString stringWithFormat:@"%ld",(long)[User shareUser].manID]callbackSelector:nil object:nil];
+    SendNoti(kLogInSuccess);
 
+}
+
+
+/**
+ *  登录失败
+ */
+-(void)handleLoginFailure
+{
+    [TOOL logOut];
+    [[iToast makeText:@"登录失败"]show];
+    
+}
 
 - (IBAction)signIn:(UIButton *)sender
 {
     __block SignInViewController * weakSelf = self;
-    [User registerUser:_phoneNumTF.text verify:_verifyTF.text password:_pwdTF.text nickeName:_nameTF.text userName:_useNameTF.text success:^(NSString *info) {
-        NSLog(@"注册成功：%@", info);
-        LOGIN;
-        [User saveUserInfo];
-        [[iToast makeText:@"注册成功"]show];
-        if(weakSelf.isFromMyViewController==YES){
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+    [User registerUser:_phoneNumTF.text verify:_verifyTF.text password:_pwdTF.text nickeName:_nameTF.text userName:_useNameTF.text completionHandler:^(bool status, NSString *info) {
+        if (status) {
+            [weakSelf handleLoginSuccess];
         }else{
-            [weakSelf.navigationController popViewControllerAnimated:YES];
+            [weakSelf handleLoginFailure];
         }
-        [APService setAlias:[NSString stringWithFormat:@"%ld",(long)[User shareUser].manID]callbackSelector:nil object:nil];
-        SendNoti(kLogInSuccess);
-    } failure:^(NSString *info){
-        NSLog(@"注册失败：%@", info);
-
-        LOGOUT;
-        [[iToast makeText:@"注册失败"]show];
     }];
+    
 }
 
 //检测textField的值

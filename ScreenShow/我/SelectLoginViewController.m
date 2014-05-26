@@ -90,16 +90,15 @@
     self.popUpBox.downButton.hidden = NO;
     __weak SelectLoginViewController *weakSelf = self;
     self.popUpBox.downClickBlock = ^(NSString * upString, NSString *downStr, id pop){
-        
-        [User loginWithUMbyOpenid:weakSelf.openID openName:weakSelf.userName myName:weakSelf.popUpBox.upTextField.text pwd:weakSelf.popUpBox.downTextField.text thirdType:weakSelf.typeName type:@"1" success:^(BOOL flag) {
-            
-            if (flag) {
+        [User loginWithUMAndRegisterByOpenid:weakSelf.openID openName:weakSelf.userName myName:weakSelf.popUpBox.upTextField.text pwd:weakSelf.popUpBox.downTextField.text thirdType:weakSelf.typeName completionHandler:^(bool status, NSString *info) {
+            if (status) {
                 [weakSelf handleLoginSuccess];
             }else{
                 [weakSelf handleLoginFailure];
             }
+
         }];
-        NSLog(@"登录");
+                NSLog(@"登录");
         
     };
     
@@ -162,16 +161,16 @@
     __weak SelectLoginViewController *weakSelf = self;
     self.popUpBox.downClickBlock = ^(NSString * upString, NSString *downStr, id pop){
         
-        [User loginWithUMbyOpenid:weakSelf.openID openName:weakSelf.userName myName:weakSelf.popUpBox.upTextField.text pwd:weakSelf.popUpBox.downTextField.text thirdType:weakSelf.typeName type:@"2" success:^(BOOL flag) {
-            
-            if (flag) {
+        [User loginWithUMAndBindByOpenid:weakSelf.openID openName:weakSelf.userName myName:weakSelf.popUpBox.upTextField.text pwd:weakSelf.popUpBox.downTextField.text thirdType:weakSelf.typeName completionHandler:^(bool status, NSString *info) {
+            if (status) {
                 [weakSelf handleLoginSuccess];
             }else{
                 [weakSelf handleLoginFailure];
-                [[iToast makeText:@"绑定失败"]show];
             }
+
         }];
-        NSLog(@"登录");
+
+        NSLog(@"绑定");
 
         
     };

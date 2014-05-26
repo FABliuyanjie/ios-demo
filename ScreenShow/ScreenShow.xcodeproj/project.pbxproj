@@ -514,6 +514,7 @@
 		A37A462D18F3E4F4003C1BED /* MyCostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A37A462C18F3E4F4003C1BED /* MyCostListViewController.m */; };
 		A37A463018F3ED07003C1BED /* ReChangItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A37A462F18F3ED07003C1BED /* ReChangItem.m */; };
 		A37A463318F4010E003C1BED /* RechangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A37A463218F4010E003C1BED /* RechangViewController.m */; };
+		A395AF4A19331E7C004557E3 /* UIButton+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = A395AF4919331E7C004557E3 /* UIButton+CountDown.m */; };
 		A398FCF9190E2BA200E051C8 /* MyAttentionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A398FCF4190E2BA200E051C8 /* MyAttentionTableViewCell.m */; };
 		A398FCFA190E2BA200E051C8 /* MyAttentionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A398FCF5190E2BA200E051C8 /* MyAttentionTableViewCell.xib */; };
 		A398FCFB190E2BA200E051C8 /* MyAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A398FCF7190E2BA200E051C8 /* MyAttentionViewController.m */; };
@@ -1089,6 +1090,8 @@
 		A37A462F18F3ED07003C1BED /* ReChangItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReChangItem.m; path = model/ReChangItem.m; sourceTree = "<group>"; };
 		A37A463118F4010E003C1BED /* RechangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechangViewController.h; sourceTree = "<group>"; };
 		A37A463218F4010E003C1BED /* RechangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechangViewController.m; sourceTree = "<group>"; };
+		A395AF4819331E7C004557E3 /* UIButton+CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CountDown.h"; sourceTree = "<group>"; };
+		A395AF4919331E7C004557E3 /* UIButton+CountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CountDown.m"; sourceTree = "<group>"; };
 		A398FCF3190E2BA200E051C8 /* MyAttentionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAttentionTableViewCell.h; sourceTree = "<group>"; };
 		A398FCF4190E2BA200E051C8 /* MyAttentionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAttentionTableViewCell.m; sourceTree = "<group>"; };
 		A398FCF5190E2BA200E051C8 /* MyAttentionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAttentionTableViewCell.xib; sourceTree = "<group>"; };
@@ -1695,6 +1698,8 @@
 		9B94193F18C44E3900C46061 /* custom views */ = {
 			isa = PBXGroup;
 			children = (
+				A395AF4819331E7C004557E3 /* UIButton+CountDown.h */,
+				A395AF4919331E7C004557E3 /* UIButton+CountDown.m */,
 				9B10D78C18D190F800CE072D /* RoomView.h */,
 				9B10D78D18D190F800CE072D /* RoomView.m */,
 				9B94194818C4719F00C46061 /* RoomView.xib */,
@@ -3033,6 +3038,7 @@
 				9B10D78E18D190F800CE072D /* RoomView.m in Sources */,
 				018A66CA19179101000B1D33 /* PopUpBox.m in Sources */,
 				9BDAB47F18E9023800759D06 /* AboutUsViewController.m in Sources */,
+				A395AF4A19331E7C004557E3 /* UIButton+CountDown.m in Sources */,
 				9B079EC318E58238009D6303 /* LiveStudioViewController.m in Sources */,
 				01AC3AF7191B2BB20008B46D /* TComposeView.m in Sources */,
 				A37A462D18F3E4F4003C1BED /* MyCostListViewController.m in Sources */,
