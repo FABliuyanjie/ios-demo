@@ -40,7 +40,7 @@
     
     //FIXME: 调试
     self.userNameTf.text = @"18774671340";
-    self.passwdTf.text = @"123456";
+    self.passwdTf.text = @"1";
     
     // Do any additional setup after loading the view.
 }
@@ -138,14 +138,14 @@
     NSString*   _pwd = self.passwdTf.text;
     BOOL _checkOK = YES;
     NSString *_externInfo = nil;
-    
-    if (_pwd.length<6 || _pwd.length>20) {
-        _externInfo = @"密码不对";
-        _checkOK = NO;
-    }else{
-        _externInfo = @"请稍等.....";
-        _checkOK = YES;
-    }
+//    
+//    if (_pwd.length<6 || _pwd.length>20) {
+//        _externInfo = @"密码不对";
+//        _checkOK = NO;
+//    }else{
+//        _externInfo = @"请稍等.....";
+//        _checkOK = YES;
+//    }
     [[iToast makeText:_externInfo] show];
     return _checkOK;
     
