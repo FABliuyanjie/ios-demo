@@ -167,6 +167,7 @@
         cell.textLabel.text = typeName;
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         cell.textLabel.font = [UIFont systemFontOfSize:20.0f];
+        NSLog(@"agautest");
     }
     
     return cell;
