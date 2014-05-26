@@ -11,11 +11,19 @@
 #import "User.h"
 #import "APService.h"
 #import "UMSocial.h"
+#import "SelectLoginViewController.h"
+
 @interface LogInViewController ()<UIScrollViewDelegate>
 
 @end
 
 @implementation LogInViewController
+{
+    NSString * username;
+    NSString * usid;
+    NSString * pfname;
+    NSString * photoUrl;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -110,6 +118,13 @@
  */
 -(void)handleBindAccount
 {
+
+    SelectLoginViewController * selectLoginVC = [[UIStoryboard storyboardWithName:@"ThirdLoginStoryboard" bundle:nil]instantiateViewControllerWithIdentifier:@"SelectLoginViewController"];//[SelectLoginViewController alloc] init];
+    selectLoginVC.userName = username;
+    selectLoginVC.openID = usid;
+    selectLoginVC.typeName = pfname;
+    selectLoginVC.headPhotoUrl = photoUrl;
+    [self.navigationController pushViewController:selectLoginVC animated:YES];
     
 }
 
@@ -162,11 +177,15 @@
  *  @param sender button，
  */
 - (IBAction)thridPartLoginClicked:(UIButton *)sender {
+    
+//    [self handleBindAccount];
+//    return;
+    
     NSInteger tag = sender.tag-100;
 
     //选择平台
     NSString *platformName = nil;
-    NSString *pfname = nil;
+    pfname = nil;
     switch (tag) {
         case 0:
             platformName = UMShareToRenren;

@@ -58,7 +58,7 @@
 //刷新UI
 -(void)flushUI
 {
-    User *user = [User readUserInfo];
+    User *user = [User shareUser];
     //TODO: 等级信息设置
     self.level1Image = nil;
     self.level1Lb.text = @"美女主播";

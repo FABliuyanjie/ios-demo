@@ -52,8 +52,6 @@
     [TOOL sendVerifyCodeToPhone:self.mPhoneNum type:kCodeTypeChangNum completionHandler:^(bool status, NSString*info){
         [[iToast makeText:info]show];
     }];
-        
-        
 }
 
 - (IBAction)EnVerifyCode:(id)sender {

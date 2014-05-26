@@ -138,12 +138,14 @@
     
     [self.popUpBox setUpTextFieldWithTop:75];
     self.popUpBox.upTextField.placeholder = @"请输入密码";
+    self.popUpBox.upTextField.text = nil;
     self.popUpBox.upTextField.hidden = NO;
     
     [self.popUpBox setDownTextFieldWithTop:self.popUpBox.upTextField.bottom + 30];
     self.popUpBox.downTextField.placeholder = @"请再次输入密码";
     self.popUpBox.downTextField.hidden = NO;
-    
+    self.popUpBox.downTextField.text = nil;
+
     [self.popUpBox setDownButtonWithTop:self.popUpBox.downTextField.bottom + 50];
     
     [self.popUpBox.downButton setTitle:@"确认" forState:UIControlStateNormal];

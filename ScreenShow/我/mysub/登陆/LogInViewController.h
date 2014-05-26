@@ -19,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwdTf;
 
 
-
 - (IBAction)logIn:(UIButton *)sender;
 
 @end
