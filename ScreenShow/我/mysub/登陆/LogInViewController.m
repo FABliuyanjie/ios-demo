@@ -206,14 +206,18 @@
     //唤起授权页
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
     snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],NO,^(UMSocialResponseEntity *response){
+       
+        if (response.responseCode!=UMSResponseCodeSuccess ) {
+            return ;
+        }
         //取得给定平台的username和usid
         [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *respose){
             NSDictionary *dict = respose.data[@"accounts"][pfname];
             if (dict==nil) {
-                dispatch_async(dispatch_get_main_queue(), ^{
+
                     //TODO: 在主线程跳转,绑定操作
                     [weakSelf handleLoginFailure];
-                });
+
             }
            username = dict[@"username"];
             usid = dict[@"usid"];
