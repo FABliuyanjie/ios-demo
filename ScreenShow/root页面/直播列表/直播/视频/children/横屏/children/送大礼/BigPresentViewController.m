@@ -161,7 +161,8 @@
 }
 -(void)btnpayClicked:(id)sender
 {
-    [TOOL showPayViewControllerForm:self Push:NO];
+    UIViewController *payVC = [[UIStoryboard storyboardWithName:@"MyStoryBoard" bundle:nil]instantiateViewControllerWithIdentifier:@"RchargeViewController"];
+    [self.navigationController pushViewController:payVC animated:YES];
 }
 -(void)configurecell:(BigPresentTableViewCell *)cell indexPath:(NSIndexPath *)indexPath totalcol:(int)totalcol
 {
