@@ -121,8 +121,8 @@
         [self.labelnotenote sizeToFit];
         self.labelnotenote.textColor=[UIColor whiteColor];
         [self.labelnotenote setTranslatesAutoresizingMaskIntoConstraints:NO];//采用autolayout
-        self.labelnotenote.text=@"已选择";
-        self.labelnote.textAlignment=NSTextAlignmentCenter;
+        self.labelnotenote.text=@"请选择";
+        self.labelnotenote.textAlignment=NSTextAlignmentCenter;
         [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnotenote attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.labelleftmoneynote attribute:NSLayoutAttributeBottom multiplier:1.0 constant:(0)]];
         
         [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnotenote attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.bottomview attribute:NSLayoutAttributeLeft multiplier:1.0f constant:(5.0f)]];
@@ -134,13 +134,13 @@
         [self.labelnote sizeToFit];
         self.labelnote.textColor=[UIColor colorWithRed:233/255.0 green:187/255.0 blue:117/255.0 alpha:1.0];
         [self.labelnote setTranslatesAutoresizingMaskIntoConstraints:NO];//采用autolayout
-        self.labelnote.text=@"";
+        self.labelnote.text=@"礼物";
         [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnote attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.labelnotenote attribute:NSLayoutAttributeTop multiplier:1.0 constant:(0)]];
         
         [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnote attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.labelnotenote attribute:NSLayoutAttributeRight multiplier:1.0f constant:(0.0f)]];
         
         [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnote attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.bottomview attribute:NSLayoutAttributeHeight multiplier:0.33f constant:(0)]];
-        [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnote attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.bottomview attribute:NSLayoutAttributeWidth multiplier:0.0f constant:(20)]];
+        [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnote attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.bottomview attribute:NSLayoutAttributeWidth multiplier:0.0f constant:(30)]];
         
         
         
@@ -148,7 +148,7 @@
         [self.labelnotenote1 sizeToFit];
         self.labelnotenote1.textColor=[UIColor whiteColor];
         [self.labelnotenote1 setTranslatesAutoresizingMaskIntoConstraints:NO];//采用autolayout
-        self.labelnotenote1.text=@"送给";
+        self.labelnotenote1.text=@"";
         [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnotenote1 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.labelnote attribute:NSLayoutAttributeTop multiplier:1.0 constant:(0)]];
         
         [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnotenote1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.labelnote attribute:NSLayoutAttributeRight multiplier:1.0f constant:(0.0f)]];

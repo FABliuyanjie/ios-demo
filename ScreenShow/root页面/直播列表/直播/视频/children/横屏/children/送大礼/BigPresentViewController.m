@@ -57,10 +57,12 @@
     bigView.tableView.dataSource=self;
     
     
+    
+    
+    bigView.labelnote1.text=self.anchor.nickName;
     bigView.labelleftmoney.text=[NSString stringWithFormat:@"%.0f币",[[User shareUser] accountMoney]];
     [bigView.btnsend addTarget:self  action:@selector(btnsendClicked:) forControlEvents:UIControlEventTouchDown];
     [bigView.btnnum addTarget:self action:@selector(btnnumClicked:) forControlEvents:UIControlEventTouchDown];
-    [bigView.btnpay addTarget:self action:@selector(btnpayClicked:) forControlEvents:UIControlEventTouchDown];
     [self startnetworkofpresentlist:[NSString stringWithFormat:@"index.php/Api/Show/giftsList"]];
 }
 -(void)startnetworkofpresentlist:(NSString *)prstr
@@ -156,10 +158,6 @@
     int tmpnum=[bigview.btnnum.titleLabel.text intValue];
     [self startnetworkofsend:[NSString stringWithFormat:@"index.php/Api/Show/giftsGive?id=%d&to_id=%d&gift_id=%d&num=%d",[[User shareUser] manID],self.anchor.anchorid,self.presenttosend.presentid,tmpnum]];
 }
--(void)btnpayClicked:(id)sender
-{
-    [TOOL showPayViewControllerForm:self Push:NO];
-}
 -(void)configurecell:(BigPresentTableViewCell *)cell indexPath:(NSIndexPath *)indexPath totalcol:(int)totalcol
 {
     for (int i=0;i<cell.contentView.subviews.count; i++) {
@@ -189,6 +187,7 @@
 {
     NSLog(@"%d",sender.view.tag);
     BigPresentView *bigView=(BigPresentView*)self.view;
+    bigView.labelnotenote.text=@"已选择";
     Present *selectedobj=[self.presentArray objectAtIndex:sender.view.tag];
     for (Present *obj in self.presentArray) {
         if (selectedobj==obj) {
@@ -279,8 +278,6 @@
     if (cell == nil) {
         cell=[[BigPresentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        
-        
         BigPresentView *bigView=(BigPresentView*)self.view;
         float lowidthland=bigView.tableView.frame.size.width/totalcolland;
         float lowidthportait=bigView.tableView.frame.size.width/totalcolportait;

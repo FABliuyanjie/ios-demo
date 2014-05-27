@@ -444,6 +444,8 @@
 		9BDC3BDC1910FCF600BFEA62 /* bigpresent_btnx.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BDC3BDB1910FCF600BFEA62 /* bigpresent_btnx.png */; };
 		9BDC3BDD1910FCF600BFEA62 /* bigpresent_btnx.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BDC3BDB1910FCF600BFEA62 /* bigpresent_btnx.png */; };
 		9BEA63721923341B00E53477 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEA63711923341A00E53477 /* CoreMotion.framework */; };
+		9BF0A3AB19342ECB0029EAE8 /* livestudiovc_btntoright.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BF0A3AA19342ECB0029EAE8 /* livestudiovc_btntoright.png */; };
+		9BF0A3AD19342ED30029EAE8 /* livestudiovc_btntoleft.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BF0A3AC19342ED30029EAE8 /* livestudiovc_btntoleft.png */; };
 		9BF3726E192493A6005E7049 /* audienceBackgroundImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BF3726C192493A6005E7049 /* audienceBackgroundImg.png */; };
 		9BF3726F192493A6005E7049 /* hostBackroundImge.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BF3726D192493A6005E7049 /* hostBackroundImge.png */; };
 		9BF3727C1924A572005E7049 /* NumlistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3727A1924A572005E7049 /* NumlistViewController.m */; };
@@ -980,6 +982,8 @@
 		9BDAB50F18E9067500759D06 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		9BDC3BDB1910FCF600BFEA62 /* bigpresent_btnx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigpresent_btnx.png; sourceTree = "<group>"; };
 		9BEA63711923341A00E53477 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		9BF0A3AA19342ECB0029EAE8 /* livestudiovc_btntoright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = livestudiovc_btntoright.png; sourceTree = "<group>"; };
+		9BF0A3AC19342ED30029EAE8 /* livestudiovc_btntoleft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = livestudiovc_btntoleft.png; sourceTree = "<group>"; };
 		9BF3726C192493A6005E7049 /* audienceBackgroundImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audienceBackgroundImg.png; sourceTree = "<group>"; };
 		9BF3726D192493A6005E7049 /* hostBackroundImge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hostBackroundImge.png; sourceTree = "<group>"; };
 		9BF372791924A572005E7049 /* NumlistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumlistViewController.h; sourceTree = "<group>"; };
@@ -1245,6 +1249,8 @@
 		9B079F2618E58556009D6303 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				9BF0A3AC19342ED30029EAE8 /* livestudiovc_btntoleft.png */,
+				9BF0A3AA19342ECB0029EAE8 /* livestudiovc_btntoright.png */,
 				9BF3726C192493A6005E7049 /* audienceBackgroundImg.png */,
 				9BF3726D192493A6005E7049 /* hostBackroundImge.png */,
 				9B72D596191CC9D70071A155 /* liveportrait_vc_audience.png */,
@@ -2669,6 +2675,7 @@
 				0141126C1918F31700DEE3A1 /* land_vc_bg_btn.png in Resources */,
 				9B07A06418E589BD009D6303 /* grayArrow.png in Resources */,
 				0141126A1918F31700DEE3A1 /* fans_vc_rank2.png in Resources */,
+				9BF0A3AD19342ED30029EAE8 /* livestudiovc_btntoleft.png in Resources */,
 				014112711918F31700DEE3A1 /* my_headImage.png in Resources */,
 				014112701918F31700DEE3A1 /* my_headimage_background.png in Resources */,
 				A300EAAA1907828700D8EC02 /* 019.png in Resources */,
@@ -2723,6 +2730,7 @@
 				014112721918F31700DEE3A1 /* myseg_guanzhu_selected.png in Resources */,
 				9BA59B14192606D1002624FF /* UMSCommentDetailController.xib in Resources */,
 				9B079EBE18E58204009D6303 /* RootViewController.xib in Resources */,
+				9BF0A3AB19342ECB0029EAE8 /* livestudiovc_btntoright.png in Resources */,
 				A300EAA21907828700D8EC02 /* 011.png in Resources */,
 				9B079EFA18E583D0009D6303 /* ChatViewController.xib in Resources */,
 				9BA59B1A192606D1002624FF /* UMSnsAccountViewController.xib in Resources */,
