@@ -238,7 +238,7 @@ completionHandler:(void (^)(bool status, NSString *info))handler;
                      completionHandler:(void (^)(bool status, NSString *info))handler;
 {
     NSString *token = [User shareUser].token;
-    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&token=%@&thirdtype=%@&type=%@",PORT_ThirdLogin,@"",token,type,@"3"];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&token=%@&thirdtype=%@&type=%@",PORT_ThirdBind,@"",token,type,@"3"];
     return [self bindHandler:urlStr completionHandler:handler];
     
 }
@@ -249,7 +249,7 @@ completionHandler:(void (^)(bool status, NSString *info))handler;
               completionHandler:(void (^)(bool status, NSString *info))handler;
 {
     NSString *token = [User shareUser].token;
-    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&thirdtype=%@&token=%@",PORT_ThirdLogin,openid,name,type,token];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&thirdtype=%@&token=%@&type=%@",PORT_ThirdBind,openid,name,type,token,@"2"];
     return [self bindHandler:urlStr completionHandler:handler];
     
 }
