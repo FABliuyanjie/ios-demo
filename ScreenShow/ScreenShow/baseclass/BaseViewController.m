@@ -68,8 +68,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+   
     self.navigationController.navigationBar.hidden = NO;
-    
     NSArray *subViews = [self.tabBarController.view subviews];
     
     UIView *contentView = [subViews objectAtIndex:0];
@@ -101,11 +101,10 @@
     
     self.navigationItem.titleView = label;
 }
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-//    self.navigationController.navigationBar.hidden = YES;
-}
+
+
+
+
 -(void)flushUI
 {
     //TODO:刷新界面

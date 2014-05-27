@@ -123,7 +123,7 @@ static int flipflag1=-100;
         case UIGestureRecognizerStateEnded:{
             [UIView beginAnimations:nil context:nil];
             //动画持续时间
-            [UIView setAnimationDuration:0.1];
+            [UIView setAnimationDuration:0.2];
             if (self.viewslipper.frame.origin.x>0 && self.viewslipper.frame.origin.x<=flipflag)
             {
                 self.viewslipper.frame=CGRectMake(0, 0, SCREEN_FRAME_WIDTH*2, SCREEN_FRAME_HEIGHT);

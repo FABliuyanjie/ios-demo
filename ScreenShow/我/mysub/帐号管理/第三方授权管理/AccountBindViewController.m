@@ -164,8 +164,165 @@
     else
     {
         NSLog(@"绑定%@", authType.name);
+        [self loginWithName:authType];
+        
     }
 }
+
+-(void)loginWithName:(AuthType *)authType
+{
+    
+    NSString *platformName = nil;
+    pfname = authType.name;
+    switch (authType.tag) {
+        case 1:
+            platformName = UMShareToQzone;
+            pfname = @"qzone";
+            break;
+        case 2:
+            platformName = UMShareToWechatTimeline;
+            pfname = @"wechat";
+            break;
+        case 3:
+            platformName = UMShareToSina;
+            pfname = @"sina";
+            break;
+        case 4:
+            platformName = UMShareToRenren;
+            pfname = @"renren";
+            break;
+        default:
+            platformName = UMShareToQQ;
+    }
+    __weak AccountBindViewController * weakSelf = self;
+
+    //唤起授权页
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],NO,^(UMSocialResponseEntity *response){
+        
+        if (response.responseCode!=UMSResponseCodeSuccess ) {
+            return ;
+        }
+
+        //取得给定平台的username和usid
+        [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *respose){
+            NSDictionary *dict = respose.data[@"accounts"][pfname];
+            if (dict==nil) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //TODO: 在主线程跳转,绑定操作
+                    [weakSelf handleLoginFailure];
+                });
+            }
+            NSString *username = dict[@"username"];
+            NSString *usid = dict[@"usid"];
+            
+            //判断是否绑定过
+            //发起第三方平台的登录
+            [User loginWithUMbyOpenid:usid openName:username thirdType:pfname completionHandler:^(bool status, NSString *info) {
+                
+                NSLog(@"pfname = %@",pfname);
+                
+                if (status) {
+                    AuthType * auth = [_shareTypeArray objectAtIndex:authType.tag - 1];
+                    
+                    NSLog(@"绑定账户名字：%@", auth.name);
+                    auth.type = YES;
+                    [self.tableView reloadData];
+                }else{
+                     [self bindWithOpenid:usid openName:username thirdType:pfname tag:authType.tag];
+                }
+
+               
+
+                
+//                if (status) {//以前登录过，直接登录成功
+//                    //                    dispatch_async(dispatch_get_main_queue(), ^{
+//                    //TODO: 在主线程跳转,绑定操作
+//                    [weakSelf handleLoginSuccess];
+//                    //                    });
+//                    
+//                }else{//第一次登录，绑定账号或者新注册一个
+//                    //                    dispatch_async(dispatch_get_main_queue(), ^{
+//                    //TODO: 在主线程跳转,绑定操作
+//                    [weakSelf handleBindAccount];
+//                    
+//                    //                    });
+//                }
+                
+            }];
+            
+        }];
+    });
+
+}
+
+-(void)bindWithOpenid:(NSString *)openid openName:(NSString *)openName thirdType:(NSString *)thirdType tag:(int)tag
+{
+    
+    [User bindThirdAccountByOpenid:openid openName:openName thirdType:thirdType completionHandler:^(bool status, NSString *info) {
+        
+        NSLog(@"info = %@", info);
+        if (status==1 || [info isEqualToString:@"绑定失败"] ) {//绑定失败是已经绑定了
+            AuthType * auth = [_shareTypeArray objectAtIndex:tag - 1];
+            
+            NSLog(@"绑定账户名字：%@", auth.name);
+            auth.type = YES;
+            [self.tableView reloadData];
+        }
+        else
+        {
+            [[iToast makeText:info] show];
+        }
+        
+    }];
+
+}
+
+/**
+ *  登录失败
+ */
+-(void)handleLoginFailure
+{
+    [TOOL logOut];
+    [[iToast makeText:@"登录失败"]show];
+}
+
+/**
+ *  第一次第三方登录必须绑定一个账号
+ */
+-(void)handleBindAccount
+{
+//
+//    SelectLoginViewController * selectLoginVC = [[UIStoryboard storyboardWithName:@"ThirdLoginStoryboard" bundle:nil]instantiateViewControllerWithIdentifier:@"SelectLoginViewController"];//[SelectLoginViewController alloc] init];
+//    selectLoginVC.userName = username;
+//    selectLoginVC.openID = usid;
+//    selectLoginVC.typeName = pfname;
+//    selectLoginVC.headPhotoUrl = photoUrl;
+//    [self.navigationController pushViewController:selectLoginVC animated:YES];
+    
+}
+
+/**
+ *  登录成功后的操作
+ *
+ *  @return nil
+ */
+-(void)handleLoginSuccess
+{
+//    [TOOL logIn];
+//    //    [User saveUserInfo];
+//    [[iToast makeText:@"登录成功"] show];
+//    if(self.isFromMyViewController==YES){
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+//    }else{
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+//    
+//    [APService setAlias:[NSString stringWithFormat:@"%ld",(long)[User shareUser].manID]callbackSelector:nil object:nil];
+//    SendNoti(kLogInSuccess);
+
+}
+
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -173,6 +330,21 @@
         
         AuthType * authType = [_shareTypeArray objectAtIndex:alertView.tag - 1];
         NSLog(@"解除绑定%@", authType.name);
+        
+        [User unbindThirdAccountWithThirdType:authType.pinyin completionHandler:^(bool status, NSString *info) {
+           
+            NSLog(@"info = %@", info);
+            if (status || [info isEqualToString:@"解除绑定失败"]) {
+              AuthType * auth = [_shareTypeArray objectAtIndex:authType.tag - 1];
+                auth.type = NO;
+                [self.tableView reloadData];
+            }
+            else
+            {
+                [[iToast makeText:info] show];
+            }
+            
+        }];
     }
 }
 

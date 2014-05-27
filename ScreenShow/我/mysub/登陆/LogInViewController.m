@@ -61,11 +61,7 @@
   
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.hidden = YES;
-}
+
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     
@@ -100,7 +96,7 @@
 -(void)handleLoginSuccess
 {
     [TOOL logIn];
-//    [User saveUserInfo];
+    [[User shareUser]saveUserInfo];
     [[iToast makeText:@"登录成功"] show];
     if(self.isFromMyViewController==YES){
         [self.navigationController popToRootViewControllerAnimated:YES];
@@ -209,18 +205,22 @@
    __weak LogInViewController * weakSelf = self;
     //唤起授权页
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
-    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],NO,^(UMSocialResponseEntity *response){
+       
+        if (response.responseCode!=UMSResponseCodeSuccess ) {
+            return ;
+        }
         //取得给定平台的username和usid
         [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *respose){
             NSDictionary *dict = respose.data[@"accounts"][pfname];
             if (dict==nil) {
-                dispatch_async(dispatch_get_main_queue(), ^{
+
                     //TODO: 在主线程跳转,绑定操作
                     [weakSelf handleLoginFailure];
-                });
+
             }
-            NSString *username = dict[@"username"];
-            NSString *usid = dict[@"usid"];
+           username = dict[@"username"];
+            usid = dict[@"usid"];
 
             //判断是否绑定过
             //发起第三方平台的登录
