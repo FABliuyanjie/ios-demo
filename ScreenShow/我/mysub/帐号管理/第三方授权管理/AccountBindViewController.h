@@ -10,12 +10,17 @@
 @protocol DetailsViewControllerDelegate
 - (void)didSelectPhotoAttributeWithKey:(NSString *)key;
 @end
-@interface AccountBindViewController : BaseTableViewController
+@interface AccountBindViewController : BaseTableViewController<UIAlertViewDelegate>
+{
+    NSMutableArray *_shareTypeArray;
+    NSArray * typeArray;
+    NSMutableArray * requestTypeArray;
+}
 
 /**
  *  从新从服务器请求绑定的用户信息
  */
--(void)refreshInfo;
+//-(void)refreshInfo;
 
 
 
