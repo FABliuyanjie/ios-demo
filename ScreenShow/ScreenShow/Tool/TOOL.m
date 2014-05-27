@@ -158,7 +158,7 @@
     }];
     
     
-  }
+}
 #pragma mark- 通用功能
 //由颜色得到图片
 + (UIImage *)createImageWithColor:(UIColor *)color

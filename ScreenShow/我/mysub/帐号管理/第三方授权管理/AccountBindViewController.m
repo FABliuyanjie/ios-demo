@@ -44,7 +44,7 @@
     
     AuthType * weixinType = [[AuthType alloc] init];
     weixinType.name = @"微信";
-    weixinType.pinyin = @"wechat";
+    weixinType.pinyin = @"weixin";
     weixinType.type = NO;
     weixinType.tag = 2;
     
