@@ -193,7 +193,7 @@
         [self.tableView reloadData];
         
     }else{
-        //TODO:clear cache
+        [[iToast makeText:@"删除成功"]show];
     }
 }
 

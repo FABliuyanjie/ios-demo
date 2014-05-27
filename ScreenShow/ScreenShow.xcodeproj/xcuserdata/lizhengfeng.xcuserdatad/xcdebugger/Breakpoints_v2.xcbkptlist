@@ -25,12 +25,12 @@
                   symbolName = "__45-[LogInViewController thridPartLoginClicked:]_block_invoke"
                   moduleName = "ScreenShow"
                   urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/%E6%88%91/mysub/%E7%99%BB%E9%99%86/LogInViewController.m"
-                  timestampString = "422866949.733774"
+                  timestampString = "422877545.66967"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "210"
-                  endingLineNumber = "210"
-                  offsetFromSymbolStart = "65">
+                  startingLineNumber = "214"
+                  endingLineNumber = "214"
+                  offsetFromSymbolStart = "112">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -39,14 +39,30 @@
                   symbolName = "__45-[LogInViewController thridPartLoginClicked:]_block_invoke_2"
                   moduleName = "ScreenShow"
                   urlString = "file:///Users/lizhengfeng/ios-demo/ScreenShow/%E6%88%91/mysub/%E7%99%BB%E9%99%86/LogInViewController.m"
-                  timestampString = "422866949.734184"
+                  timestampString = "422877545.669906"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "210"
-                  endingLineNumber = "210"
+                  startingLineNumber = "214"
+                  endingLineNumber = "214"
                   offsetFromSymbolStart = "55">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ScreenShow/Tool/TOOL.m"
+            timestampString = "422872978.122904"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "@implementation TOOL"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
