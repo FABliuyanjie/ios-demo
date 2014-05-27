@@ -98,9 +98,28 @@
     [super viewWillAppear:YES];
     MenuViewController *menuVC=[MenuViewController shareMenu];
     [menuVC.viewslipper addGestureRecognizer:menuVC.pan];
-    self.navigationController.navigationBarHidden = NO;
+    
 }
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = NO;
+    NSArray *subViews = [self.tabBarController.view subviews];
+    
+    UIView *contentView = [subViews objectAtIndex:0];
+    
+#ifdef __IPHONE_7_0
+    
+    if (isIOS7) {
+        contentView.frame = CGRectMake(20, 0, 320, SCREEN_HEIGHT - 49 + 64);
+    }
+    
+#endif
+    
+    if(!isIOS7) {
+        contentView.frame = CGRectMake(20, 0, 320, SCREEN_HEIGHT - 49);
+    }
 
+}
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:YES];
@@ -129,9 +148,9 @@
     
     //头像切圆
     self.headImageView.layer.masksToBounds = YES;
-    self.headImageView.layer.cornerRadius = 50.f;
+    self.headImageView.layer.cornerRadius = 60.f;
     self.headImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.headImageView.layer.borderWidth = 2;
+    self.headImageView.layer.borderWidth = 5;
     self.scrollView.delegate = self;
     if (IS_LOGIN) {
         [self flushUIWhenLogined];
@@ -168,13 +187,13 @@
     
     [self.headImageView setImageWithURL:[NSURL URLWithString:user.photoUrl] placeholderImage:[UIImage imageNamed:@"login_headImage"] success:^(UIImage *image) {
         user.photo = image;
-        [User saveUserInfo];
+        [user saveUserInfo];
     } failure:^(NSError *error) {
         //
     }];
     //=======
     //登录 注册 系统设置 按钮
-    self.userName.text = user.nickName;
+    self.userName.text = user.manName;
     self.userType.text = user.levelName;
     
     self.registerBtn.hidden = YES;

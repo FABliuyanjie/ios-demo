@@ -66,13 +66,15 @@
     self.level2Lb.text = @"大富翁";
     
     //设置手机号码和邮箱地址
-    self.headImage.image = user.photo;
+    [self.headImage setImageWithURL:[NSURL URLWithString:[User shareUser].photoUrl] placeholderImage:[UIImage imageNamed:@"login_headImage"]];
     self.headImage.layer.cornerRadius = 60;
     self.headImage.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.headImage.layer.borderWidth = 3.f;
+    self.headImage.layer.borderWidth = 5.f;
     self.userNameLb.text = user.nickName;
-    [self.phoneNumberBtn setTitle:[NSString stringWithFormat:@"手机号码:%@",user.manPhone] forState:UIControlStateNormal];
-    [self.emailBtn setTitle:[NSString stringWithFormat:@"邮箱:%@",user.manEmail?user.manEmail:@"           "] forState:UIControlStateNormal];}
+    NSString *manPhone = [user.manName isEqualToString:@""]?@"未绑定":user.manPhone;
+    NSString *manEmail = [user.manPhone isEqualToString:@""]?@"未绑定":user.manEmail;
+    [self.phoneNumberBtn setTitle:[NSString stringWithFormat:@"手机号码:%@",manPhone] forState:UIControlStateNormal];
+    [self.emailBtn setTitle:[NSString stringWithFormat:@"邮箱:%@",manEmail] forState:UIControlStateNormal];}
 
 
 #pragma mark - 修改头像
@@ -94,29 +96,13 @@
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera){
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     }
-    User *user = [User readUserInfo];
-    NSString *token = user.token;
     [TOOL uploadUserPhoto:image completionHandler:^(bool status, NSString *info) {
-        
-
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(status? @"上传成功":@"上传失败") message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
-        
-        [alert setBackgroundColor:[UIColor grayColor]];
-        
-        [alert setContentMode:UIViewContentModeScaleAspectFit];
-        
-        [alert show];
-        
-        
-        [self  performSelector:@selector(hidenAlter:) withObject:alert afterDelay:2];
-        
+        [[iToast makeText:status?@"上传成功":@"上传失败"]show];
         if (status) {
-            user.photo = image;
-            [User saveUserInfo];
+            [User shareUser].photo = image;
+            [[User shareUser] saveUserInfo];
             SendNoti(kReflushUserInfo);
         }
-        
-        
     }];
     
 }

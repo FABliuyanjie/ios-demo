@@ -40,7 +40,7 @@
 +(void)logOut
 {
     [User shareUser].manID = -1;
-    [User saveUserInfo];
+    [[User shareUser]saveUserInfo];
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"Cookie"];
   
 }
