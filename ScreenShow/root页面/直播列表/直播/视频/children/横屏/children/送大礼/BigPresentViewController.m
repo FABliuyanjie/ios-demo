@@ -57,6 +57,9 @@
     bigView.tableView.dataSource=self;
     
     
+    
+    
+    bigView.labelnote1.text=self.anchor.nickName;
     bigView.labelleftmoney.text=[NSString stringWithFormat:@"%.0f币",[[User shareUser] accountMoney]];
     [bigView.btnsend addTarget:self  action:@selector(btnsendClicked:) forControlEvents:UIControlEventTouchDown];
     [bigView.btnnum addTarget:self action:@selector(btnnumClicked:) forControlEvents:UIControlEventTouchDown];
@@ -184,6 +187,7 @@
 {
     NSLog(@"%d",sender.view.tag);
     BigPresentView *bigView=(BigPresentView*)self.view;
+    bigView.labelnotenote.text=@"已选择";
     Present *selectedobj=[self.presentArray objectAtIndex:sender.view.tag];
     for (Present *obj in self.presentArray) {
         if (selectedobj==obj) {
@@ -274,8 +278,6 @@
     if (cell == nil) {
         cell=[[BigPresentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        
-        
         BigPresentView *bigView=(BigPresentView*)self.view;
         float lowidthland=bigView.tableView.frame.size.width/totalcolland;
         float lowidthportait=bigView.tableView.frame.size.width/totalcolportait;
