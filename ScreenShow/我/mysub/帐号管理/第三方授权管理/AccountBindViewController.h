@@ -15,6 +15,7 @@
     NSMutableArray *_shareTypeArray;
     NSArray * typeArray;
     NSMutableArray * requestTypeArray;
+    NSString * pfname;
 }
 
 /**
