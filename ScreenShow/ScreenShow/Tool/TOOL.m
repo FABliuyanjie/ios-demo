@@ -40,7 +40,7 @@
 +(void)logOut
 {
     [User shareUser].manID = -1;
-    [User saveUserInfo];
+    [[User shareUser]saveUserInfo];
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"Cookie"];
   
 }
@@ -148,21 +148,15 @@
  */
 +(void)handleResureInfoWithString:(NSString*)urlStr completionHandler:(void(^)(bool status, NSString *indo)) handler
 {
-    NSURL * url = [NSURL URLWithString:urlStr];
-    NSURLRequest * request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        bool status = NO;
-        NSString *info = nil;
-        if (data==nil || connectionError==nil) {
-            status = NO;
-            info = @"网络故障";
-        }else{
-            status = [dict[@"status"]boolValue];
-            info = dict[@"info"];
-        }
+    
+    [[AFAppDotNetAPIClient sharedClient]GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        bool status = responseObject[@"status"];
+        NSString *info = responseObject[@"info"];
         handler(status,info);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        handler(NO,@"网络故障");
     }];
+    
     
 }
 #pragma mark- 通用功能
@@ -267,7 +261,7 @@
  */
 +(void)showLoginViewControllerForm:(UIViewController*)vc Push:(BOOL)push;
 {
-    UIViewController *loginVC = [[UIStoryboard storyboardWithName:@"MyStoryBoard" bundle:nil]instantiateViewControllerWithIdentifier:@"LogInViewController"];
+    LogInViewController *loginVC = [[UIStoryboard storyboardWithName:@"MyStoryBoard" bundle:nil]instantiateViewControllerWithIdentifier:@"LogInViewController"];
     if (vc.navigationController==nil || push==NO) {
         [vc presentViewController:loginVC animated:YES completion:nil];
     }else{
@@ -281,7 +275,8 @@
 {
     UIViewController *payVC = [[UIStoryboard storyboardWithName:@"MyStoryBoard" bundle:nil]instantiateViewControllerWithIdentifier:@"RchargeViewController"];
     if (vc.navigationController==nil || push==NO) {
-        [vc presentViewController:payVC animated:YES completion:nil];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:payVC];
+        [vc presentViewController:nav animated:YES completion:nil];
     }else{
         [vc.navigationController pushViewController:payVC animated:YES];
     }

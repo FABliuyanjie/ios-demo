@@ -16,13 +16,13 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder;
 - (id)initWithCoder:(NSCoder *)aDecoder;
 
-+(instancetype)shareUser;
+
 -(instancetype)initWithDict:(NSDictionary*)dict;
 -(BOOL)setKeyWithDict:(NSDictionary*)dict;
+-(void)saveUserInfo;
 
 +(User*)readUserInfo;
-+(void)saveUserInfo;
-
++(instancetype)shareUser;
 
 
 //登录 block
