@@ -82,20 +82,20 @@
                     </subviews>
                     <color key="backgroundColor" red="0.89411771297454834" green="0.89411771297454834" blue="0.89411771297454834" alpha="1" colorSpace="deviceRGB"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aa3-bn-8wT">
-                    <rect key="frame" x="20" y="60" width="46" height="80"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aa3-bn-8wT">
+                    <rect key="frame" x="10" y="50" width="20" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="left">
+                    <state key="normal" title="left" image="livestudiovc_btntoleft.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="btnleftorrightClicked:" destination="-1" eventType="touchUpInside" id="3Rz-Xm-2xv"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4P5-e0-564">
-                    <rect key="frame" x="230" y="60" width="46" height="80"/>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4P5-e0-564">
+                    <rect key="frame" x="290" y="50" width="20" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="right">
+                    <state key="normal" title="right" image="livestudiovc_btntoright.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -318,6 +318,8 @@
         <image name="btn_back_highlight.png" width="39" height="44"/>
         <image name="dragon.jpg" width="294" height="220"/>
         <image name="liveportrait_vc_audience.png" width="30" height="30"/>
+        <image name="livestudiovc_btntoleft.png" width="40" height="174"/>
+        <image name="livestudiovc_btntoright.png" width="40" height="174"/>
         <image name="screen_portaitvc_btn6.png" width="148" height="42"/>
         <image name="screen_portaitvc_btn6_highlight.png" width="148" height="42"/>
         <image name="screen_portaitvc_btn6out.png" width="148" height="42"/>

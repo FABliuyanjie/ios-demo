@@ -101,6 +101,7 @@
         
         self.btnleft=[[UIButton alloc] initWithFrame:CGRectZero];
         self.btnleft.backgroundColor=[UIColor blueColor];
+        [self.btnleft setImage:[UIImage imageNamed:@"livestudiovc_btntoleft.png"] forState:UIControlStateNormal];
         [self addSubview:self.btnleft];
         
         
@@ -108,7 +109,7 @@
         self.btnright.tag=0;
         [self.btnleft setTranslatesAutoresizingMaskIntoConstraints:NO];//采用autolayout布局
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btnleft attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:0.0f constant:(40)]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btnleft attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:0.0f constant:(30)]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btnleft attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:0.0f constant:(100.0f)]];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btnleft attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:0.0f constant:(70)]];
@@ -120,13 +121,14 @@
         self.btnright=[[UIButton alloc] initWithFrame:CGRectZero];
         self.btnright.backgroundColor=[UIColor blueColor];
         self.btnright.tag=1;
+        [self.btnright setImage:[UIImage imageNamed:@"livestudiovc_btntoright.png"] forState:UIControlStateNormal];
         [self addSubview:self.btnright];
         
         
         [self.btnright sizeToFit];
         [self.btnright setTranslatesAutoresizingMaskIntoConstraints:NO];//采用autolayout布局
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btnright attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:0.0f constant:(40)]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btnright attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:0.0f constant:(30)]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btnright attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:0.0f constant:(100.0f)]];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btnright attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:0.0f constant:(70)]];
