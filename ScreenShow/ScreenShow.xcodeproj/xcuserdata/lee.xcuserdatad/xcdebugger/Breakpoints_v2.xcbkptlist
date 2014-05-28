@@ -163,5 +163,37 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "root&#x9875;&#x9762;/&#x76f4;&#x64ad;&#x5217;&#x8868;/&#x76f4;&#x64ad;/&#x89c6;&#x9891;/children/&#x6a2a;&#x5c4f;/children/&#x9001;&#x5927;&#x793c;/BigPresentViewController.m"
+            timestampString = "422947526.161159"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-btnsendClicked:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "root&#x9875;&#x9762;/&#x76f4;&#x64ad;&#x5217;&#x8868;/&#x76f4;&#x64ad;/&#x804a;&#x5929;/children/&#x516c;&#x804a;/ChatViewController.m"
+            timestampString = "422951816.320751"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -95,6 +95,7 @@ extern const double cMonth ;
         lb1.text = str1;
         [headView addSubview:lb1];
         
+        _money = _money?_money:@"0";
         CGSize size2 = [_money sizeWithFont:font1];
         UILabel *lb2 = [[UILabel alloc]initWithFrame:CGRectMake(lb1.right, 5, size2.width, 20)];
         lb2.font =font1;
@@ -109,6 +110,7 @@ extern const double cMonth ;
         lb3.text = str3;
         [headView addSubview:lb3];
         
+         _fmoney = _fmoney?_fmoney:@"0";
         CGSize size4 = [_fmoney sizeWithFont:font1];
         UILabel *lb4 = [[UILabel alloc]initWithFrame:CGRectMake(lb3.right, 5, size4.width, 20)];
         lb4.textColor = [UIColor redColor];
@@ -202,9 +204,6 @@ extern const double cMonth ;
                 ReChangItem *item = [[ReChangItem alloc]initWithDict:subDict];
                 [_totalArray addObject:item];
             }
-        }else{
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"info" message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alert show];
         }
         [self.tableView reloadData];
         [self fiterResultArray:_type];
@@ -221,12 +220,7 @@ extern const double cMonth ;
     }];
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex==0) {
-        [TOOL showLoginViewControllerForm:self Push:YES];
-    }
-}
+
 
 -(BOOL)fiterResultArray:(kFiterType)type
 {

@@ -10,7 +10,7 @@
             <objects>
                 <viewController storyboardIdentifier="MyViewController" title="我的" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DrM-89-0mk" customClass="MyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u99-sS-z6r">
-                        <rect key="frame" x="0.0" y="64" width="320" height="2296"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="2040"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="YxF-Hb-rN8">
@@ -202,16 +202,16 @@
             </objects>
             <point key="canvasLocation" x="-10971" y="548"/>
         </scene>
-        <!--Account Management View Controller - 账户管理-->
+        <!--Account Management View Controller-->
         <scene sceneID="JK8-sQ-pC3">
             <objects>
                 <viewController storyboardIdentifier="AccountManagementViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AuB-cC-k3E" customClass="AccountManagementViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fbR-3r-RxV">
-                        <rect key="frame" x="0.0" y="64" width="320" height="1120"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="uUH-Jj-gr5">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="1120"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="736"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headImage.png" id="LS6-QS-Q6z">
@@ -304,7 +304,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="账户管理" id="yWP-pL-NCb"/>
+                    <navigationItem key="navigationItem" id="yWP-pL-NCb"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="800"/>
@@ -460,7 +460,7 @@
             <objects>
                 <viewController id="hWh-sz-vad" customClass="AboutUsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Duo-uw-Dhh">
-                        <rect key="frame" x="0.0" y="64" width="320" height="3000"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="2616"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星光秀" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="btw-zZ-mFH">
@@ -814,7 +814,7 @@
             <objects>
                 <viewController storyboardIdentifier="MySegmentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jhe-XY-UNC" customClass="MyCostListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gRU-VR-FsP">
-                        <rect key="frame" x="0.0" y="64" width="320" height="3000"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="2616"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -996,7 +996,7 @@
             <objects>
                 <viewController storyboardIdentifier="ChangPhoneNumberViewController" title=" 更换手机号码" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1rc-cT-fDf" customClass="ChangPhoneNumberViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Goo-yr-P0M">
-                        <rect key="frame" x="0.0" y="64" width="320" height="864"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="U4S-8r-7Ss">
@@ -1078,7 +1078,7 @@
             <objects>
                 <viewController storyboardIdentifier="SubChangPNViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NWI-8v-Unw" customClass="SubChangPNViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZGR-ft-NVU">
-                        <rect key="frame" x="0.0" y="64" width="320" height="864"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0VJ-l2-fAa">
@@ -1154,11 +1154,11 @@
             <objects>
                 <viewController id="PdX-3T-A2j" customClass="SignInViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDx-wz-XOr">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="y51-oI-pJp">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qt6-yg-OgX">
@@ -1344,11 +1344,11 @@
             <objects>
                 <viewController storyboardIdentifier="LogInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xdp-E9-Bde" customClass="LogInViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDe-fB-YMy">
-                        <rect key="frame" x="0.0" y="64" width="320" height="760"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="hYs-y4-lyd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="760"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="55L-Qf-tPt">
@@ -1521,7 +1521,7 @@
             <objects>
                 <viewController id="fGe-jA-zo8" customClass="FindPassWordViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="odv-JM-dc4">
-                        <rect key="frame" x="0.0" y="64" width="320" height="3448"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="3064"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gVJ-sl-lRd">
