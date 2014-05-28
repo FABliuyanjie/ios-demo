@@ -33,6 +33,7 @@
     [self.arrayContent addObject:@"政治非法内容"];
     [self.arrayContent addObject:@"色情内容"];
     [self.arrayContent addObject:@"低俗内容"];
+    table.scrollEnabled=NO;
 }
 
 - (void)didReceiveMemoryWarning
