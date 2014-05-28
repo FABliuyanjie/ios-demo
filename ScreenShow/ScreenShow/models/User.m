@@ -83,7 +83,7 @@
     
     static User *obj = nil;
     if (!obj) {
-        obj = [[User alloc]init];
+        obj = [[self class]readUserInfo];
     }
     return obj;
     
@@ -121,27 +121,20 @@
 
 #pragma mark - Save and Read User Info
 
-+(void)saveUserInfo
+-(void)saveUserInfo
 {
     NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* filename = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"history.dat"];
-    User *user = [User shareUser];
-    if (user) {
-        [NSKeyedArchiver archiveRootObject:user toFile:filename];
-    }else {
-        //删除归档文件
-        NSFileManager *defaultManager = [NSFileManager defaultManager];
-        if ([defaultManager isDeletableFileAtPath:filename]) {
-            [defaultManager removeItemAtPath:filename error:nil];
-        }
-    }
+    [NSKeyedArchiver archiveRootObject:self toFile:filename];
+
 }
 +(User*)readUserInfo
 {
     NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* filename = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"history.dat"];
     
-    User *user = [NSKeyedUnarchiver unarchiveObjectWithFile:filename];
+   User *user = [NSKeyedUnarchiver unarchiveObjectWithFile:filename];
+ 
     return user;
 }
 
@@ -198,8 +191,14 @@ completionHandler:(void (^)(bool status, NSString *info))handler;
                          thirdType:(NSString*)type
                  completionHandler:(void (^)(bool status, NSString *info))handler;
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&username=%@&pwd=%@&type=%@thirdtype=%@",PORT_ThirdBind,openid,name,username,passWord,@"2",type];
-    return [self refreshUserInfo:urlStr parameter:nil completionHandler:handler];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?openid=%@&name=%@&username=%@&pwd=%@&type=%@&thirdtype=%@",PORT_ThirdBind,openid,name,username,passWord,@"2",type];
+    return [self refreshUserInfo:urlStr parameter:nil completionHandler:^(bool status,NSString *info){
+        if (status && [info isEqualToString:@"绑定成功"]) {
+            return [self refreshUserInfo:urlStr parameter:nil completionHandler:handler];
+        }else{
+            handler(status,info);
+        }
+    }];
 }
 
 //第三方登录--不是第一次，直接登录

@@ -48,16 +48,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:YES];
-    self.navigationController.navigationBar.hidden= NO;
-}
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:YES];
-    self.navigationController.navigationBar.hidden = YES;
-}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

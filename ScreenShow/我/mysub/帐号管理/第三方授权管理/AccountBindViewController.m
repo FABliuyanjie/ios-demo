@@ -44,7 +44,7 @@
     
     AuthType * weixinType = [[AuthType alloc] init];
     weixinType.name = @"微信";
-    weixinType.pinyin = @"wechat";
+    weixinType.pinyin = @"weixin";
     weixinType.type = NO;
     weixinType.tag = 2;
     
@@ -198,7 +198,12 @@
 
     //唤起授权页
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:platformName];
-    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],NO,^(UMSocialResponseEntity *response){
+        
+        if (response.responseCode!=UMSResponseCodeSuccess ) {
+            return ;
+        }
+
         //取得给定平台的username和usid
         [[UMSocialDataService defaultDataService] requestSocialAccountWithCompletion:^(UMSocialResponseEntity *respose){
             NSDictionary *dict = respose.data[@"accounts"][pfname];

@@ -8,7 +8,7 @@
 
 #import "SelectLoginViewController.h"
 #import "APService.h"
-@interface SelectLoginViewController ()
+@interface SelectLoginViewController ()<UITextFieldDelegate>
 
 @end
 
@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"绑定账号";
 	// Do any additional setup after loading the view.
 }
 
@@ -121,8 +122,6 @@
     [TOOL logIn];
     //    [User saveUserInfo];
     [[iToast makeText:@"登录成功"] show];
-    [User shareUser].photoUrl = self.headPhotoUrl;
-    [User shareUser].nickName = self.userName;
     [APService setAlias:[NSString stringWithFormat:@"%ld",(long)[User shareUser].manID]callbackSelector:nil object:nil];
     SendNoti(kLogInSuccess);
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -145,7 +144,6 @@
     self.popUpBox.upTextField.placeholder = @"请输入用户名";
     self.popUpBox.upTextField.hidden = NO;
     self.popUpBox.upTextField.delegate = self;
-    
     self.popUpBox.upButton.hidden = YES;
     
     [self.popUpBox setDownTextFieldWithTop:self.popUpBox.upTextField.bottom + 40];
@@ -181,6 +179,13 @@
         
         [(PopUpBox *)pop removeFromSuperview];
     };
+
+}
+
+#pragma mark - keyboard handle
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+   
 
 }
 @end
