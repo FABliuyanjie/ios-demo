@@ -69,7 +69,7 @@
 {
     [super viewWillAppear:animated];
    
-    self.navigationController.navigationBar.hidden = NO;
+   
     NSArray *subViews = [self.tabBarController.view subviews];
     
     UIView *contentView = [subViews objectAtIndex:0];
@@ -88,6 +88,7 @@
     
     UIImage *image = [UIImage imageWithColor:[UIColor colorWithWhite:0.868 alpha:1.000] size:CGSizeMake(320, 44) andRoundSize:0];
     [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+     self.navigationController.navigationBar.hidden = NO;
 }
 -(void)setTitle:(NSString *)title
 {

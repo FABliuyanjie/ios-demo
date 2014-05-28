@@ -40,6 +40,7 @@
     [self flushUI];
    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(flushUI) name:kReflushUserInfo object:nil];
+//    self.navigationController.navigationBar.translucent  = YES;
     // Do any additional setup after loading the view.
 }
 
@@ -49,11 +50,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-
-}
 
 //刷新UI
 -(void)flushUI
@@ -91,6 +87,8 @@
 {
     //立刻关闭选择界面
     [picker dismissViewControllerAnimated:YES completion:nil];
+    self.navigationController.navigationBar.translucent  = NO;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     UIImage *image= [info objectForKey:@"UIImagePickerControllerEditedImage"];
     //如果是刚拍的，保存到相册
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera){
@@ -160,5 +158,16 @@
     [alert dismissWithClickedButtonIndex:0 animated:YES];
 }
 
+//FIXME:
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.frame = CGRectMake(0, 20, SCREEN_WIDTH, 44);
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+
+    self.navigationController.navigationBar.frame = CGRectMake(0, 20, SCREEN_WIDTH, 44);
+    self.view.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
+}
 
 @end

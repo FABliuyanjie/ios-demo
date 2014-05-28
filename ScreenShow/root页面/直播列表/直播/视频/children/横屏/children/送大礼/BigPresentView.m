@@ -148,7 +148,7 @@
         [self.labelnotenote1 sizeToFit];
         self.labelnotenote1.textColor=[UIColor whiteColor];
         [self.labelnotenote1 setTranslatesAutoresizingMaskIntoConstraints:NO];//采用autolayout
-        self.labelnotenote1.text=@"";
+        self.labelnotenote1.text=@"送给";
         [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnotenote1 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.labelnote attribute:NSLayoutAttributeTop multiplier:1.0 constant:(0)]];
         
         [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnotenote1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.labelnote attribute:NSLayoutAttributeRight multiplier:1.0f constant:(0.0f)]];
@@ -159,7 +159,7 @@
         [self.labelnote1 sizeToFit];
         self.labelnote1.textColor=[UIColor colorWithRed:233/255.0 green:187/255.0 blue:117/255.0 alpha:1.0];
         [self.labelnote1 setTranslatesAutoresizingMaskIntoConstraints:NO];//采用autolayout
-        self.labelnote1.text=@"送给";
+        self.labelnote1.text=@"";
         [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnote1 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.labelnotenote1 attribute:NSLayoutAttributeTop multiplier:1.0 constant:(0)]];
         
         [self.bottomview addConstraint:[NSLayoutConstraint constraintWithItem:self.labelnote1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.labelnotenote1 attribute:NSLayoutAttributeRight multiplier:1.0f constant:(0.0f)]];
@@ -192,7 +192,7 @@
         
         
         self.btnpay=[[UIButton alloc] initWithFrame:CGRectZero];
-        [self.btnpay setTitle:@"支付" forState:UIControlStateNormal];
+        [self.btnpay setTitle:@"充值" forState:UIControlStateNormal];
         [self.btnpay setBackgroundImage:[UIImage imageNamed:@"chat_vc_bg_btnsend.png"] forState:UIControlStateNormal];
         self.btnpay.backgroundColor=[UIColor clearColor];
         

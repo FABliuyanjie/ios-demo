@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>12D36C3D-081D-46CD-987B-52AE042CE443</string>
+	<string>A0660222-7E60-4673-BB1C-9C89EFF41B28</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ScreenShow</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>7A16D5FC-F136-4C42-9BF5-261671EE0016</key>
-		<string>https://github.com/FABliuyanjie/ios-demo.git</string>
+		<key>9A3B41AD-A4FA-4FE8-9F4F-F61D7B925299</key>
+		<string>https://github.com/liop/ios-demo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ScreenShow/ScreenShow.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>7A16D5FC-F136-4C42-9BF5-261671EE0016</key>
+		<key>9A3B41AD-A4FA-4FE8-9F4F-F61D7B925299</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/FABliuyanjie/ios-demo.git</string>
+	<string>https://github.com/liop/ios-demo.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>7A16D5FC-F136-4C42-9BF5-261671EE0016</string>
+	<string>9A3B41AD-A4FA-4FE8-9F4F-F61D7B925299</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>7A16D5FC-F136-4C42-9BF5-261671EE0016</string>
+			<string>9A3B41AD-A4FA-4FE8-9F4F-F61D7B925299</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ios-demo</string>
 		</dict>
