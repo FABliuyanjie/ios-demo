@@ -44,7 +44,7 @@
     [self.view endEditing:YES];
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:@"5373474456240b1cbc020bde"
-                                      shareText:@"你要分享的文字aasdfas"
+                                      shareText:textview.text
                                      shareImage:nil
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToRenren,UMShareToQQ,nil]
                                        delegate:nil];
