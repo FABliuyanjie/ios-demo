@@ -64,9 +64,7 @@
     }
 
     [super prepareForSegue:segue sender:sender];
-
-
-
+    NSLog(@"adskfjk");
 }
 -(void)viewWillAppear:(BOOL)animated
 {
