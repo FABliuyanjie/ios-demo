@@ -39,6 +39,8 @@
     self.title = @"账号管理";
     [self flushUI];
    
+    self.extendedLayoutIncludesOpaqueBars = YES;
+    self.modalPresentationCapturesStatusBarAppearance = YES;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(flushUI) name:kReflushUserInfo object:nil];
 //    self.navigationController.navigationBar.translucent  = YES;
     // Do any additional setup after loading the view.
@@ -145,9 +147,11 @@
             return;
             break;
     }
+  
     imagePicker.delegate = self;
     imagePicker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     imagePicker.allowsEditing = YES;
+    
     [self presentViewController:imagePicker animated:YES completion:nil];
   
 }
@@ -170,4 +174,15 @@
     self.view.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
 }
 
+
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+//    if (navigationController == imagePicker.navigationController) {
+        navigationController.navigationBar.translucent = NO;
+        UIImage *image = [UIImage imageWithColor:[UIColor colorWithWhite:0.868 alpha:1.000] size:CGSizeMake(320, 44) andRoundSize:0];
+        [navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+        navigationController.navigationBar.hidden = NO;
+
+//    }
+}
 @end
