@@ -25,55 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ScreenShow/models/User.m"
-            timestampString = "422952851.59767"
+            filePath = "ScreenShow/Tool/TOOL.m"
+            timestampString = "422957547.78731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ScreenShow/models/User.m"
-            timestampString = "422952851.59767"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ScreenShow/models/User.m"
-            timestampString = "422952851.59767"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x6211;/mysub/&#x5e10;&#x53f7;&#x7ba1;&#x7406;/AccountManagementViewController.m"
-            timestampString = "422954859.910014"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "-navigationController:willShowViewController:animated:"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "+uploadUserPhoto:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,13 +41,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#x6211;/mysub/&#x5e10;&#x53f7;&#x7ba1;&#x7406;/AccountManagementViewController.m"
-            timestampString = "422954859.910014"
+            filePath = "ScreenShow/Tool/TOOL.m"
+            timestampString = "422957548.975986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-navigationController:willShowViewController:animated:"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "+uploadUserPhoto:completionHandler:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ScreenShow/Tool/TOOL.m"
+            timestampString = "422957568.246671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "+uploadUserPhoto:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

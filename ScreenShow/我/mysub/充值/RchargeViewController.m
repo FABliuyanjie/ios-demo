@@ -80,30 +80,7 @@
     [super viewWillAppear:YES];
     self.navigationController.navigationBarHidden=NO;
 }
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:YES];
-    self.navigationController.navigationBarHidden=NO;
-}
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:YES];
-    self.navigationController.navigationBarHidden=YES;
-}
-//-(IBAction)alipayBtnClick:(id)sender
-//{
-//    
-//}
-//
-//-(IBAction)phonePayBtnClick:(id)sender
-//{
-//    
-//}
-//
-//-(IBAction)rechargeableCardPayBtnClick:(id)sender
-//{
-//    
-//}
+
 
 
 @end

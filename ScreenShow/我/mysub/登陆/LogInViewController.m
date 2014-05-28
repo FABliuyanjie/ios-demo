@@ -80,9 +80,9 @@
         __weak LogInViewController * weakSelf = self;
         [User logInUser:self.userNameTf.text passWord:self.passwdTf.text completionHandler:^(bool status, NSString *info) {
             if (status) {
-                [weakSelf handleLoginSuccess];
+                [weakSelf handleLoginSuccess:info];
             }else{
-                [weakSelf handleLoginFailure];
+                [weakSelf handleLoginFailure:info];
             }
         }];
     }
@@ -93,11 +93,15 @@
  *
  *  @return nil
  */
--(void)handleLoginSuccess
+-(void)handleLoginSuccess:(NSString*)info
 {
     [TOOL logIn];
     [[User shareUser]saveUserInfo];
-    [[iToast makeText:@"登录成功"] show];
+    dispatch_async(dispatch_get_main_queue(), ^{
+         [[iToast makeText:@"登录成功"] show];
+    });
+
+   
     if(self.isFromMyViewController==YES){
         [self.navigationController popToRootViewControllerAnimated:YES];
     }else{
@@ -127,10 +131,13 @@
 /**
  *  登录失败
  */
--(void)handleLoginFailure
+-(void)handleLoginFailure:(NSString*)info
 {
     [TOOL logOut];
-    [[iToast makeText:@"登录失败"]show];
+    dispatch_async(dispatch_get_main_queue(), ^{
+         [[iToast makeText:[NSString stringWithFormat:@"%@,%@",@"登录失败",info]]show];
+    });
+   
     
 }
 
@@ -216,7 +223,7 @@
             if (dict==nil) {
 
                     //TODO: 在主线程跳转,绑定操作
-                    [weakSelf handleLoginFailure];
+                [weakSelf handleLoginFailure:@"连接失败"];
 
             }
            username = dict[@"username"];
@@ -228,7 +235,7 @@
                 if (status) {//以前登录过，直接登录成功
 //                    dispatch_async(dispatch_get_main_queue(), ^{
                         //TODO: 在主线程跳转,绑定操作
-                        [weakSelf handleLoginSuccess];
+                    [weakSelf handleLoginSuccess:info];
 //                    });
                     
                 }else{//第一次登录，绑定账号或者新注册一个

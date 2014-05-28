@@ -97,7 +97,10 @@
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     }
     [TOOL uploadUserPhoto:image completionHandler:^(bool status, NSString *info) {
-        [[iToast makeText:status?@"上传成功":@"上传失败"]show];
+//        [[iToast makeText:status?@"上传成功":@"上传失败"]show];
+        UIAlertView *alter = [[UIAlertView alloc]initWithTitle:@"确定" message:status?@"上传成功":@"上传失败" delegate:@"" cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alter show];
+//        [alter dismissWithClickedButtonIndex:0 animated:YES];
         if (status) {
             [User shareUser].photo = image;
             [[User shareUser] saveUserInfo];
