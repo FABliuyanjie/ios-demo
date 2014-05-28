@@ -64,6 +64,8 @@
     }
 
     [super prepareForSegue:segue sender:sender];
+    
+    NSLog(@"hhhhh");
 
 
 

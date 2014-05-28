@@ -3314,8 +3314,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: peng li (5MLPEMTNDE)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FAB Beijing Audio Co., Ltd. (7H3GAK7WF4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FAB Beijing Audio Co., Ltd. (7H3GAK7WF4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
@@ -3359,7 +3359,7 @@
 				);
 				"OTHER_LDFLAGS[arch=*]" = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C6FA5E4C-B9F2-4D23-B782-6BFB84014EEC";
+				PROVISIONING_PROFILE = "49793958-2F8C-4C2F-A4B6-E135D3A6023C";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -3410,7 +3410,7 @@
 				);
 				New_Setting = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C6FA5E4C-B9F2-4D23-B782-6BFB84014EEC";
+				PROVISIONING_PROFILE = "49793958-2F8C-4C2F-A4B6-E135D3A6023C";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

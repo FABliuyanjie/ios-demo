@@ -51,7 +51,7 @@
     self.commitBtn.backgroundColor = [UIColor colorWithRed:154 / 255.0f green:60 / 255.0f blue:80 / 255.0f alpha:1];
     [self.commitBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     self.commitBtn.titleLabel.font = [UIFont systemFontOfSize:20.0f];
-    self.commitBtn.frame = CGRectMake(10, CGRectGetMaxY(self.textView.frame) + 20, SCREEN_WIDTH - 20, 45);
+    self.commitBtn.frame = CGRectMake(10, CGRectGetMaxY(self.textView.frame) + 10, SCREEN_WIDTH - 20, 45);
     
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];
     [self.view addGestureRecognizer:tap];
