@@ -63,6 +63,7 @@
     bigView.labelleftmoney.text=[NSString stringWithFormat:@"%.0f币",[[User shareUser] accountMoney]];
     [bigView.btnsend addTarget:self  action:@selector(btnsendClicked:) forControlEvents:UIControlEventTouchDown];
     [bigView.btnnum addTarget:self action:@selector(btnnumClicked:) forControlEvents:UIControlEventTouchDown];
+    [bigView.btnpay addTarget:self action:@selector(btnpayClicked:) forControlEvents:UIControlEventTouchDown];
     [self startnetworkofpresentlist:[NSString stringWithFormat:@"index.php/Api/Show/giftsList"]];
 }
 -(void)startnetworkofpresentlist:(NSString *)prstr
@@ -157,6 +158,11 @@
     }
     int tmpnum=[bigview.btnnum.titleLabel.text intValue];
     [self startnetworkofsend:[NSString stringWithFormat:@"index.php/Api/Show/giftsGive?id=%d&to_id=%d&gift_id=%d&num=%d",[[User shareUser] manID],self.anchor.anchorid,self.presenttosend.presentid,tmpnum]];
+}
+-(void)btnpayClicked:(id)sender
+{
+    UIViewController *payVC = [[UIStoryboard storyboardWithName:@"MyStoryBoard" bundle:nil]instantiateViewControllerWithIdentifier:@"RchargeViewController"];
+    [self.navigationController pushViewController:payVC animated:YES];
 }
 -(void)configurecell:(BigPresentTableViewCell *)cell indexPath:(NSIndexPath *)indexPath totalcol:(int)totalcol
 {

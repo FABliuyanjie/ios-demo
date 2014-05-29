@@ -264,9 +264,6 @@
         SignInViewController *lvc = segue.destinationViewController;
         lvc.isFromMyViewController = YES;
     }
-
-    
-    
 }
 
 #pragma mark - ScrollView Delegate

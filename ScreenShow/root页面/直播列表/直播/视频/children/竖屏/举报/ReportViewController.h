@@ -10,6 +10,9 @@
 #import "Anchor.h"
 
 @interface ReportViewController : UIViewController
+{
+    IBOutlet UITableView *table;
+}
 @property(nonatomic,strong)NSMutableArray *arrayContent;
 @property(nonatomic,strong)Anchor *anchor;
 -(IBAction)btnbackClicked:(id)sender;

@@ -99,7 +99,8 @@
  */
 +(void)sendVerifyCodeToEmail:(NSString*)email completionHandler:handler
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@?uid=%d&user_email=%@",PORT_EMAILVERIFY,[User shareUser].manID,email];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?uid=%d&email=%@",PORT_EMAILVERIFY,[User shareUser].manID,email];
+    NSLog(@"requestAddress = %@", urlStr);
     [[self class] handleResureInfoWithString:urlStr completionHandler:handler];
 }
 
