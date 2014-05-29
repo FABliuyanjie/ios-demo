@@ -18,9 +18,9 @@
 #define CGRECT_HAVE_NAV(x,y,w,h) CGRectMake((x), (y+(IsIOS7?64:0)), (w), (h))
 
 #ifdef DEBUG
-#    define Log(fmt,...) NSLog((@"\n[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__)
+#    define NSLog(fmt,...) NSLog((@"\n[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__)
 #else
-#    define Log(...) {}
+#    define NSLog(...) {}
 #endif
 
 //MARK:客户端标识

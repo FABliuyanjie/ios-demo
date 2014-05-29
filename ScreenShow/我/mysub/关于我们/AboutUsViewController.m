@@ -57,10 +57,8 @@
 */
 
 - (IBAction)onCheckVersion:(UIButton *)sender {
-    //TDO:
-//    return;
+
     NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
-    //CFShow((__bridge CFTypeRef)(infoDic));
     NSString *currentVersion = [infoDic objectForKey:@"CFBundleVersion"];
     
     //TODO:修改appid
@@ -72,7 +70,6 @@
     NSError *error = nil;
     NSData *recervedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
     
-//    NSString *results = [[NSString alloc] initWithBytes:[recervedData bytes] length:[recervedData length] encoding:NSUTF8StringEncoding];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:recervedData options:NSJSONReadingMutableContainers error:nil];
     NSArray *infoArray = [dic objectForKey:@"results"];
     if ([infoArray count]) {
@@ -80,7 +77,7 @@
         NSString *lastVersion = [releaseInfo objectForKey:@"version"];
         
         if (![lastVersion isEqualToString:currentVersion]) {
-            //trackViewURL = [releaseInfo objectForKey:@"trackVireUrl"];
+       
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
             alert.tag = 10000;
             [alert show];

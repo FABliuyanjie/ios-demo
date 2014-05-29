@@ -134,7 +134,9 @@
     NSString* filename = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"history.dat"];
     
    User *user = [NSKeyedUnarchiver unarchiveObjectWithFile:filename];
- 
+    if (user==nil) {
+        user = [[User alloc]init];
+    }
     return user;
 }
 

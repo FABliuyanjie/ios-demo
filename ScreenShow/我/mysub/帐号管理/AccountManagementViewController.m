@@ -39,7 +39,10 @@
     self.title = @"账号管理";
     [self flushUI];
    
+    self.extendedLayoutIncludesOpaqueBars = YES;
+    self.modalPresentationCapturesStatusBarAppearance = YES;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(flushUI) name:kReflushUserInfo object:nil];
+//    self.navigationController.navigationBar.translucent  = YES;
     // Do any additional setup after loading the view.
 }
 
@@ -49,11 +52,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-
-}
 
 //刷新UI
 -(void)flushUI
@@ -91,13 +89,18 @@
 {
     //立刻关闭选择界面
     [picker dismissViewControllerAnimated:YES completion:nil];
+    self.navigationController.navigationBar.translucent  = NO;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     UIImage *image= [info objectForKey:@"UIImagePickerControllerEditedImage"];
     //如果是刚拍的，保存到相册
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera){
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     }
     [TOOL uploadUserPhoto:image completionHandler:^(bool status, NSString *info) {
-        [[iToast makeText:status?@"上传成功":@"上传失败"]show];
+//        [[iToast makeText:status?@"上传成功":@"上传失败"]show];
+        UIAlertView *alter = [[UIAlertView alloc]initWithTitle:@"确定" message:status?@"上传成功":@"上传失败" delegate:@"" cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alter show];
+//        [alter dismissWithClickedButtonIndex:0 animated:YES];
         if (status) {
             [User shareUser].photo = image;
             [[User shareUser] saveUserInfo];
@@ -147,9 +150,11 @@
             return;
             break;
     }
+  
     imagePicker.delegate = self;
     imagePicker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     imagePicker.allowsEditing = YES;
+    
     [self presentViewController:imagePicker animated:YES completion:nil];
   
 }
@@ -160,5 +165,27 @@
     [alert dismissWithClickedButtonIndex:0 animated:YES];
 }
 
+//FIXME:
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.frame = CGRectMake(0, 20, SCREEN_WIDTH, 44);
+}
 
+-(void)viewDidAppear:(BOOL)animated{
+
+    self.navigationController.navigationBar.frame = CGRectMake(0, 20, SCREEN_WIDTH, 44);
+    self.view.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
+}
+
+
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+//    if (navigationController == imagePicker.navigationController) {
+        navigationController.navigationBar.translucent = NO;
+        UIImage *image = [UIImage imageWithColor:[UIColor colorWithWhite:0.868 alpha:1.000] size:CGSizeMake(320, 44) andRoundSize:0];
+        [navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+        navigationController.navigationBar.hidden = NO;
+
+//    }
+}
 @end

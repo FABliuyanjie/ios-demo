@@ -68,7 +68,7 @@
 {
     NSString * url = [NSString stringWithFormat:@"index.php/Api/User/bindinfo?token=%@", [[User shareUser] token]];
     
-    NSLog(@"requestAddress = %@",url);
+  
     
     [[AFAppDotNetAPIClient sharedClient] GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -93,7 +93,7 @@
         }
         [self.tableView reloadData];
 
-        NSLog(@"%@",responseObject);
+  
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
@@ -163,7 +163,7 @@
     }
     else
     {
-        NSLog(@"绑定%@", authType.name);
+        
         [self loginWithName:authType];
         
     }
@@ -225,7 +225,7 @@
                 if (status) {
                     AuthType * auth = [_shareTypeArray objectAtIndex:authType.tag - 1];
                     
-                    NSLog(@"绑定账户名字：%@", auth.name);
+                    
                     auth.type = YES;
                     [self.tableView reloadData];
                 }else{
@@ -261,11 +261,10 @@
     
     [User bindThirdAccountByOpenid:openid openName:openName thirdType:thirdType completionHandler:^(bool status, NSString *info) {
         
-        NSLog(@"info = %@", info);
         if (status==1 || [info isEqualToString:@"绑定失败"] ) {//绑定失败是已经绑定了
             AuthType * auth = [_shareTypeArray objectAtIndex:tag - 1];
             
-            NSLog(@"绑定账户名字：%@", auth.name);
+            
             auth.type = YES;
             [self.tableView reloadData];
         }
@@ -329,11 +328,11 @@
     if (buttonIndex != alertView.cancelButtonIndex) {
         
         AuthType * authType = [_shareTypeArray objectAtIndex:alertView.tag - 1];
-        NSLog(@"解除绑定%@", authType.name);
+        
         
         [User unbindThirdAccountWithThirdType:authType.pinyin completionHandler:^(bool status, NSString *info) {
            
-            NSLog(@"info = %@", info);
+            
             if (status || [info isEqualToString:@"解除绑定失败"]) {
               AuthType * auth = [_shareTypeArray objectAtIndex:authType.tag - 1];
                 auth.type = NO;

@@ -72,7 +72,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    NSLog(@"%@",collectionView.subviews);
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -122,7 +122,7 @@
                 }
                 if (![[lodic objectForKey:@"data"] isKindOfClass:[NSNull class]]) {
                     int i=0;
-                    NSLog(@"%@",[lodic valueForKey:@"data"]);
+                   
                     NSArray *loarray=[lodic valueForKey:@"data"];
                     if (loarray.count!=0) {
                         for (NSDictionary *lodic1 in [lodic objectForKey:@"data"]) {
@@ -208,7 +208,7 @@
             NSLog(@"%@",exception);
         }
         @finally {
-            
+       
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

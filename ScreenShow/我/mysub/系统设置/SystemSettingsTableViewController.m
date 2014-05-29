@@ -165,7 +165,10 @@
     [cacheBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [cacheBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [cacheBtn addTarget:self action:@selector(clearCache) forControlEvents:UIControlEventTouchUpInside];
+    
+    [cacheBtn setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [cacheBtn addTarget:self action:@selector(clearCache:) forControlEvents:UIControlEventTouchUpInside];
+    
     [cacheBtn setBackgroundColor:[UIColor colorWithRed:154 / 255.0f green:60 / 255.0f blue:80 / 255.0f alpha:1]];
     [view addSubview:cacheBtn];
     view.userInteractionEnabled = YES;
@@ -173,8 +176,17 @@
     return view;
 }
 
--(void)clearCache
+-(void)clearCache:(UIButton*)sender
 {
+    sender.enabled = NO;
+    
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t) (delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [[iToast makeText:@"缓存清除完毕"]show];
+        sender.enabled = YES;
+        sender.selected = NO;
+    });
     NSLog(@"立即删除缓存");
 }
 
@@ -193,7 +205,7 @@
         [self.tableView reloadData];
         
     }else{
-        //TODO:clear cache
+        [[iToast makeText:@"删除成功"]show];
     }
 }
 

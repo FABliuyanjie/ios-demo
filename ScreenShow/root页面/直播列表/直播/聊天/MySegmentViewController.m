@@ -34,6 +34,7 @@
     //segmentbar  顶部bar
     self.segmenttopbar=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_FRAME_WIDTH,self.segmenttopbarHeight)];
     labeloftitle=[[UILabel alloc] initWithFrame:CGRectMake((self.segmenttopbar.frame.size.width-100)/2, 0, 100,self.segmenttopbarHeight)];
+    labeloftitle.backgroundColor=[UIColor clearColor];
     labeloftitle.textAlignment=NSTextAlignmentCenter;
     labeloftitle.text=self.segmentTitle;
     [self.segmenttopbar addSubview:labeloftitle];
