@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TComposeView.h"
+#import "UMFeedback.h"
 
-@interface FeedbackViewController : BaseViewController
+@interface FeedbackViewController : BaseViewController<UMFeedbackDataDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton * commitBtn;
 @property (strong, nonatomic) TComposeView * textView;

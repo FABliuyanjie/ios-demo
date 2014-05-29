@@ -73,13 +73,13 @@
     }
 
     [super prepareForSegue:segue sender:sender];
-}
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:YES];
-    self.navigationController.navigationBarHidden=NO;
-}
 
+    
+    NSLog(@"hhhhh");
+
+
+
+}
 
 
 @end

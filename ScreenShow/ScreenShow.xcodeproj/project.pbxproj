@@ -32,6 +32,7 @@
 		014112781918F31700DEE3A1 /* screen_portaitvc_btn6_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 0141125F1918F31700DEE3A1 /* screen_portaitvc_btn6_highlight.png */; };
 		014112791918F31700DEE3A1 /* screen_portaitvc_btn6.png in Resources */ = {isa = PBXBuildFile; fileRef = 014112601918F31700DEE3A1 /* screen_portaitvc_btn6.png */; };
 		0141127A1918F31700DEE3A1 /* screen_portaitvc_btn6out.png in Resources */ = {isa = PBXBuildFile; fileRef = 014112611918F31700DEE3A1 /* screen_portaitvc_btn6out.png */; };
+		015001071935D4ED00C39DD0 /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 015001051935D4ED00C39DD0 /* libUMFeedback.a */; };
 		0168669D19207BAB00B9877C /* ToolpushLivestudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B52BAE21919C8710073F73B /* ToolpushLivestudioViewController.m */; };
 		0168669E19207C0E00B9877C /* ScreenPortaitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B079F0518E58467009D6303 /* ScreenPortaitViewController.m */; };
 		0168EF7D1919D19D00A0F5FF /* FindPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0168EF7C1919D19D00A0F5FF /* FindPassWordViewController.m */; };
@@ -587,6 +588,8 @@
 		0141125F1918F31700DEE3A1 /* screen_portaitvc_btn6_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_portaitvc_btn6_highlight.png; sourceTree = "<group>"; };
 		014112601918F31700DEE3A1 /* screen_portaitvc_btn6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_portaitvc_btn6.png; sourceTree = "<group>"; };
 		014112611918F31700DEE3A1 /* screen_portaitvc_btn6out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_portaitvc_btn6out.png; sourceTree = "<group>"; };
+		015001051935D4ED00C39DD0 /* libUMFeedback.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMFeedback.a; sourceTree = "<group>"; };
+		015001061935D4ED00C39DD0 /* UMFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedback.h; sourceTree = "<group>"; };
 		0168EF7B1919D19D00A0F5FF /* FindPassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPassWordViewController.h; sourceTree = "<group>"; };
 		0168EF7C1919D19D00A0F5FF /* FindPassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPassWordViewController.m; sourceTree = "<group>"; };
 		0168EF7E191A372000A0F5FF /* btn_back_small_highligh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back_small_highligh@2x.png"; sourceTree = "<group>"; };
@@ -1175,6 +1178,7 @@
 				A3A0946D18FF78330056C82A /* libPushSDK.a in Frameworks */,
 				9B05634418DA93C80048269B /* AssetsLibrary.framework in Frameworks */,
 				9BA59B13192606D1002624FF /* libUMSocial_Sdk_3.3.7.a in Frameworks */,
+				015001071935D4ED00C39DD0 /* libUMFeedback.a in Frameworks */,
 				9BFA8A7818C6CF5B00BAA640 /* MediaPlayer.framework in Frameworks */,
 				9BA9A41E18C4118C0043C937 /* CoreGraphics.framework in Frameworks */,
 				9BA9A42018C4118C0043C937 /* UIKit.framework in Frameworks */,
@@ -1203,6 +1207,15 @@
 				01184DD01924A0DF00DD4036 /* STSegmentedControl.m */,
 			);
 			path = STSegmentedControl;
+			sourceTree = "<group>";
+		};
+		015001041935D4E300C39DD0 /* 友盟意见反馈 */ = {
+			isa = PBXGroup;
+			children = (
+				015001051935D4ED00C39DD0 /* libUMFeedback.a */,
+				015001061935D4ED00C39DD0 /* UMFeedback.h */,
+			);
+			path = "友盟意见反馈";
 			sourceTree = "<group>";
 		};
 		0168F06619160CF300C62FE4 /* category */ = {
@@ -1733,6 +1746,7 @@
 		9BA59AEA192606D1002624FF /* 友盟 */ = {
 			isa = PBXGroup;
 			children = (
+				015001041935D4E300C39DD0 /* 友盟意见反馈 */,
 				9BA59AEB192606D1002624FF /* UMSocial_Sdk_3.3.7 */,
 				9BA59B06192606D1002624FF /* UMSocial_Sdk_Extra_Frameworks */,
 			);
@@ -3314,8 +3328,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: peng li (5MLPEMTNDE)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FAB Beijing Audio Co., Ltd. (7H3GAK7WF4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FAB Beijing Audio Co., Ltd. (7H3GAK7WF4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
@@ -3349,6 +3363,7 @@
 					"/Users/fab/Desktop/娱乐营销项目/utils/友盟/UMSocial_Sdk_3.3.7",
 					"/Users/fab/Desktop/娱乐营销项目/utils/友盟/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"/Users/fab/Desktop/娱乐营销项目/utils/友盟/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)/utils/友盟/友盟意见反馈",
 				);
 				New_Setting = "";
 				OTHER_LDFLAGS = (
@@ -3359,7 +3374,7 @@
 				);
 				"OTHER_LDFLAGS[arch=*]" = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C6FA5E4C-B9F2-4D23-B782-6BFB84014EEC";
+				PROVISIONING_PROFILE = "49793958-2F8C-4C2F-A4B6-E135D3A6023C";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -3407,10 +3422,11 @@
 					"/Users/fab/Desktop/娱乐营销项目/utils/友盟/UMSocial_Sdk_3.3.7",
 					"/Users/fab/Desktop/娱乐营销项目/utils/友盟/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
 					"/Users/fab/Desktop/娱乐营销项目/utils/友盟/UMSocial_Sdk_Extra_Frameworks/Wechat",
+					"$(PROJECT_DIR)/utils/友盟/友盟意见反馈",
 				);
 				New_Setting = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C6FA5E4C-B9F2-4D23-B782-6BFB84014EEC";
+				PROVISIONING_PROFILE = "49793958-2F8C-4C2F-A4B6-E135D3A6023C";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

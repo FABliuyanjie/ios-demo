@@ -46,10 +46,8 @@
     [super viewDidLoad];
 
     self.title = @"注册";
-    self.scrollView.contentSize = CGSizeMake(320, 470);
     // Do any additional setup after loading the view.
 }
-
 
 - (void)didReceiveMemoryWarning
 {

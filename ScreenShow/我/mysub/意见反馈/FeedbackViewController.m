@@ -18,6 +18,9 @@
 @end
 
 @implementation FeedbackViewController
+{
+    UMFeedback * umFeedback;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +36,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"感谢您的宝贵意见";
+    
+    umFeedback = [UMFeedback sharedInstance];
+    [umFeedback setAppkey:@"5373474456240b1cbc020bde" delegate:self];
     
     self.textView = [[TComposeView alloc] init];
     self.textView.frame = CGRectMake(5, 15, SCREEN_WIDTH - 10, 160);
@@ -51,7 +57,7 @@
     self.commitBtn.backgroundColor = [UIColor colorWithRed:154 / 255.0f green:60 / 255.0f blue:80 / 255.0f alpha:1];
     [self.commitBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     self.commitBtn.titleLabel.font = [UIFont systemFontOfSize:20.0f];
-    self.commitBtn.frame = CGRectMake(10, CGRectGetMaxY(self.textView.frame) + 20, SCREEN_WIDTH - 20, 45);
+    self.commitBtn.frame = CGRectMake(10, CGRectGetMaxY(self.textView.frame) + 10, SCREEN_WIDTH - 20, 45);
     
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];
     [self.view addGestureRecognizer:tap];
@@ -65,7 +71,30 @@
 -(IBAction)commit:(id)sender
 {
     NSLog(@"提交");
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    [dictionary setObject:@"female" forKey:@"gender"];
+    [dictionary setObject:@"2" forKey:@"age_group"];
+    [dictionary setObject:self.textView.text forKey:@"content"];
+    
+    NSDictionary *remark = [NSDictionary dictionaryWithObject:@"备注" forKey:@"name"];
+    [dictionary setObject:remark forKey:@"remark"];
+    NSDictionary *contact = [NSDictionary dictionaryWithObject:@"联系方式" forKey:@"email"];
+    [dictionary setObject:contact forKey:@"contact"];
+    [umFeedback post:dictionary];
 }
+
+-(void)postFinishedWithError:(NSError *)error
+{
+    if (error == nil) {
+        [[iToast makeText:@"提交成功"] show];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
